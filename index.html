@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Whale Bin Dai | AI-Powered Mobile Game Publisher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#eff8ff;
+  --bg-soft:#f8fcff;
+  --card:#ffffff;
+  --text:#0b2441;
+  --muted:#5c7491;
+  --line:rgba(78,144,208,.18);
+  --brand:#1f8fff;
+  --brand-deep:#0a59c8;
+  --brand-soft:#d9efff;
+  --accent:#ffbf3f;
+  --shadow:0 24px 80px rgba(15,76,147,.14);
+  --radius:28px;
+  --max:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Manrope",system-ui,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(180,222,255,.75), transparent 28%),
+    linear-gradient(180deg, #f7fbff 0%, #eef7ff 48%, #f9fcff 100%);
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+
+.shell{width:min(calc(100% - 40px), var(--max));margin:0 auto}
+.section{position:relative;padding:96px 0}
+.panel{
+  background:rgba(255,255,255,.76);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid rgba(31,143,255,.16);
+  background:rgba(255,255,255,.72);
+  color:var(--brand-deep);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.eyebrow::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--accent), var(--brand));
+  box-shadow:0 0 0 5px rgba(31,143,255,.08);
+}
+h1,h2,h3,h4{margin:0;font-family:"Space Grotesk","Manrope",sans-serif}
+h1{font-size:clamp(42px, 7vw, 78px);line-height:.96;letter-spacing:-.05em}
+h2{font-size:clamp(32px, 4vw, 52px);line-height:1;letter-spacing:-.04em}
+h3{font-size:clamp(24px, 3vw, 32px);line-height:1.08;letter-spacing:-.03em}
+p{margin:0;line-height:1.72}
+.lede{font-size:18px;color:var(--muted)}
+.section-head{display:grid;gap:18px;margin-bottom:34px;max-width:760px}
+.muted{color:var(--muted)}
+
+.nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  backdrop-filter:blur(18px);
+  background:rgba(244,250,255,.76);
+  border-bottom:1px solid rgba(31,143,255,.12);
+}
+.nav-inner{
+  width:min(calc(100% - 36px), 1280px);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:14px 0;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-width:0;
+}
+.brand-mark{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  background:linear-gradient(160deg, rgba(255,255,255,.95), rgba(219,241,255,.85));
+  padding:6px;
+  box-shadow:0 14px 34px rgba(13,97,181,.16);
+}
+.brand-copy{min-width:0}
+.brand-copy strong{
+  display:block;
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+.brand-copy span{
+  display:block;
+  font-size:12px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.nav-links a{
+  font-size:13px;
+  font-weight:700;
+  color:var(--muted);
+  padding:9px 12px;
+  border-radius:999px;
+  transition:.2s ease;
+}
+.nav-links a:hover{color:var(--brand-deep);background:rgba(31,143,255,.08)}
+
+.hero{
+  min-height:100vh;
+  display:grid;
+  align-items:center;
+  overflow:hidden;
+  padding:36px 0 80px;
+}
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(125deg, rgba(247,251,255,.96), rgba(247,251,255,.58) 42%, rgba(233,245,255,.18) 76%),
+    url("./assets/presentation/image12.png") center/cover no-repeat;
+}
+.hero-wave{
+  position:absolute;
+  inset:auto auto 48px -2%;
+  width:min(960px, 72vw);
+  opacity:.14;
+}
+.hero-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);
+  gap:34px;
+  align-items:center;
+}
+.hero-copy{
+  display:grid;
+  gap:24px;
+}
+.hero-copy p{max-width:680px}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:54px;
+  padding:0 24px;
+  border-radius:999px;
+  border:1px solid transparent;
+  font-weight:800;
+}
+.btn-primary{
+  color:#fff;
+  background:linear-gradient(135deg, var(--brand), var(--brand-deep));
+  box-shadow:0 18px 38px rgba(31,143,255,.26);
+}
+.btn-secondary{
+  background:rgba(255,255,255,.82);
+  border-color:rgba(31,143,255,.14);
+  color:var(--brand-deep);
+}
+.hero-card{
+  position:relative;
+  overflow:hidden;
+  padding:26px;
+}
+.hero-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(217,239,255,.08));
+  pointer-events:none;
+}
+.hero-card-main{
+  position:relative;
+  display:grid;
+  gap:18px;
+}
+.hero-logo{
+  width:min(280px, 70%);
+  margin-bottom:2px;
+}
+.hero-card h3{max-width:430px}
+.hero-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.metric-badge{
+  background:rgba(31,143,255,.1);
+  color:var(--brand-deep);
+  border:1px solid rgba(31,143,255,.16);
+  border-radius:18px;
+  padding:10px 14px;
+  font-size:13px;
+  font-weight:800;
+}
+.founder-chip{
+  display:grid;
+  grid-template-columns:72px 1fr;
+  gap:14px;
+  align-items:center;
+  padding:16px;
+  border-radius:22px;
+  background:linear-gradient(180deg, rgba(255,255,255,.84), rgba(222,240,255,.66));
+  border:1px solid rgba(31,143,255,.12);
+}
+.founder-chip img{
+  width:72px;
+  border-radius:18px;
+  background:#fff;
+  padding:6px;
+}
+.founder-chip strong{display:block;font-size:18px}
+.founder-chip span{font-size:13px;color:var(--muted)}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:18px;
+}
+.stat-card{
+  padding:24px;
+  border-radius:26px;
+  background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(236,247,255,.8));
+  border:1px solid rgba(31,143,255,.12);
+  box-shadow:0 20px 60px rgba(31,143,255,.08);
+}
+.stat-label{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.stat-value{margin-top:10px;font-size:34px;font-family:"Space Grotesk","Manrope",sans-serif;font-weight:700;line-height:1;color:var(--brand-deep)}
+.stat-note{margin-top:12px;font-size:14px;color:var(--muted)}
+
+.two-col{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+  gap:28px;
+  align-items:stretch;
+}
+.copy-card,.visual-card{padding:30px}
+.visual-card{
+  display:grid;
+  gap:18px;
+  align-content:start;
+}
+.visual-card img{
+  border-radius:24px;
+  width:100%;
+  object-fit:cover;
+}
+.bullet-list,.tag-list,.feature-list,.fund-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:14px;
+}
+.bullet-list li,.feature-list li,.fund-list li{
+  position:relative;
+  padding-left:20px;
+  color:var(--text);
+}
+.bullet-list li::before,.feature-list li::before,.fund-list li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.72em;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--accent), var(--brand));
+}
+.tag-list{
+  grid-template-columns:repeat(2, minmax(0,1fr));
+}
+.tag-list li{
+  padding:14px 16px;
+  border-radius:18px;
+  background:rgba(31,143,255,.08);
+  border:1px solid rgba(31,143,255,.12);
+  font-size:14px;
+  font-weight:700;
+}
+
+.components{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:18px;
+}
+.component{
+  padding:24px;
+  border-radius:24px;
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(228,243,255,.74));
+  border:1px solid rgba(31,143,255,.12);
+}
+.component h4{
+  margin-bottom:10px;
+  font-size:20px;
+}
+.component p{
+  margin-bottom:14px;
+  color:var(--muted);
+}
+.component ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:8px;
+}
+.component li{
+  font-size:14px;
+  color:var(--text);
+}
+
+.adv-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);
+  gap:24px;
+}
+.poster-stack{
+  position:relative;
+  min-height:100%;
+  overflow:hidden;
+  padding:24px;
+}
+.poster-stack > img:first-of-type{
+  border-radius:26px;
+  min-height:460px;
+  object-fit:cover;
+}
+.poster-figure{
+  position:absolute;
+  right:-8px;
+  bottom:0;
+  width:min(250px, 38%);
+}
+.adv-copy{
+  display:grid;
+  gap:18px;
+  padding:30px;
+}
+.quote{
+  padding:22px 24px;
+  border-radius:24px;
+  background:linear-gradient(135deg, rgba(11,89,200,.96), rgba(31,143,255,.82));
+  color:#fff;
+  font-size:20px;
+  font-weight:700;
+  line-height:1.5;
+}
+
+.business-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:20px;
+}
+.business-card{
+  padding:26px;
+  border-radius:26px;
+  background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(229,244,255,.75));
+  border:1px solid rgba(31,143,255,.12);
+}
+.assumptions{
+  margin-top:24px;
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:14px;
+}
+.assumption{
+  padding:18px;
+  border-radius:22px;
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(31,143,255,.1);
+}
+.assumption strong{
+  display:block;
+  font-size:26px;
+  font-family:"Space Grotesk","Manrope",sans-serif;
+  line-height:1.1;
+  color:var(--brand-deep);
+}
+.assumption span{
+  display:block;
+  margin-top:8px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.funds-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:18px;
+}
+.funds-card{
+  padding:28px;
+  border-radius:26px;
+  background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(226,242,255,.76));
+  border:1px solid rgba(31,143,255,.12);
+}
+.return-panel{
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  gap:20px;
+}
+.return-ask{
+  padding:30px;
+  background:linear-gradient(150deg, rgba(8,89,200,.98), rgba(40,154,255,.84));
+  color:#fff;
+  border-radius:30px;
+  box-shadow:0 30px 80px rgba(31,143,255,.22);
+}
+.return-ask .eyebrow{
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  border-color:rgba(255,255,255,.18);
+}
+.return-ask .eyebrow::before{background:var(--accent)}
+.return-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:14px;
+  margin-top:22px;
+}
+.return-grid .stat-card{
+  background:rgba(255,255,255,.14);
+  border-color:rgba(255,255,255,.15);
+  box-shadow:none;
+}
+.return-grid .stat-label,
+.return-grid .stat-note{color:rgba(255,255,255,.8)}
+.return-grid .stat-value{color:#fff}
+.invest-card{
+  padding:30px;
+}
+.invest-columns{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:18px;
+  margin-top:18px;
+}
+
+.cta{
+  overflow:hidden;
+  padding:34px;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(260px,.95fr);
+  gap:28px;
+  align-items:center;
+  background:
+    linear-gradient(130deg, rgba(255,255,255,.86), rgba(230,244,255,.76)),
+    url("./assets/presentation/image8.jpeg") center/cover no-repeat;
+}
+.contact-list{
+  list-style:none;
+  margin:22px 0 0;
+  padding:0;
+  display:grid;
+  gap:14px;
+}
+.contact-list a,.contact-list span{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:17px;
+  font-weight:700;
+}
+.contact-list img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+}
+.cta-figure{
+  justify-self:end;
+  width:min(320px, 100%);
+}
+.footer-note{
+  margin-top:18px;
+  color:var(--muted);
+  font-size:14px;
+}
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .55s ease, transform .55s ease;
+}
+.reveal.in{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media (max-width: 1100px){
+  .hero-grid,
+  .two-col,
+  .adv-grid,
+  .return-panel,
+  .cta{
+    grid-template-columns:1fr;
+  }
+  .stats-grid,
+  .assumptions{
+    grid-template-columns:repeat(2, minmax(0,1fr));
+  }
+  .poster-figure{
+    width:min(220px, 34%);
+  }
+  .cta-figure{
+    justify-self:center;
+    width:min(280px, 72%);
+  }
+}
+
+@media (max-width: 760px){
+  .nav-inner,
+  .nav-links{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .nav-links{
+    gap:6px;
+  }
+  .section{
+    padding:72px 0;
+  }
+  .hero{
+    min-height:auto;
+    padding-top:24px;
+  }
+  .hero-card,
+  .copy-card,
+  .visual-card,
+  .adv-copy,
+  .business-card,
+  .funds-card,
+  .invest-card,
+  .return-ask,
+  .cta{
+    padding:22px;
+  }
+  .stats-grid,
+  .components,
+  .tag-list,
+  .business-grid,
+  .funds-grid,
+  .invest-columns,
+  .return-grid,
+  .assumptions{
+    grid-template-columns:1fr;
+  }
+  .founder-chip{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .founder-chip img{
+    margin:0 auto;
+  }
+  .poster-stack > img:first-of-type{
+    min-height:340px;
+  }
+  .poster-figure{
+    position:relative;
+    right:auto;
+    width:min(230px, 70%);
+    margin:18px auto 0;
+  }
+  .contact-list a,.contact-list span{
+    font-size:15px;
+  }
+}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top">
+        <img class="brand-mark" src="./assets/presentation/image5.png" alt="Whale Bin Dai logo" />
+        <div class="brand-copy">
+          <strong>Whale Bin Dai</strong>
+          <span>AI-Powered Mobile Game Publisher for Thailand &amp; SEA</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#opportunity">Opportunity</a>
+        <a href="#solution">Solution</a>
+        <a href="#advantage">Advantage</a>
+        <a href="#growth">Growth</a>
+        <a href="#financials">Financials</a>
+        <a href="#investor-return">Investor Return</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <img class="hero-wave" src="./assets/presentation/image1.png" alt="" aria-hidden="true" />
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Corporate Presentation</span>
+          <h1>Whale Bin Dai</h1>
+          <p class="lede">AI-Powered Mobile Game Publisher for Thailand &amp; SEA.</p>
+          <p>We are building a lean, technology-driven mobile game publishing company that combines game operation, web top-up, community, CRM, and AI-powered back-office systems.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#investor-return">Seeking Investment: THB 20M</a>
+            <a class="btn btn-secondary" href="#contact">Contact Founder</a>
+          </div>
+          <div class="founder-chip panel">
+            <img src="./assets/presentation/image14.png" alt="Whale Bin Dai mascot" />
+            <div>
+              <strong>Presented By: Sasion Nanthaphiriyakit</strong>
+              <span>Founder-led game, platform, payment, operations, and partnership execution.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card panel reveal">
+          <div class="hero-card-main">
+            <img class="hero-logo" src="./assets/presentation/image5.png" alt="Whale Bin Dai" />
+            <h3>A faster, leaner, AI-powered game publisher built by a founder who has already done it before.</h3>
+            <div class="hero-badges">
+              <div class="metric-badge">THB 66M revenue generated in about 3 months</div>
+              <div class="metric-badge">3Y Sales: THB 147.2M</div>
+              <div class="metric-badge">Base ROI: 25.7%</div>
+            </div>
+            <img src="./assets/presentation/image6.png" alt="Whale Bin Dai game cast" />
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="opportunity">
+      <div class="shell">
+        <div class="section-head reveal">
+          <span class="eyebrow">Why This Opportunity</span>
+          <h2>The opportunity is not just launching games. It is operating games better.</h2>
+          <p class="lede">The mobile game market is competitive, but many publishers still operate with slow internal processes, high manpower costs, weak CRM, and poor customer data utilization.</p>
+        </div>
+        <div class="two-col">
+          <article class="copy-card panel reveal">
+            <h3>Market Gap</h3>
+            <p class="muted" style="margin-top:14px">Whale Bin Dai focuses on the real value drivers behind game revenue:</p>
+            <ul class="tag-list" style="margin-top:20px">
+              <li>User acquisition efficiency</li>
+              <li>Paying user conversion</li>
+              <li>ARPPU growth</li>
+              <li>Retention and repeat spending</li>
+              <li>Community engagement</li>
+              <li>Fast campaign testing</li>
+              <li>Payment and top-up experience</li>
+              <li>Customer support quality</li>
+            </ul>
+            <p class="muted" style="margin-top:22px">Many companies can launch games, but fewer can operate games with strong data, payment, community, and automation systems. Whale Bin Dai is positioned as a modern game publisher with platform capability, not just a game reseller.</p>
+          </article>
+
+          <aside class="visual-card panel reveal">
+            <img src="./assets/presentation/image10.png" alt="Fantasy island world" />
+            <img src="./assets/presentation/image9.png" alt="Whale Bin Dai explorer character" style="max-width:260px;justify-self:end" />
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="stats-grid">
+          <div class="stat-card reveal">
+            <div class="stat-label">Investment Ask</div>
+            <div class="stat-value">THB 20M</div>
+            <div class="stat-note">Equity offered: 25%</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-label">Founder Track Record</div>
+            <div class="stat-value">THB 66M</div>
+            <div class="stat-note">Approximate revenue generated within 3 months from game/platform-related business execution.</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-label">3Y Sales</div>
+            <div class="stat-value">THB 147.2M</div>
+            <div class="stat-note">Internal projection baseline used throughout the deck.</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-label">Base ROI</div>
+            <div class="stat-value">25.7%</div>
+            <div class="stat-note">Projected investor return in the base case.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="two-col">
+          <article class="copy-card panel reveal">
+            <span class="eyebrow">Why Us</span>
+            <h2 style="margin-top:18px">Founder Track Record</h2>
+            <p class="lede" style="margin-top:16px">This business is led by a founder with proven execution in games, platforms, payments, and digital operations.</p>
+            <ul class="bullet-list" style="margin-top:20px">
+              <li>Generated approximately THB 66M revenue within 3 months from game/platform-related business execution.</li>
+              <li>Experienced in game marketplace, platform operation, payment systems, customer operations, and partnership management.</li>
+              <li>The founder has already built and operated game-related platforms and understands the key metrics that drive game revenue.</li>
+              <li>This is not a founder starting from theory, but one who has already handled real users, managed payments, and learned what makes players spend repeatedly.</li>
+            </ul>
+          </article>
+
+          <aside class="visual-card panel reveal">
+            <img src="./assets/presentation/image11.png" alt="Reward scene" />
+            <div class="quote">“A faster, leaner, AI-powered game publisher built by a founder who has already done it before.”</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solution">
+      <div class="shell">
+        <div class="section-head reveal">
+          <span class="eyebrow">Our Solution</span>
+          <h2>AI-Powered Game Publishing System</h2>
+          <p class="lede">Whale Bin Dai is building an AI-powered operating system for game publishing. We use AI and automation to support the back office, reduce manual workload, improve customer experience, and increase company margin.</p>
+        </div>
+
+        <div class="components">
+          <article class="component reveal">
+            <h4>AI Customer Support</h4>
+            <p>Chatbot and ticket support designed for faster response time and lower support cost.</p>
+            <ul>
+              <li>Faster response time</li>
+              <li>Lower support cost</li>
+              <li>Reduced human error</li>
+            </ul>
+          </article>
+          <article class="component reveal">
+            <h4>Sales &amp; Revenue Analytics</h4>
+            <p>Daily visibility into monetization and campaign performance.</p>
+            <ul>
+              <li>Daily sales monitoring</li>
+              <li>Top-up behavior tracking</li>
+              <li>Campaign performance dashboard</li>
+              <li>Paying user analysis</li>
+            </ul>
+          </article>
+          <article class="component reveal">
+            <h4>Ad Quality &amp; Marketing Optimization</h4>
+            <p>Spend less on low-quality traffic and improve customer acquisition efficiency.</p>
+            <ul>
+              <li>Analyze ad performance</li>
+              <li>Identify low-quality traffic</li>
+              <li>Reduce wasted marketing spend</li>
+              <li>Improve CAC efficiency</li>
+            </ul>
+          </article>
+          <article class="component reveal">
+            <h4>CRM &amp; Campaign Automation</h4>
+            <p>Retention-focused automation built around player behavior.</p>
+            <ul>
+              <li>Segment users by behavior</li>
+              <li>Retarget paying users</li>
+              <li>Push limited-time offers</li>
+              <li>Improve repeat purchase rate</li>
+            </ul>
+          </article>
+          <article class="component reveal">
+            <h4>Partner &amp; Document Workflow</h4>
+            <p>Automate repetitive admin work and improve operational transparency.</p>
+            <ul>
+              <li>Reduce repetitive admin work</li>
+              <li>Improve reporting accuracy</li>
+              <li>Faster partner communication</li>
+              <li>Better operational transparency</li>
+            </ul>
+          </article>
+          <aside class="component reveal" style="display:grid;align-content:space-between">
+            <div>
+              <h4>Visual Direction</h4>
+              <p>The page uses original deck visuals and keeps the same airy sky-world presentation language.</p>
+            </div>
+            <img src="./assets/presentation/image11.png" alt="Treasure reward illustration" style="border-radius:22px" />
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="advantage">
+      <div class="shell">
+        <div class="section-head reveal">
+          <span class="eyebrow">Competitive Advantage</span>
+          <h2>Fast Fish Eats Big Fish</h2>
+          <p class="lede">Large companies may have more resources, but they often move slowly because of complex internal processes, approval layers, high fixed costs, and legacy workflows. Whale Bin Dai is designed to move faster.</p>
+        </div>
+
+        <div class="adv-grid">
+          <div class="poster-stack panel reveal">
+            <img src="./assets/presentation/image8.jpeg" alt="Deck background treatment" />
+            <img class="poster-figure" src="./assets/presentation/image7.png" alt="Presenter character" />
+          </div>
+          <article class="adv-copy panel reveal">
+            <h3>Business Advantage</h3>
+            <ul class="bullet-list" style="margin-top:6px">
+              <li>Smaller and faster decision-making team</li>
+              <li>AI-powered back-office system</li>
+              <li>Lower operating cost</li>
+              <li>Faster campaign testing</li>
+              <li>Better customer response</li>
+              <li>Data-driven marketing decisions</li>
+              <li>Lower dependency on manual work</li>
+              <li>Higher margin structure</li>
+            </ul>
+
+            <h3 style="margin-top:6px">What the lean model unlocks</h3>
+            <ul class="feature-list">
+              <li>Better customer care</li>
+              <li>Better partner relationship</li>
+              <li>Better campaign execution</li>
+              <li>Better player retention</li>
+              <li>Better revenue optimization</li>
+            </ul>
+
+            <div class="quote">“We use innovation to create a business advantage that large companies may not be able to copy quickly.”</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="growth">
+      <div class="shell">
+        <div class="section-head reveal">
+          <span class="eyebrow">Business Model &amp; Growth Engine</span>
+          <h2>Built to acquire, convert, and retain paying users.</h2>
+          <p class="lede">The company is not only built to acquire players, but to convert and retain paying users.</p>
+        </div>
+
+        <div class="business-grid">
+          <article class="business-card panel reveal">
+            <h3>Revenue Model</h3>
+            <ul class="bullet-list" style="margin-top:18px">
+              <li>In-game purchase</li>
+              <li>Web top-up</li>
+              <li>Redeem code sales</li>
+              <li>Item bundle campaigns</li>
+              <li>Limited-time promotions</li>
+              <li>Seasonal events</li>
+              <li>Community monetization in the future</li>
+            </ul>
+          </article>
+          <article class="business-card panel reveal">
+            <h3>Growth Engine</h3>
+            <ul class="bullet-list" style="margin-top:18px">
+              <li>Acquire users through marketing</li>
+              <li>Convert users into members</li>
+              <li>Drive first top-up</li>
+              <li>Retain users through CRM and community</li>
+              <li>Increase repeat purchases through campaigns</li>
+              <li>Analyze data and optimize CAC / ARPPU</li>
+              <li>Scale profitable marketing channels</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="assumptions">
+          <div class="assumption panel reveal">
+            <strong>2</strong>
+            <span>Launching 2 mobile games</span>
+          </div>
+          <div class="assumption panel reveal">
+            <strong>THB 18.5M</strong>
+            <span>Marketing budget</span>
+          </div>
+          <div class="assumption panel reveal">
+            <strong>370,000</strong>
+            <span>New users</span>
+          </div>
+          <div class="assumption panel reveal">
+            <strong>THB 50</strong>
+            <span>CAC / user</span>
+          </div>
+          <div class="assumption panel reveal">
+            <strong>96,968</strong>
+            <span>Average MAU</span>
+          </div>
+          <div class="assumption panel reveal">
+            <strong>9,697</strong>
+            <span>Average monthly paying users</span>
+          </div>
+          <div class="assumption panel reveal">
+            <strong>10%</strong>
+            <span>Paying user rate</span>
+          </div>
+          <div class="assumption panel reveal">
+            <strong>THB 1,507</strong>
+            <span>ARPPU</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="financials">
+      <div class="shell">
+        <div class="section-head reveal">
+          <span class="eyebrow">Financial Projection &amp; Use of Funds</span>
+          <h2>Build a scalable operating system that improves margin over time.</h2>
+          <p class="lede">The investment is not only for marketing spend. It is used to build a scalable operating system that improves margin over time.</p>
+        </div>
+
+        <div class="funds-grid">
+          <article class="funds-card panel reveal">
+            <h3>3-Year Financial Projection</h3>
+            <div class="stats-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));margin-top:20px">
+              <div class="stat-card">
+                <div class="stat-label">3Y Gross Sales</div>
+                <div class="stat-value">THB 147.2M</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">3Y Net Sales</div>
+                <div class="stat-value">THB 137.6M</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Base Case Net Income</div>
+                <div class="stat-value">THB 20.5M</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Best / Worst</div>
+                <div class="stat-value" style="font-size:24px">42.4M / -3.3M</div>
+                <div class="stat-note">Best Case Net Income / Worst Case Net Income</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="funds-card panel reveal">
+            <h3>Use of Funds</h3>
+            <ul class="fund-list" style="margin-top:18px">
+              <li>Game launch and operation</li>
+              <li>Marketing / User Acquisition</li>
+              <li>Web top-up and member system</li>
+              <li>AI-powered back-office system</li>
+              <li>Customer support automation</li>
+              <li>CRM and campaign automation</li>
+              <li>Server and infrastructure</li>
+              <li>Core team and operations</li>
+              <li>Community and content execution</li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="funds-card panel reveal" style="margin-top:18px">
+          <h3>Margin Strategy</h3>
+          <ul class="tag-list" style="margin-top:18px">
+            <li>Lean team structure</li>
+            <li>AI-supported operations</li>
+            <li>Lower manual admin cost</li>
+            <li>Better ad quality control</li>
+            <li>Data-driven campaign spending</li>
+            <li>Automation in reporting and support</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="investor-return">
+      <div class="shell return-panel">
+        <article class="return-ask reveal">
+          <span class="eyebrow">Investment Summary</span>
+          <h2 style="margin-top:20px">Investor Return</h2>
+          <p style="margin-top:14px;max-width:520px;color:rgba(255,255,255,.86)">Investors are not only investing in a new game company. They are investing in a founder with proven game/platform revenue track record, a lean company with AI-powered operations, a business model designed for higher margin, a scalable game publishing system, and a company that can move faster than larger competitors.</p>
+          <div class="return-grid">
+            <div class="stat-card">
+              <div class="stat-label">Base Case ROI</div>
+              <div class="stat-value">25.7%</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Best Case ROI</div>
+              <div class="stat-value">53.0%</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Worst Case ROI</div>
+              <div class="stat-value">-4.1%</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="invest-card panel reveal">
+          <h3>Why Invest</h3>
+          <div class="invest-columns">
+            <ul class="bullet-list">
+              <li>Investment Ask: THB 20M</li>
+              <li>Equity Offered: 25%</li>
+              <li>Business: AI-powered mobile game publisher</li>
+            </ul>
+            <ul class="bullet-list">
+              <li>Initial Focus: Thailand market</li>
+              <li>Expansion Potential: Thai game publishing and platform model</li>
+              <li>Operating system advantage compounds over time</li>
+            </ul>
+          </div>
+          <div class="quote" style="margin-top:22px">This is not a founder starting from theory. This is a founder who has already executed, generated revenue, handled real users, managed payments, and understood what makes players spend repeatedly.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="shell">
+        <div class="cta panel reveal">
+          <div>
+            <span class="eyebrow">Thank You</span>
+            <h2 style="margin-top:18px">Whale Bin Dai combines proven founder experience, AI-powered operations, and lean execution to build a high-margin game publishing business that can move faster, learn faster, and scale smarter than traditional competitors.</h2>
+            <ul class="contact-list">
+              <li><a href="https://www.sasi.asia" target="_blank" rel="noreferrer"><img src="./assets/presentation/image15.png" alt="" />sasi.asia</a></li>
+              <li><a href="tel:+66962614499"><img src="./assets/presentation/image17.png" alt="" />+66 0962614499</a></li>
+              <li><a href="mailto:sasi.bu.bd@gmail.com"><img src="./assets/presentation/image19.png" alt="" />sasi.bu.bd@gmail.com</a></li>
+              <li><span><img src="./assets/presentation/image15.png" alt="" />WeChat ID : Meuriw</span></li>
+            </ul>
+            <p class="footer-note">Presented By: Sasion Nanthaphiriyakit</p>
+          </div>
+          <img class="cta-figure" src="./assets/presentation/image6.png" alt="Whale Bin Dai characters" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("in");
+      });
+    }, { threshold: 0.16 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

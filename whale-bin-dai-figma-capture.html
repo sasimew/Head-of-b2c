@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Whale Bin Dai Figma Capture</title>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+<style>
+:root{
+  --sky:#32C0FC;--blue:#0B7BF9;--ink:#22314D;--muted:#66748A;--bg:#F4FBFF;--line:rgba(50,192,252,.14);
+  --white:#fff;--orange:#FF9D2E;--green:#23B26D;
+  --r-xl:34px;--r-lg:24px;--r-md:18px;--shadow:0 18px 48px rgba(11,123,249,.12);
+  --shell:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.9));
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(50,192,252,.18), transparent 28%),
+    linear-gradient(180deg,#EAF9FF 0%,#F8FDFF 40%,#EFFBFF 100%);
+}
+.capture-wrap{padding:36px 20px 80px;display:flex;flex-direction:column;gap:42px;align-items:center}
+.fig-page{
+  width:1440px; min-height:920px; border-radius:44px; overflow:hidden; position:relative;
+  background:linear-gradient(180deg,#F7FDFF 0%,#F2FBFF 100%);
+  border:1px solid rgba(255,255,255,.86); box-shadow:0 28px 90px rgba(11,123,249,.16);
+}
+.page-label{
+  position:absolute;top:22px;right:24px;z-index:4;
+  font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--blue);background:rgba(255,255,255,.82);border:1px solid var(--line);
+  padding:8px 14px;border-radius:999px;backdrop-filter:blur(12px);
+}
+.soft-cloud{position:absolute;border-radius:999px;background:rgba(255,255,255,.58);filter:blur(3px)}
+.top-nav{
+  position:absolute;top:24px;left:32px;right:32px;z-index:4;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);backdrop-filter:blur(16px);
+  border-radius:999px;padding:14px 18px;box-shadow:0 8px 32px rgba(11,123,249,.08);
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900}
+.brand-badge{width:42px;height:42px;border-radius:14px;background:#fff;display:grid;place-items:center;box-shadow:var(--shadow)}
+.brand-badge img{width:32px;height:32px;object-fit:contain}
+.nav-links{display:flex;gap:22px;font-size:14px;color:#425067;font-weight:700}
+.nav-pill{padding:8px 16px;border-radius:999px;background:linear-gradient(135deg,var(--sky),var(--blue));color:#fff}
+.hero-grid{
+  position:relative;z-index:2;height:100%;display:grid;grid-template-columns:520px 1fr;
+  gap:24px;align-items:center;padding:120px 42px 44px;
+}
+.hero-copy h1,.section-title h2,.auth-card h2,.dash-title,.subcard h3,.forum-title,.contact-title,.game-head h1{
+  margin:0;font-weight:900;letter-spacing:-.04em;line-height:1.05
+}
+.hero-copy h1{font-size:72px}
+.hero-copy h1 span,.section-title h2 span,.dash-title span,.game-head h1 span{color:var(--blue)}
+.lead{margin:18px 0 24px;font-size:18px;line-height:1.7;color:#4B6077;max-width:430px}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.8);font-weight:800;font-size:13px;color:var(--blue);border:1px solid var(--line)}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:999px;
+  font-weight:800;font-size:15px;border:1px solid transparent
+}
+.btn-primary{background:linear-gradient(135deg,var(--sky),var(--blue));color:#fff}
+.btn-secondary{background:#fff;color:var(--blue);border-color:var(--line)}
+.hero-art{position:relative;height:100%;border-radius:34px;overflow:hidden}
+.hero-art img.bg{width:100%;height:100%;object-fit:cover;display:block}
+.hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(255,255,255,0))}
+.hero-whale{
+  position:absolute;left:28px;bottom:18px;width:230px;height:auto;
+  filter:drop-shadow(0 28px 44px rgba(11,123,249,.18));
+}
+.glass-panel{
+  background:var(--shell);border:1px solid rgba(255,255,255,.92);backdrop-filter:blur(18px);
+  border-radius:30px;box-shadow:var(--shadow)
+}
+.portal-panel{
+  position:absolute;left:42px;right:42px;bottom:36px;z-index:3;display:grid;grid-template-columns:1.05fr .95fr
+}
+.panel-block{padding:28px}
+.panel-block + .panel-block{border-left:1px solid rgba(50,192,252,.12)}
+.steps{display:grid;gap:10px;margin:16px 0 18px}
+.step{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:#456}
+.step .dot{width:30px;height:30px;border-radius:999px;background:linear-gradient(135deg,var(--sky),var(--blue));color:#fff;display:grid;place-items:center;font-size:13px}
+.reward-list,.mini-list{display:grid;gap:12px}
+.reward-item,.mini-item,.forum-topic,.contact-card,.stat-card,.gid-card,.package-card,.history-row,.faq-card{
+  background:#fff;border:1px solid rgba(50,192,252,.1);border-radius:22px;box-shadow:0 10px 26px rgba(11,123,249,.06)
+}
+.reward-item,.mini-item{display:flex;align-items:center;gap:12px;padding:14px}
+.reward-item img,.mini-item img{width:52px;height:52px;object-fit:contain;display:block}
+.reward-copy strong,.mini-copy strong{display:block;font-size:14px}
+.reward-copy span,.mini-copy span{font-size:12px;color:var(--muted)}
+.section-shell{padding:44px 42px}
+.section-title{margin-bottom:22px}
+.section-title h2{font-size:48px}
+.section-sub{margin-top:10px;font-size:17px;line-height:1.65;color:#53687F;max-width:760px}
+.game-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.game-card{overflow:hidden}
+.game-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.game-card .body{padding:16px}
+.game-card .type{font-size:12px;color:var(--sky);font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.game-card .name{margin:8px 0 8px;font-size:24px;font-weight:900}
+.game-card p{margin:0;color:#5A6D80;font-size:14px;line-height:1.6}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature-card{padding:18px}
+.feature-card img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;margin-bottom:14px}
+.feature-card h3{margin:0 0 8px;font-size:22px}
+.feature-card p{margin:0;font-size:14px;color:#5B6B80;line-height:1.65}
+.community-band{
+  margin:0 42px 42px;border-radius:34px;padding:26px 32px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,rgba(50,192,252,.16),rgba(11,123,249,.08));
+}
+.community-band img.char-left{position:absolute;left:10px;bottom:0;height:270px}
+.community-band img.char-right{position:absolute;right:14px;bottom:0;height:260px}
+.community-content{text-align:center;position:relative;z-index:1}
+.community-content h3{margin:0 0 10px;font-size:34px;font-weight:900}
+.social-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+.social-pill{padding:12px 16px;background:#fff;border-radius:18px;font-weight:800;font-size:13px;border:1px solid var(--line)}
+
+.auth-layout,.member-layout,.contact-layout,.forum-layout,.topup-layout-static,.games-layout,.detail-layout{
+  display:grid;gap:22px
+}
+.auth-layout{grid-template-columns:1fr 1fr}
+.member-layout{grid-template-columns:300px 1fr}
+.contact-layout{grid-template-columns:1.05fr .95fr}
+.forum-layout{grid-template-columns:290px 1fr}
+.topup-layout-static{grid-template-columns:1fr 390px}
+.games-layout,.detail-layout{grid-template-columns:1fr}
+.auth-card,.member-card,.topup-card,.forum-card,.contact-box,.subcard{padding:24px}
+.auth-card h2,.dash-title,.forum-title,.contact-title{font-size:42px}
+.tabs{display:flex;gap:10px;margin:18px 0}
+.tab{padding:10px 16px;border-radius:999px;font-weight:800;font-size:13px;background:#EAF8FF;color:var(--blue)}
+.tab.active{background:linear-gradient(135deg,var(--sky),var(--blue));color:#fff}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field,.field-wide{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.field-wide{grid-column:1/-1}
+.label{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--sky);font-weight:800;margin-bottom:8px}
+.input-line{font-size:15px;color:#33455F}
+.otp-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:16px 0}
+.otp-box{height:56px;border-radius:16px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:22px;font-weight:900;color:var(--blue)}
+.subnote{font-size:13px;color:var(--muted);line-height:1.6}
+.side-profile{text-align:center}
+.avatar{width:92px;height:92px;border-radius:999px;background:linear-gradient(135deg,var(--sky),var(--blue));display:grid;place-items:center;margin:0 auto 12px;color:#fff;font-size:36px}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.stat-card{padding:16px}
+.stat-card strong{display:block;font-size:32px;color:var(--blue)}
+.stat-card span{font-size:12px;text-transform:uppercase;color:var(--muted);font-weight:800;letter-spacing:.06em}
+.gid-grid,.package-grid,.history-list,.faq-list,.forum-topics,.contact-cards{display:grid;gap:14px}
+.gid-card,.history-row,.contact-card,.faq-card,.package-card,.forum-topic{padding:16px}
+.gid-card .meta,.history-row .meta,.forum-topic .meta,.contact-card p,.faq-card p{font-size:13px;color:var(--muted);line-height:1.6}
+.package-grid{grid-template-columns:repeat(3,1fr)}
+.package-card{text-align:center}
+.package-card img{width:82px;height:82px;object-fit:contain;display:block;margin:0 auto 10px}
+.package-card h4{margin:0 0 6px;font-size:20px}
+.package-card .price{font-weight:900;color:var(--orange);font-size:22px}
+.summary-box{padding:22px;background:linear-gradient(180deg,#fff,#F8FDFF)}
+.summary-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(50,192,252,.18);font-size:14px}
+.summary-row.total{font-size:18px;font-weight:900;color:var(--blue);border-bottom:none;padding-top:16px}
+.forum-banner,.contact-hero-static{
+  min-height:260px;border-radius:30px;overflow:hidden;position:relative;background:#DFF3FF
+}
+.forum-banner img,.contact-hero-static img,.detail-hero-static img{width:100%;height:100%;object-fit:cover;display:block}
+.forum-banner .overlay,.contact-hero-static .overlay,.detail-hero-static .overlay{
+  position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.92),rgba(255,255,255,.74) 34%,rgba(255,255,255,.14))
+}
+.forum-banner .copy,.contact-hero-static .copy,.detail-hero-static .copy{position:absolute;left:28px;top:28px;max-width:520px;z-index:1}
+.forum-topics{margin-top:16px}
+.forum-topic h4{margin:0 0 8px;font-size:22px}
+.contact-cards{grid-template-columns:1fr 1fr}
+.contact-card{display:flex;gap:14px;align-items:center}
+.contact-card img{width:86px;height:86px;object-fit:contain}
+.detail-hero-static{min-height:320px;border-radius:32px;overflow:hidden;position:relative}
+.detail-body{margin-top:18px}
+.footer-lite{
+  position:absolute;left:0;right:0;bottom:0;padding:30px 42px 24px;
+  background:linear-gradient(180deg,#66CFFF 0%,#2FA5F5 28%,#0F7FE7 62%,#0B4EA0 100%);
+  color:rgba(255,255,255,.92)
+}
+.footer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.footer-links{display:flex;gap:18px;font-size:13px;font-weight:700;opacity:.92}
+.footer-brand{display:flex;align-items:center;gap:12px;font-weight:900}
+.footer-brand img{width:34px;height:34px;object-fit:contain;background:rgba(255,255,255,.16);padding:6px;border-radius:12px}
+.footer-copy{font-size:12px;opacity:.78}
+</style>
+</head>
+<body>
+<div class="capture-wrap">
+
+  <section class="fig-page">
+    <div class="page-label">Home</div>
+    <div class="top-nav">
+      <div class="brand"><div class="brand-badge"><img src="assets/global/wbd-logo-icon-whale.png" alt="Whale Bin Dai"/></div><div>Whale Bin Dai</div></div>
+      <div class="nav-links"><span>Home</span><span>Games</span><span>Top Up</span><span>Community</span><span>Contact</span><span class="nav-pill">Play Now</span></div>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Whale Bin Dai Official Portal</div>
+        <h1>Play Together,<br><span>Explore Beyond</span></h1>
+        <p class="lead">A bright fantasy game portal with mobile login, Game ID linking, top-up flow, and community access for Whale Bin Dai players.</p>
+        <div class="btn-row">
+          <div class="btn btn-primary">Register Free</div>
+          <div class="btn btn-secondary">Login</div>
+          <div class="btn btn-secondary">Top Up</div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img class="bg" src="assets/home/home-hero-bg-skyworld-desktop.png" alt="Fantasy sky world"/>
+        <img class="hero-whale" src="assets/home/home-hero-whale-mascot.png" alt="Whale mascot"/>
+      </div>
+    </div>
+    <div class="portal-panel glass-panel">
+      <div class="panel-block">
+        <div class="eyebrow">Member Portal Flow</div>
+        <div class="steps">
+          <div class="step"><div class="dot">1</div><span>Register with mobile number</span></div>
+          <div class="step"><div class="dot">2</div><span>Verify OTP code</span></div>
+          <div class="step"><div class="dot">3</div><span>Link your Game ID</span></div>
+          <div class="step"><div class="dot">4</div><span>Top up and play</span></div>
+        </div>
+      </div>
+      <div class="panel-block">
+        <div class="reward-list">
+          <div class="reward-item"><img src="assets/home/home-reward-gems.png" alt="Gems"/><div class="reward-copy"><strong>Starter Gems x500</strong><span>Welcome reward for all new players</span></div></div>
+          <div class="reward-item"><img src="assets/home/home-reward-baby-puff.png" alt="Baby Puff"/><div class="reward-copy"><strong>Baby Puff Pet</strong><span>Exclusive early explorer companion</span></div></div>
+          <div class="reward-item"><img src="assets/home/home-reward-explorer-chest.png" alt="Explorer chest"/><div class="reward-copy"><strong>Explorer Chest</strong><span>Includes rare loot and surprise bonuses</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-lite">
+      <div class="footer-top"><div class="footer-brand"><img src="assets/global/wbd-logo-icon-whale.png" alt="Whale Bin Dai"/>Whale Bin Dai</div><div class="footer-links"><span>About Us</span><span>Games</span><span>Support</span><span>Community</span></div></div>
+      <div class="footer-copy">Ocean footer gradient reference for all landing pages.</div>
+    </div>
+  </section>
+
+  <section class="fig-page">
+    <div class="page-label">Register / Login / OTP</div>
+    <div class="section-shell">
+      <div class="auth-layout">
+        <div class="glass-panel auth-card">
+          <div class="eyebrow">Register</div>
+          <h2>Create Your <span>Member Account</span></h2>
+          <div class="tabs"><div class="tab active">Register</div><div class="tab">Login</div><div class="tab">Forgot Password</div></div>
+          <div class="field-grid">
+            <div class="field"><div class="label">Mobile Number</div><div class="input-line">081-234-5678</div></div>
+            <div class="field"><div class="label">OTP Request</div><div class="input-line">Send OTP</div></div>
+          </div>
+          <div class="otp-row">
+            <div class="otp-box">1</div><div class="otp-box">2</div><div class="otp-box">3</div><div class="otp-box">4</div><div class="otp-box">5</div><div class="otp-box">6</div>
+          </div>
+          <div class="field-grid">
+            <div class="field"><div class="label">Display Name</div><div class="input-line">WhaleHero</div></div>
+            <div class="field"><div class="label">Password</div><div class="input-line">••••••••</div></div>
+            <div class="field-wide"><div class="label">Terms & Consent</div><div class="input-line">I agree to Terms of Service and Privacy Policy</div></div>
+          </div>
+          <div class="btn-row" style="margin-top:18px"><div class="btn btn-primary">Create Account</div><div class="btn btn-secondary">Verify OTP</div></div>
+        </div>
+        <div class="glass-panel auth-card">
+          <img src="assets/home/home-login-register-panel-illustration.png" alt="Auth illustration" style="width:100%;max-width:520px;display:block;margin:0 auto 22px">
+          <h2>Your <span>Adventure Journey</span></h2>
+          <p class="section-sub">This frame is for the combined home-auth, register, login, OTP, and forgot-password UX so you can drag, resize, and annotate everything directly in Figma.</p>
+          <div class="mini-list">
+            <div class="mini-item"><img src="assets/auth/auth-register-whale.png" alt="Register art"/><div class="mini-copy"><strong>Register state</strong><span>New player acquisition flow</span></div></div>
+            <div class="mini-item"><img src="assets/auth/auth-login-whale.png" alt="Login art"/><div class="mini-copy"><strong>Login state</strong><span>Returning member shortcut</span></div></div>
+            <div class="mini-item"><img src="assets/auth/auth-forgotpassword-whale.png" alt="Forgot password art"/><div class="mini-copy"><strong>Forgot password</strong><span>OTP reset and account recovery</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fig-page">
+    <div class="page-label">Member Center</div>
+    <div class="section-shell member-layout">
+      <div class="glass-panel member-card side-profile">
+        <div class="avatar">🐳</div>
+        <div class="dash-title">Whale<span>Hero</span></div>
+        <p class="subnote">Member ID WBD-10042<br>081-234-5678</p>
+        <div class="mini-list">
+          <div class="mini-item"><img src="assets/member/member-avatar-default.png" alt="Profile"/><div class="mini-copy"><strong>My Profile</strong><span>Identity and account info</span></div></div>
+          <div class="mini-item"><img src="assets/member/member-security-lock.png" alt="Security"/><div class="mini-copy"><strong>Security</strong><span>Password and account safety</span></div></div>
+          <div class="mini-item"><img src="assets/member/member-redeem-gift.png" alt="Redeem"/><div class="mini-copy"><strong>Redeem Code</strong><span>Bonus gifts and rewards</span></div></div>
+        </div>
+      </div>
+      <div class="glass-panel member-card">
+        <div class="dash-title">Member <span>Dashboard</span></div>
+        <div class="stat-grid">
+          <div class="stat-card"><strong>3</strong><span>Linked IDs</span></div>
+          <div class="stat-card"><strong>2</strong><span>Verified IDs</span></div>
+          <div class="stat-card"><strong>18</strong><span>Top Ups</span></div>
+          <div class="stat-card"><strong>1</strong><span>Pending Ticket</span></div>
+        </div>
+        <div class="gid-grid" style="margin-top:18px">
+          <div class="gid-card"><strong>Skybound Quest · SEA-1</strong><div class="meta">Game ID 928371 • Character WhaleHero • Verified • Primary</div></div>
+          <div class="gid-card"><strong>Arena Stars · Global-2</strong><div class="meta">Game ID 998123 • Character BlueFin • Verified</div></div>
+          <div class="gid-card"><strong>Island Builders · TH-Alpha</strong><div class="meta">Game ID 129888 • Character CloudNest • Pending verification</div></div>
+        </div>
+        <div class="history-list" style="margin-top:18px">
+          <div class="history-row"><strong>Top-up History</strong><div class="meta">Starter Pack • PromptPay • Delivered • 2026-05-18</div></div>
+          <div class="history-row"><strong>Support Ticket</strong><div class="meta">Payment pending follow-up • In Progress • Updated today</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fig-page">
+    <div class="page-label">Top Up</div>
+    <div class="section-shell topup-layout-static">
+      <div class="glass-panel topup-card">
+        <div class="section-title"><h2>Top Up <span>Your Game</span></h2><p class="section-sub">Capture-friendly static version of the checkout experience with guest gate, account state, and package cards.</p></div>
+        <div class="mini-list" style="margin-bottom:18px">
+          <div class="mini-item"><img src="assets/topup/topup-empty-login.png" alt="Login gate"/><div class="mini-copy"><strong>Guest Gate</strong><span>Select package first, login at payment step</span></div></div>
+          <div class="mini-item"><img src="assets/topup/topup-empty-linkid.png" alt="Link ID gate"/><div class="mini-copy"><strong>Link Game ID</strong><span>Add game, server, character, and ID</span></div></div>
+          <div class="mini-item"><img src="assets/topup/topup-empty-verifyid.png" alt="Verify gate"/><div class="mini-copy"><strong>Verify Account</strong><span>Ready for future game API verification</span></div></div>
+        </div>
+        <div class="package-grid">
+          <div class="package-card"><img src="assets/topup/topup-package-starter.png" alt="Starter"/><h4>Starter Pack</h4><div class="price">฿149</div><div class="meta">500 Gems</div></div>
+          <div class="package-card"><img src="assets/topup/topup-package-hero.png" alt="Hero"/><h4>Hero Pack</h4><div class="price">฿499</div><div class="meta">2,100 Gems + Bonus</div></div>
+          <div class="package-card"><img src="assets/topup/topup-package-mega.png" alt="Mega"/><h4>Mega Pack</h4><div class="price">฿1,999</div><div class="meta">10,000 Gems + Bonus</div></div>
+        </div>
+      </div>
+      <div class="glass-panel topup-card summary-box">
+        <div class="dash-title">Order <span>Summary</span></div>
+        <div class="summary-row"><span>Game</span><strong>Skybound Quest</strong></div>
+        <div class="summary-row"><span>Game ID</span><strong>928371</strong></div>
+        <div class="summary-row"><span>Package</span><strong>Hero Pack</strong></div>
+        <div class="summary-row"><span>Payment</span><strong>PromptPay</strong></div>
+        <div class="summary-row total"><span>Total</span><strong>฿499</strong></div>
+        <div class="mini-list" style="margin-top:18px">
+          <div class="mini-item"><img src="assets/topup/topup-payment-success.png" alt="Success"/><div class="mini-copy"><strong>Success state</strong><span>Delivered immediately</span></div></div>
+          <div class="mini-item"><img src="assets/topup/topup-payment-failed.png" alt="Failed"/><div class="mini-copy"><strong>Failed state</strong><span>Retry and support CTA</span></div></div>
+          <div class="mini-item"><img src="assets/topup/topup-payment-pending.png" alt="Pending"/><div class="mini-copy"><strong>Pending state</strong><span>Awaiting gateway confirmation</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fig-page">
+    <div class="page-label">Games</div>
+    <div class="section-shell">
+      <div class="section-title"><h2>Adventures Made <span>for Everyone</span></h2><p class="section-sub">This frame contains the game listing gallery and the detail page visual system in one place so you can tweak cards and storytelling modules together.</p></div>
+      <div class="game-grid">
+        <div class="game-card"><img src="assets/games/game-skybound-thumb.png" alt="Skybound"/><div class="body"><div class="type">RPG Adventure</div><div class="name">Skybound Quest</div><p>Floating islands, sky dungeons, and premium event progression.</p></div></div>
+        <div class="game-card"><img src="assets/games/game-islandbuilders-thumb.png" alt="Island Builders"/><div class="body"><div class="type">Simulation</div><div class="name">Island Builders</div><p>Customize your island home, farm, trade, and craft seasonal bundles.</p></div></div>
+        <div class="game-card"><img src="assets/games/game-puffexplorer-thumb.png" alt="Puff Explorer"/><div class="body"><div class="type">Casual</div><div class="name">Puff Explorer</div><p>Collect cute companions and travel through cheerful fantasy maps.</p></div></div>
+        <div class="game-card"><img src="assets/games/game-arenastars-thumb.png" alt="Arena Stars"/><div class="body"><div class="type">Action</div><div class="name">Arena Stars</div><p>Competitive team battles, ranked seasons, and fast pacing.</p></div></div>
+      </div>
+      <div class="detail-layout" style="margin-top:26px">
+        <div class="detail-hero-static glass-panel">
+          <img src="assets/games/game-skybound-detail-hero.png" alt="Skybound detail hero"/>
+          <div class="overlay"></div>
+          <div class="copy game-head">
+            <div class="eyebrow">Game Detail</div>
+            <h1>Skybound <span>Quest</span></h1>
+            <p class="section-sub" style="max-width:440px">Editorial product storytelling area for game overview, world, core systems, and top-up conversion.</p>
+          </div>
+        </div>
+        <div class="feature-grid detail-body">
+          <div class="feature-card glass-panel"><img src="assets/games/game-skybound-world.png" alt="World"/><h3>World Overview</h3><p>Environment lore, floating territories, and signature scenic shots.</p></div>
+          <div class="feature-card glass-panel"><img src="assets/games/game-skybound-features.png" alt="Features"/><h3>Core Features</h3><p>Battle systems, co-op loops, seasonal events, and progression hooks.</p></div>
+          <div class="feature-card glass-panel"><img src="assets/games/game-skybound-topup.png" alt="Topup"/><h3>Top Up Benefits</h3><p>Premium currency messaging, bundles, passes, and urgent CTA modules.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fig-page">
+    <div class="page-label">Forum</div>
+    <div class="section-shell forum-layout">
+      <div class="glass-panel forum-card">
+        <div class="forum-title">Community</div>
+        <div class="mini-list" style="margin-top:18px">
+          <div class="mini-item"><img src="assets/forum/forum-empty-category.png" alt="Empty category"/><div class="mini-copy"><strong>Empty category</strong><span>Used when a topic list is empty</span></div></div>
+          <div class="mini-item"><img src="assets/forum/forum-empty-login-reply.png" alt="Login reply"/><div class="mini-copy"><strong>Reply gate</strong><span>Inline login prompt before replying</span></div></div>
+          <div class="mini-item"><img src="assets/forum/forum-topic-cover-default.png" alt="Topic cover"/><div class="mini-copy"><strong>Default cover</strong><span>Optional artwork for future topic cards</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="forum-banner glass-panel">
+          <img src="assets/forum/forum-hero-community.png" alt="Forum hero"/>
+          <div class="overlay"></div>
+          <div class="copy">
+            <div class="eyebrow">Community Forum</div>
+            <div class="forum-title">Join the <span style="color:var(--blue)">Conversation</span></div>
+            <p class="section-sub" style="max-width:420px">Share tips, party up, report bugs, and meet other Whale Bin Dai players.</p>
+          </div>
+        </div>
+        <div class="forum-topics">
+          <div class="forum-topic"><h4>Best starter build for Skybound Quest?</h4><div class="meta">Guide • 1.2k views • 48 replies • by WhaleHero</div></div>
+          <div class="forum-topic"><h4>New event rewards this week</h4><div class="meta">Events • 860 views • 19 replies • by AdminWhale</div></div>
+          <div class="forum-topic"><h4>Looking for guild on Arena Stars SEA</h4><div class="meta">Guild Finder • 320 views • 7 replies • by BlueFin42</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fig-page">
+    <div class="page-label">Contact Us</div>
+    <div class="section-shell contact-layout">
+      <div>
+        <div class="contact-hero-static glass-panel">
+          <img src="assets/contact/contact-hero-support.png" alt="Contact hero"/>
+          <div class="overlay"></div>
+          <div class="copy">
+            <div class="eyebrow">Contact Us</div>
+            <div class="contact-title">Contact Whale <span style="color:var(--blue)">Bin Dai</span></div>
+            <p class="section-sub" style="max-width:420px">Support, payments, partnership inquiries, ticket status, and FAQs in one customer-help page.</p>
+          </div>
+        </div>
+        <div class="glass-panel contact-box" style="margin-top:18px">
+          <div class="field-grid">
+            <div class="field"><div class="label">Full Name</div><div class="input-line">Sasi Example</div></div>
+            <div class="field"><div class="label">Email</div><div class="input-line">hello@example.com</div></div>
+            <div class="field"><div class="label">Reason</div><div class="input-line">Payment / Top-up Issue</div></div>
+            <div class="field"><div class="label">Game</div><div class="input-line">Skybound Quest</div></div>
+            <div class="field-wide"><div class="label">Subject</div><div class="input-line">Top-up pending but item not delivered</div></div>
+            <div class="field-wide"><div class="label">Message</div><div class="input-line">Static placeholder for textarea and support form layout.</div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="contact-cards">
+          <div class="contact-card"><img src="assets/contact/contact-illustration-support.png" alt="Support"/><div><strong>Customer Support</strong><p>Account, login, Game ID, and general in-game issues.</p></div></div>
+          <div class="contact-card"><img src="assets/contact/contact-illustration-payment.png" alt="Payment"/><div><strong>Payment Support</strong><p>Pending orders, missing items, and gateway troubleshooting.</p></div></div>
+          <div class="contact-card"><img src="assets/contact/contact-illustration-partnership.png" alt="Partnership"/><div><strong>Partnership</strong><p>Campaigns, publishing, and event collaboration requests.</p></div></div>
+          <div class="contact-card"><img src="assets/contact/contact-illustration-press.png" alt="Press"/><div><strong>Press / Media</strong><p>Brand assets, press kit, interviews, and media responses.</p></div></div>
+        </div>
+        <div class="glass-panel contact-box" style="margin-top:18px">
+          <div class="mini-list">
+            <div class="mini-item"><img src="assets/contact/contact-ticket-success.png" alt="Success"/><div class="mini-copy"><strong>Ticket submitted</strong><span>Success confirmation state</span></div></div>
+            <div class="mini-item"><img src="assets/contact/contact-ticket-notfound.png" alt="Not found"/><div class="mini-copy"><strong>Ticket not found</strong><span>Status lookup failure state</span></div></div>
+          </div>
+          <div class="faq-list" style="margin-top:16px">
+            <div class="faq-card"><strong>How do I link my Game ID?</strong><p>Go to Member Center, choose your game, server, character name, and verify.</p></div>
+            <div class="faq-card"><strong>What if my top-up is pending?</strong><p>Payments usually resolve quickly; if not, contact support with your order ID.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

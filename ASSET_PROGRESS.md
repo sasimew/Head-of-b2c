@@ -1,0 +1,83 @@
+# Whale Bin Dai Asset Progress
+
+Completed:
+- /assets/home/home-hero-bg-skyworld-desktop.png
+- /assets/home/home-hero-bg-skyworld-mobile.png
+- /assets/home/home-hero-party-cast.png
+- /assets/home/home-hero-whale-mascot.png
+- /assets/home/home-login-register-panel-illustration.png
+- /assets/home/home-flow-register-otp-linkid.png
+- /assets/home/home-feature-events.png
+- /assets/home/home-feature-whale.png
+- /assets/home/home-feature-floating-island.png
+- /assets/home/home-community-character-left.png
+- /assets/home/home-community-character-right.png
+- /assets/home/home-preregister-chest.png
+- /assets/home/home-reward-gems.png
+- /assets/home/home-reward-baby-puff.png
+- /assets/home/home-reward-explorer-chest.png
+- /assets/games/game-skybound-thumb.png
+- /assets/games/game-islandbuilders-thumb.png
+- /assets/games/game-puffexplorer-thumb.png
+- /assets/games/game-arenastars-thumb.png
+- /assets/topup/topup-empty-linkid.png
+- /assets/topup/topup-empty-verifyid.png
+- /assets/topup/topup-empty-login.png
+- /assets/topup/topup-hero-soft-bg.png
+- /assets/topup/topup-package-starter.png
+- /assets/topup/topup-package-explorer.png
+- /assets/topup/topup-package-adventurer.png
+- /assets/topup/topup-package-hero.png
+- /assets/topup/topup-package-legend.png
+- /assets/topup/topup-package-mega.png
+- /assets/contact/contact-hero-support.png
+- /assets/contact/contact-ticket-success.png
+- /assets/contact/contact-ticket-notfound.png
+- /assets/contact/contact-illustration-support.png
+- /assets/contact/contact-illustration-payment.png
+- /assets/contact/contact-illustration-partnership.png
+- /assets/contact/contact-illustration-press.png
+- /assets/contact/contact-faq-bg-soft.png
+- /assets/member/member-dashboard-welcome.png
+- /assets/member/member-empty-gameid.png
+- /assets/member/member-empty-history.png
+- /assets/member/member-avatar-default.png
+- /assets/member/member-security-lock.png
+- /assets/member/member-redeem-gift.png
+- /assets/auth/auth-register-whale.png
+- /assets/auth/auth-login-whale.png
+- /assets/auth/auth-forgotpassword-whale.png
+- /assets/auth/auth-success-check.png
+- /assets/forum/forum-hero-community.png
+- /assets/forum/forum-empty-category.png
+- /assets/forum/forum-empty-login-reply.png
+- /assets/forum/forum-topic-cover-default.png
+- /assets/games/game-skybound-detail-hero.png
+- /assets/games/game-islandbuilders-detail-hero.png
+- /assets/games/game-puffexplorer-detail-hero.png
+- /assets/games/game-arenastars-detail-hero.png
+- /assets/games/game-skybound-world.png
+- /assets/games/game-skybound-features.png
+- /assets/games/game-skybound-topup.png
+- /assets/games/game-islandbuilders-world.png
+- /assets/games/game-islandbuilders-features.png
+- /assets/games/game-islandbuilders-topup.png
+- /assets/games/game-puffexplorer-world.png
+- /assets/games/game-puffexplorer-features.png
+- /assets/games/game-puffexplorer-topup.png
+- /assets/games/game-arenastars-world.png
+- /assets/games/game-arenastars-features.png
+- /assets/games/game-arenastars-topup.png
+- /assets/topup/topup-payment-success.png
+- /assets/topup/topup-payment-failed.png
+- /assets/topup/topup-payment-pending.png
+- /assets/home/home-og-share-1200x630.png
+- /assets/home/home-x-share-1600x900.png
+
+Next target:
+- COMPLETE
+
+Notes:
+- GPT Image currently returns PNG files by default in this environment.
+- When direct `.webp` conversion is unavailable, save PNG fallback with the same basename.
+- Keep original generated image in `/Users/sasi/.codex/generated_images/...` and copy into `/assets/...`.

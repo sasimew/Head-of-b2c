@@ -1,0 +1,2753 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Head of B2C — FutureSkill Interview Preparation</title>
+  <meta name="description" content="Interactive mind map and interview-preparation site for Head of B2C — FutureSkill." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ccircle cx='32' cy='32' r='18' fill='%23f59e0b'/%3E%3Cpath d='M20 34c6-8 18-8 24 0-6 8-18 8-24 0Z' fill='%230b1220'/%3E%3C/svg%3E" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    :root {
+  --bg: #0b0e1a;
+  --bg2: #111827;
+  --bg3: #1a2235;
+  --bg4: #1e2d45;
+  --card: #162033;
+  --border: #2a3a55;
+  --text: #e8edf5;
+  --text2: #9aadcb;
+  --text3: #5c7394;
+  --accent: #3b82f6;
+  --accent2: #60a5fa;
+  --gold: #f59e0b;
+  --gold2: #fbbf24;
+  --green: #10b981;
+  --green2: #34d399;
+  --purple: #8b5cf6;
+  --purple2: #a78bfa;
+  --coral: #ef4444;
+  --coral2: #f87171;
+  --teal: #14b8a6;
+  --teal2: #2dd4bf;
+  --orange: #f97316;
+  --orange2: #fb923c;
+  --pink: #ec4899;
+  --pink2: #f472b6;
+  --font: 'DM Sans', sans-serif;
+  --mono: 'DM Mono', monospace;
+  --display: 'Playfair Display', serif;
+}
+    :root {
+      --bg: #0b0f1a;
+      --bg2: #101827;
+      --bg3: #152238;
+      --bg4: #1d2b45;
+      --panel: rgba(16, 24, 39, 0.92);
+      --card: #162235;
+      --card2: #1a2a43;
+      --border: rgba(128, 151, 188, 0.22);
+      --border-strong: rgba(128, 151, 188, 0.4);
+      --text: #edf4ff;
+      --text2: #bfd0e6;
+      --text3: #89a0bf;
+      --text4: #5c7394;
+      --gold: #f59e0b;
+      --gold2: #fbbf24;
+      --blue: #4ea3ff;
+      --cyan: #47d1ff;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --purple: #8b5cf6;
+      --teal: #14b8a6;
+      --pink: #ec4899;
+      --orange: #f97316;
+      --coral: #fb7185;
+      --yellow: #eab308;
+      --indigo: #6366f1;
+      --emerald: #10b981;
+      --red: #ef4444;
+      --lightblue: #7dd3fc;
+      --shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --radius: 18px;
+      --font-body: "Noto Sans Thai", "IBM Plex Sans Thai", "DM Sans", sans-serif;
+      --font-mono: "DM Mono", monospace;
+      --font-display: "Playfair Display", "Noto Sans Thai", serif;
+    }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(99,102,241,0.14), transparent 34%),
+        radial-gradient(circle at top right, rgba(245,158,11,0.14), transparent 28%),
+        linear-gradient(180deg, #07101d 0%, #0b1220 100%);
+      overflow: hidden;
+    }
+    button, input, select {
+      font: inherit;
+    }
+    button {
+      cursor: pointer;
+    }
+    a {
+      color: #8ec5ff;
+    }
+    .app {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 36vw);
+      height: 100vh;
+      overflow: hidden;
+    }
+    .main {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(13, 20, 34, 0.92), rgba(9, 14, 23, 0.98)),
+        radial-gradient(circle at 10% 10%, rgba(78,163,255,0.08), transparent 22%);
+      position: relative;
+    }
+    .sidebar {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, rgba(14, 21, 35, 0.97), rgba(10, 16, 27, 0.99));
+      position: relative;
+      transition: transform 0.28s ease, width 0.28s ease;
+      z-index: 20;
+    }
+    .sidebar.collapsed {
+      width: 0 !important;
+      min-width: 0 !important;
+      transform: translateX(100%);
+      overflow: hidden;
+      border-left: 0;
+    }
+    .mobile-drawer {
+      display: none;
+    }
+    .header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(14,22,37,0.96), rgba(16,24,39,0.9));
+      flex-shrink: 0;
+    }
+    .header-left {
+      min-width: 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 158, 11, 0.36);
+      color: var(--gold2);
+      background: rgba(245, 158, 11, 0.08);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      white-space: nowrap;
+    }
+    .title-wrap h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 24px;
+      line-height: 1.1;
+      color: #fff7e6;
+    }
+    .title-wrap p {
+      margin: 6px 0 0;
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.03em;
+    }
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .btn {
+      border: 1px solid var(--border);
+      background: rgba(10, 16, 27, 0.78);
+      color: var(--text2);
+      border-radius: 12px;
+      padding: 8px 11px;
+      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 38px;
+      transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    }
+    .btn:hover,
+    .btn:focus-visible {
+      outline: none;
+      border-color: rgba(78, 163, 255, 0.65);
+      background: rgba(22, 35, 55, 0.95);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+    .btn.active {
+      background: linear-gradient(135deg, rgba(78,163,255,0.25), rgba(99,102,241,0.28));
+      border-color: rgba(110, 168, 255, 0.72);
+      color: #fff;
+    }
+    .btn.gold {
+      background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(251,191,36,0.12));
+      border-color: rgba(245, 158, 11, 0.38);
+      color: #fff2d0;
+    }
+    .proof-bar {
+      display: flex;
+      gap: 12px;
+      padding: 10px 14px;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(16,24,39,0.84), rgba(12,19,31,0.94));
+      flex-shrink: 0;
+    }
+    .proof-card {
+      min-width: 108px;
+      padding: 10px 11px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(26, 39, 60, 0.95), rgba(16, 24, 39, 0.96));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+      cursor: pointer;
+      transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .proof-card:hover,
+    .proof-card.active {
+      border-color: rgba(245, 158, 11, 0.72);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.12);
+    }
+    .proof-card strong {
+      display: block;
+      color: var(--gold2);
+      font-family: var(--font-mono);
+      font-size: 15px;
+    }
+    .proof-card span {
+      display: block;
+      margin-top: 4px;
+      color: var(--text3);
+      font-size: 10px;
+      line-height: 1.35;
+    }
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 23, 36, 0.9);
+      flex-shrink: 0;
+    }
+    .search-wrap {
+      position: relative;
+      flex: 1 1 280px;
+      min-width: 210px;
+    }
+    .search-wrap input {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(9, 14, 24, 0.88);
+      color: var(--text);
+      padding: 10px 82px 10px 40px;
+      font-size: 13px;
+    }
+    .search-wrap input::placeholder {
+      color: var(--text4);
+    }
+    .search-wrap input:focus-visible {
+      outline: none;
+      border-color: rgba(78, 163, 255, 0.72);
+      box-shadow: 0 0 0 3px rgba(78, 163, 255, 0.12);
+    }
+    .search-icon,
+    .search-count {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      color: var(--text4);
+    }
+    .search-icon { left: 14px; }
+    .search-count { right: 14px; font-family: var(--font-mono); }
+    .tab-row {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 18, 31, 0.92);
+      flex-shrink: 0;
+    }
+    .category-tab {
+      border: 1px solid var(--border);
+      background: rgba(22, 34, 53, 0.74);
+      color: var(--text3);
+      border-radius: 999px;
+      padding: 9px 13px;
+      white-space: nowrap;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .category-tab.active {
+      color: #fff;
+      border-color: rgba(255,255,255,0.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .tab-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .stats {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 6px 14px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(16, 24, 39, 0.84);
+      color: var(--text3);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+    .stat strong {
+      color: var(--text2);
+      font-weight: 500;
+    }
+    .content {
+      flex: 1;
+      min-height: 0;
+      position: relative;
+    }
+    .view {
+      position: absolute;
+      inset: 0;
+      display: none;
+    }
+    .view.active {
+      display: block;
+    }
+    #graphView {
+      display: flex;
+      flex-direction: column;
+    }
+    .graph-shell {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+    #graph {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .legend, .search-results, .coverage-panel {
+      position: absolute;
+      z-index: 6;
+      border: 1px solid var(--border);
+      background: rgba(8, 13, 22, 0.92);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+    .legend {
+      left: 16px;
+      bottom: 16px;
+      max-width: 240px;
+      border-radius: 16px;
+      padding: 14px 14px 10px;
+      pointer-events: none;
+    }
+    .legend h3, .coverage-panel h3, .search-results h3 {
+      margin: 0 0 10px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text4);
+      font-family: var(--font-mono);
+    }
+    .legend-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 10px;
+    }
+    .legend-item {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--text2);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+    .legend-item .tab-dot {
+      width: 10px;
+      height: 10px;
+    }
+    .search-results {
+      top: 76px;
+      left: 16px;
+      width: min(420px, calc(100% - 32px));
+      border-radius: 16px;
+      padding: 14px;
+      display: none;
+      max-height: 52vh;
+      overflow: auto;
+    }
+    .search-results.visible {
+      display: block;
+    }
+    .result-item {
+      border: 1px solid transparent;
+      background: rgba(255,255,255,0.02);
+      color: var(--text2);
+      width: 100%;
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+    .result-item:hover,
+    .result-item:focus-visible {
+      border-color: rgba(78,163,255,0.56);
+      outline: none;
+      background: rgba(78,163,255,0.08);
+    }
+    .result-item strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+    .coverage-panel {
+      right: 16px;
+      bottom: 16px;
+      width: min(290px, calc(100% - 32px));
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .coverage-panel p {
+      margin: 6px 0 0;
+      color: var(--text3);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .tooltip {
+      position: fixed;
+      z-index: 50;
+      pointer-events: none;
+      max-width: 320px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(8, 13, 22, 0.96);
+      color: var(--text2);
+      font-size: 12px;
+      line-height: 1.5;
+      padding: 10px 12px;
+      opacity: 0;
+      transition: opacity 0.12s ease;
+      box-shadow: var(--shadow);
+    }
+    .tooltip.visible {
+      opacity: 1;
+    }
+    .tooltip strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .node text {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      pointer-events: none;
+      paint-order: stroke;
+      stroke: rgba(7, 11, 18, 0.95);
+      stroke-width: 4px;
+      stroke-linejoin: round;
+    }
+    .node circle {
+      stroke-width: 2px;
+      transition: stroke-width 0.18s ease, opacity 0.18s ease, filter 0.18s ease;
+    }
+    .node.selected circle {
+      stroke-width: 4px;
+      filter: url(#nodeGlow);
+    }
+    .node.search-match circle {
+      stroke-width: 3px;
+    }
+    .node.dimmed {
+      opacity: 0.18;
+    }
+    .node.hidden, .link.hidden {
+      display: none;
+    }
+    .link {
+      stroke-opacity: 0.28;
+      transition: opacity 0.18s ease, stroke-opacity 0.18s ease, stroke-width 0.18s ease;
+    }
+    .link.related {
+      stroke-opacity: 0.9;
+      stroke-width: 2.4px;
+    }
+    .detail-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      background: linear-gradient(180deg, rgba(14,21,35,0.98), rgba(14,21,35,0.96));
+      z-index: 4;
+    }
+    .detail-header h2 {
+      margin: 0;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text3);
+      font-family: var(--font-mono);
+    }
+    .detail-body-wrap {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0 16px 20px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(137, 160, 191, 0.65) rgba(255,255,255,0.03);
+    }
+    .detail-body-wrap::-webkit-scrollbar {
+      width: 10px;
+    }
+    .detail-body-wrap::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+    }
+    .detail-body-wrap::-webkit-scrollbar-thumb {
+      background: rgba(137, 160, 191, 0.55);
+      border-radius: 999px;
+      border: 2px solid rgba(14, 21, 35, 0.9);
+    }
+    .detail-body-wrap::-webkit-scrollbar-thumb:hover {
+      background: rgba(137, 160, 191, 0.78);
+    }
+    .detail-empty {
+      padding: 48px 18px;
+      color: var(--text3);
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .detail-card {
+      padding-top: 18px;
+    }
+    .badge-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      font-family: var(--font-mono);
+    }
+    .detail-title {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.38;
+      color: #fff;
+    }
+    .breadcrumb {
+      margin-top: 10px;
+      color: var(--text4);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .detail-controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 16px 0 18px;
+    }
+    .toc {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(14, 21, 35, 0.86);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .toc summary {
+      list-style: none;
+      padding: 12px 14px;
+      color: var(--text2);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .toc summary::-webkit-details-marker {
+      display: none;
+    }
+    .toc-list {
+      padding: 0 14px 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .toc-chip {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text3);
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+    .detail-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0 14px;
+    }
+    .meta-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      background: rgba(255,255,255,0.02);
+    }
+    .meta-card h4 {
+      margin: 0 0 8px;
+      color: var(--text4);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .meta-card p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+    .related-list, .keyword-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .chip {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text2);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+    .chip.actionable {
+      cursor: pointer;
+    }
+    .chip.actionable:hover,
+    .chip.actionable:focus-visible {
+      outline: none;
+      border-color: rgba(78,163,255,0.58);
+      color: #fff;
+    }
+    .source-render {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      background: rgba(255,255,255,0.035);
+      font-size: 17px;
+      line-height: 2;
+      color: #dce8f8;
+      word-break: break-word;
+    }
+    .source-render h1,
+    .source-render h2,
+    .source-render h3,
+    .source-render h4,
+    .source-render h5,
+    .source-render h6 {
+      color: #fff;
+      line-height: 1.45;
+      margin: 0 0 10px;
+      scroll-margin-top: 120px;
+    }
+    .source-render h1 { font-size: 28px; }
+    .source-render h2 { font-size: 22px; }
+    .source-render h3 { font-size: 18px; }
+    .source-render p {
+      margin: 0 0 12px;
+    }
+    .source-render ul,
+    .source-render ol {
+      margin: 0 0 14px 18px;
+      padding: 0;
+    }
+    .source-render li {
+      margin-bottom: 6px;
+    }
+    .source-render strong {
+      color: #fff;
+    }
+    .source-render blockquote {
+      margin: 0 0 14px;
+      padding: 12px 14px;
+      border-left: 3px solid var(--gold);
+      background: rgba(245,158,11,0.08);
+      border-radius: 0 12px 12px 0;
+    }
+    .source-render hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 18px 0;
+    }
+    .source-render code {
+      font-family: var(--font-mono);
+      font-size: 0.92em;
+      background: rgba(255,255,255,0.08);
+      padding: 2px 5px;
+      border-radius: 6px;
+    }
+    .highlight-term {
+      color: #fff1b3;
+      background: rgba(245, 158, 11, 0.1);
+      border-radius: 4px;
+      padding: 0 2px;
+    }
+    .section-title {
+      margin: 18px 0 10px;
+      font-size: 13px;
+      color: var(--text4);
+      font-family: var(--font-mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .pager {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .deck-wrap, .alignment-wrap, .practice-wrap {
+      height: 100%;
+      overflow: auto;
+      padding: 20px;
+    }
+    .deck-page {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      overflow: hidden;
+      margin-bottom: 22px;
+      background: rgba(9, 14, 23, 0.72);
+      box-shadow: var(--shadow);
+    }
+    .deck-head {
+      padding: 20px 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      background: linear-gradient(135deg, rgba(19,31,52,0.98), rgba(34,52,89,0.95));
+    }
+    .deck-head h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: #fff7e6;
+    }
+    .deck-head p {
+      margin: 6px 0 0;
+      color: var(--text3);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .deck-body {
+      padding: 18px 20px 20px;
+    }
+    .deck-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .deck-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      padding: 14px;
+      min-height: 132px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .deck-card h4 {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #fff;
+    }
+    .deck-card p {
+      margin: 0;
+      color: var(--text3);
+      font-size: 13px;
+      line-height: 1.6;
+      flex: 1;
+    }
+    .deck-card .btn {
+      align-self: flex-start;
+    }
+    .deck-accordion {
+      border-top: 1px solid var(--border);
+      margin-top: 12px;
+      padding-top: 12px;
+    }
+    .deck-accordion details {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .deck-accordion summary {
+      padding: 12px 14px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .deck-accordion summary::-webkit-details-marker {
+      display: none;
+    }
+    .deck-accordion .deck-grid {
+      padding: 0 14px 14px;
+    }
+    .alignment-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(9,14,23,0.7);
+    }
+    .alignment-table th,
+    .alignment-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .alignment-table th {
+      color: #fff;
+      background: rgba(255,255,255,0.04);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: var(--font-mono);
+    }
+    .alignment-table td {
+      color: var(--text2);
+    }
+    .practice-shell {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 18px;
+    }
+    .practice-card, .practice-side {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(9,14,23,0.7);
+      box-shadow: var(--shadow);
+    }
+    .practice-card {
+      padding: 20px;
+    }
+    .practice-card h3 {
+      margin: 0 0 12px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      color: var(--text4);
+    }
+    .practice-question {
+      font-size: 28px;
+      line-height: 1.45;
+      color: #fff;
+      margin: 0 0 18px;
+    }
+    .practice-answer {
+      border-top: 1px solid var(--border);
+      margin-top: 18px;
+      padding-top: 18px;
+    }
+    .timer-row, .status-row, .practice-nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .timer-display {
+      font-family: var(--font-mono);
+      color: var(--gold2);
+      font-size: 30px;
+      margin-top: 14px;
+    }
+    .practice-side {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .practice-side h4 {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: var(--font-mono);
+    }
+    .practice-side p {
+      margin: 0;
+      color: var(--text2);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .presentation {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      background:
+        radial-gradient(circle at top, rgba(78,163,255,0.14), transparent 28%),
+        linear-gradient(180deg, rgba(7,11,18,0.98), rgba(7,11,18,1));
+      padding: 28px;
+      overflow: auto;
+    }
+    .presentation.visible {
+      display: block;
+    }
+    .presentation-card {
+      max-width: 1100px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(11,18,31,0.86);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .presentation-card h2 {
+      margin: 0 0 10px;
+      font-size: 36px;
+      line-height: 1.35;
+    }
+    .presentation-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 55;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(4, 8, 15, 0.78);
+      padding: 22px;
+    }
+    .overlay.visible {
+      display: flex;
+    }
+    .overlay-card {
+      width: min(1080px, 100%);
+      max-height: min(90vh, 980px);
+      overflow: auto;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: rgba(11,18,31,0.98);
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .no-print {
+      display: inline-flex;
+    }
+    @media (max-width: 1180px) {
+      .app {
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 40vw);
+      }
+      .deck-grid,
+      .practice-shell {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 900px) {
+      body {
+        overflow: hidden;
+      }
+      .app {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        display: none;
+      }
+      .mobile-drawer {
+        display: flex;
+        position: fixed;
+        inset: auto 0 0 0;
+        height: min(78vh, 760px);
+        transform: translateY(102%);
+        transition: transform 0.28s ease;
+        z-index: 40;
+        border-top: 1px solid var(--border);
+        background: linear-gradient(180deg, rgba(14,21,35,0.99), rgba(10,16,27,1));
+        box-shadow: 0 -16px 48px rgba(0, 0, 0, 0.4);
+      }
+      .mobile-drawer.open {
+        transform: translateY(0);
+      }
+      .header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .title-wrap h1 {
+        font-size: 21px;
+      }
+      .legend {
+        display: none;
+      }
+      .coverage-panel {
+        right: 12px;
+        left: 12px;
+        bottom: 12px;
+        width: auto;
+      }
+      .search-results {
+        left: 12px;
+        right: 12px;
+        width: auto;
+      }
+      .detail-meta {
+        grid-template-columns: 1fr;
+      }
+      .source-render {
+        font-size: 15px;
+        line-height: 1.85;
+      }
+      .practice-question {
+        font-size: 22px;
+      }
+      .presentation-card h2 {
+        font-size: 28px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+        overflow: visible;
+      }
+      .app {
+        display: block;
+        height: auto;
+      }
+      .main,
+      .sidebar,
+      .mobile-drawer {
+        border: 0;
+        background: #fff;
+      }
+      .no-print,
+      .header,
+      .proof-bar,
+      .toolbar,
+      .tab-row,
+      .stats,
+      .legend,
+      .coverage-panel,
+      .search-results,
+      #graphView,
+      #deckView,
+      #alignmentView,
+      #practiceView {
+        display: none !important;
+      }
+      .sidebar,
+      .mobile-drawer {
+        display: block !important;
+        position: static;
+        transform: none;
+        height: auto;
+      }
+      .detail-body-wrap {
+        overflow: visible;
+      }
+      .source-render,
+      .meta-card,
+      .toc {
+        border: 1px solid #ddd;
+        background: #fff;
+        color: #000;
+      }
+      .source-render h1,
+      .source-render h2,
+      .source-render h3,
+      .source-render strong,
+      .detail-title {
+        color: #000;
+      }
+      .badge,
+      .chip {
+        color: #000;
+        border-color: #aaa;
+        background: #f6f6f6;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <main class="main">
+      <header class="header no-print">
+        <div class="header-left">
+          <div class="header-badge">EXECUTIVE INTERVIEW PREP</div>
+          <div class="title-wrap">
+            <h1>Head of B2C — FutureSkill Interview Preparation</h1>
+            <p>Sasion Nanthaphiriyakit · Interactive Mind Map · JD Alignment · Deep Interview Q&amp;A</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="btn" id="toggleSidebarBtn" aria-controls="detailSidebar" aria-expanded="true">Sidebar</button>
+          <button class="btn" id="presentationBtn">Presentation Mode</button>
+          <button class="btn gold" id="returnRootBtn">Return to Root</button>
+        </div>
+      </header>
+
+      <section class="proof-bar no-print" id="proofBar" aria-label="Proof numbers"></section>
+
+      <section class="toolbar no-print">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <label class="visually-hidden" for="searchInput">Search interview content</label>
+          <input id="searchInput" type="search" placeholder="Search headings, questions, answers, KPI, Thai and English terms..." autocomplete="off" />
+          <span class="search-count" id="searchCount"></span>
+        </div>
+        <button class="btn" id="resetZoomBtn">Reset Zoom</button>
+        <button class="btn" id="fitBtn">Fit All</button>
+        <button class="btn" id="expandBtn">Expand All</button>
+        <button class="btn" id="collapseBtn">Collapse All</button>
+        <button class="btn" id="lockBtn">Lock Nodes</button>
+        <button class="btn" id="clearSearchBtn">Clear</button>
+        <button class="btn" data-view="graph">Graph</button>
+        <button class="btn" data-view="deck">Deck</button>
+        <button class="btn" data-view="alignment">JD Alignment</button>
+      </section>
+
+      <nav class="tab-row no-print" id="categoryTabs" aria-label="Category filters"></nav>
+
+      <section class="stats no-print" id="statsBar" aria-live="polite">
+        <span class="stat">Total Nodes: <strong id="statNodes">0</strong></span>
+        <span class="stat">Visible Nodes: <strong id="statVisibleNodes">0</strong></span>
+        <span class="stat">Total Links: <strong id="statLinks">0</strong></span>
+        <span class="stat">Interview Questions: <strong id="statQuestions">0</strong></span>
+        <span class="stat">Selected Category: <strong id="statCategory">All</strong></span>
+        <span class="stat">Search Results: <strong id="statSearch">0</strong></span>
+        <span class="stat">Coverage: <strong id="statCoverage">0%</strong></span>
+        <span class="stat">Scroll to zoom · Drag to pan · Click node for full answer · Double-click to expand</span>
+      </section>
+
+      <section class="content">
+        <div class="view active" id="graphView">
+          <div class="graph-shell" id="graphShell">
+            <svg id="graph" role="img" aria-label="Head of B2C interactive mind map"></svg>
+            <aside class="search-results no-print" id="searchResults" aria-live="polite"></aside>
+            <aside class="legend no-print" id="legend"></aside>
+            <aside class="coverage-panel no-print" id="coveragePanel"></aside>
+          </div>
+        </div>
+        <div class="view" id="deckView">
+          <div class="deck-wrap" id="deckWrap"></div>
+        </div>
+        <div class="view" id="alignmentView">
+          <div class="alignment-wrap" id="alignmentWrap"></div>
+        </div>
+        <div class="view" id="practiceView">
+          <div class="practice-wrap" id="practiceWrap"></div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="sidebar" id="detailSidebar" aria-label="Detail panel">
+      <div class="detail-header no-print">
+        <h2>Node Detail</h2>
+        <button class="btn" id="closeSidebarBtn">Close</button>
+      </div>
+      <div class="detail-body-wrap" id="detailBody"></div>
+    </aside>
+  </div>
+
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile detail drawer">
+    <div class="detail-header no-print">
+      <h2>Node Detail</h2>
+      <button class="btn" id="closeDrawerBtn">Close</button>
+    </div>
+    <div class="detail-body-wrap" id="mobileDetailBody"></div>
+  </aside>
+
+  <div class="presentation" id="presentationOverlay" aria-hidden="true">
+    <div class="presentation-card">
+      <div id="presentationContent"></div>
+      <div class="presentation-actions no-print">
+        <button class="btn" id="presentationPrevBtn">Previous</button>
+        <button class="btn" id="presentationNextBtn">Next</button>
+        <button class="btn" id="presentationCloseBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="readerOverlay" aria-hidden="true">
+    <div class="overlay-card">
+      <div class="detail-controls no-print">
+        <button class="btn" id="readerPrintBtn">Print</button>
+        <button class="btn" id="readerCloseBtn">Close</button>
+      </div>
+      <div id="readerContent"></div>
+    </div>
+  </div>
+
+  <div class="tooltip" id="tooltip" role="tooltip"></div>
+
+  <script>
+    const SOURCE_MARKDOWN = "# Head of B2C\n\nได้ ต่อไปนี้เป็นคำแปลแบบตรงตามต้นฉบับ โดยคงโครงสร้างและความหมายเดิม ไม่ตีความเพิ่ม\n\n# **ภาพรวมของตำแหน่ง**\n\n## **Role Overview**\n\nตำแหน่ง **Head of B2C** เป็นผู้บริหารระดับสูงสุดของหน่วยธุรกิจ B2C ของ FutureSkill โดยรายงานตรงต่อ CEO\n\nตำแหน่งนี้รับผิดชอบการเติบโตของหน่วยธุรกิจ ทั้งในด้านรายได้ ความสามารถในการทำกำไร และวัฒนธรรมของทีม โดยกำกับดูแลทีมตามสายงานจำนวน 3 ทีม ได้แก่\n\n* Sales & Marketing  \n* Customer Experience  \n* Course & Class\n\n**รายงานต่อ:** CEO\n\n# **หน้าที่และความรับผิดชอบหลัก**\n\n## **Key Responsibilities**\n\n## **1\\. ผลการดำเนินงานและการเติบโตของธุรกิจ**\n\n### **Business Performance & Growth**\n\n* ขับเคลื่อนหน่วยธุรกิจ B2C ของ FutureSkill ให้บรรลุเป้าหมายด้านรายได้ กำไร และส่วนแบ่งตลาด ทั้งในระดับรายไตรมาสและรายปี  \n* กำหนดกลยุทธ์การเติบโตของธุรกิจ B2C ทั้งในระยะสั้น ซึ่งเป็นแผนรายไตรมาส และระยะยาว 1–3 ปี  \n* ตัดสินใจจัดสรรทรัพยากรระหว่างทีมย่อยต่าง ๆ เช่น งบประมาณการตลาด กำลังการขาย และการลงทุนในผลิตภัณฑ์ เพื่อสร้างผลตอบแทนจากการลงทุนให้สูงที่สุด  \n* ระบุและดำเนินการกับปัจจัยขับเคลื่อนการเติบโตใหม่ ๆ ได้แก่ ช่องทางใหม่ สายผลิตภัณฑ์ใหม่ และกลุ่มลูกค้าใหม่\n\n## **2\\. การบริหารจัดการด้านการเงิน**\n\n### **Financial Management**\n\n* รับผิดชอบงบกำไรขาดทุนทั้งหมดของหน่วยธุรกิจ รวมถึงการบริหารกระแสเงินสดและการปรับอัตรากำไรให้เหมาะสม  \n* สามารถอ่านและดำเนินการจากข้อมูลในงบการเงินของหน่วยธุรกิจ ได้แก่ รายได้ ต้นทุนขาย กำไรขั้นต้น ค่าใช้จ่ายในการดำเนินงาน กำไรส่วนเกินจากการขาย และ EBITDA  \n* จัดทำประมาณการรายเดือน ติดตามความคลาดเคลื่อนระหว่างผลจริงกับประมาณการ และขับเคลื่อนมาตรการแก้ไขเมื่อผลการดำเนินงานต่ำกว่าเป้าหมาย  \n* ทำงานร่วมกับฝ่ายการเงินส่วนกลาง เพื่อสร้างวินัยทางการเงินและรักษา Unit Economics ของธุรกิจให้อยู่ในระดับที่ดี\n\n## **3\\. ภาวะผู้นำและการบริหารบุคลากร**\n\n### **Team Leadership & People Management**\n\n* บริหาร Director หรือ Manager ที่รายงานตรงจำนวน 3–5 คน โดยทำหน้าที่ Coaching กำหนดเป้าหมาย ประเมินผลงาน และพัฒนาบุคลากร  \n* สร้างวัฒนธรรมการทำงานที่มีประสิทธิภาพสูง โดยกำหนด KPI และ OKR ที่ชัดเจน ดำเนินการประเมินผลงาน และจัดการพนักงานที่มีผลงานต่ำกว่ามาตรฐานอย่างมืออาชีพ  \n* รับผิดชอบแผนการจ้างงานและกระบวนการเริ่มงานสำหรับตำแหน่งระดับ Manager ขึ้นไป  \n* สร้างเส้นทางความก้าวหน้าในอาชีพและแผนสืบทอดตำแหน่งภายในหน่วยธุรกิจ\n\n## **4\\. การทำงานร่วมกันระหว่างสายงาน**\n\n### **Cross-Functional Collaboration**\n\n* ทำงานร่วมกับ CEO ของธุรกิจ B2B ฝ่าย Partnership และ CTO เพื่อให้กลยุทธ์สอดคล้องกับทิศทางโดยรวมของบริษัท  \n* ทำงานร่วมกับ B2C Product Manager เพื่อนำความคิดเห็นและข้อเสนอแนะจากลูกค้ามาแปลงเป็นแผนพัฒนาผลิตภัณฑ์  \n* ร่วมมือกับทีมเทคโนโลยีเพื่อพัฒนาแพลตฟอร์มและเครื่องมือภายในที่ทีม B2C ใช้งาน\n\n## **5\\. ข้อมูลเชิงลึกด้านลูกค้าและตลาด**\n\n### **Customer & Market Insight**\n\n* รับผิดชอบ Voice of Customer ของธุรกิจ B2C โดยพัฒนาความเข้าใจเชิงลึกเกี่ยวกับกลุ่มลูกค้าและเส้นทางของลูกค้า เพื่อนำข้อมูลมาใช้ประกอบการตัดสินใจทางธุรกิจ  \n* ติดตามสถานการณ์การแข่งขันและแนวโน้มในอุตสาหกรรม EdTech และการเรียนออนไลน์  \n* ขับเคลื่อนกลยุทธ์ด้านผลิตภัณฑ์ ราคา และการวางตำแหน่งทางการตลาดของธุรกิจ B2C\n\n## **6\\. ความเป็นเลิศด้านการดำเนินงาน**\n\n### **Operational Excellence**\n\n* กำหนดรอบการดำเนินงานของหน่วยธุรกิจ ได้แก่ การทบทวนรายสัปดาห์ การทบทวนธุรกิจรายเดือน และการวางแผนรายไตรมาส  \n* สร้าง Dashboard และตัวชี้วัดที่ช่วยให้ทีมและ CEO สามารถมองเห็นสถานะของหน่วยธุรกิจได้แบบเรียลไทม์  \n* ปรับปรุงกระบวนการทำงานร่วมกันระหว่างทีม ตั้งแต่ Marketing ไปยัง Sales และ Customer Experience ให้ราบรื่นและสามารถรองรับการขยายตัวได้\n\n# **คุณสมบัติ**\n\n## **Qualifications**\n\n# **ประสบการณ์ที่จำเป็น**\n\n## **Experience — Must-have**\n\n* มีประสบการณ์อย่างน้อย 5 ปีในงานด้าน Marketing, Growth หรือ General Management สำหรับผลิตภัณฑ์ B2C โดยจะพิจารณาเป็นพิเศษหากมีประสบการณ์ในธุรกิจ EdTech, Subscription, D2C, E-commerce หรือ Consumer Technology  \n* มีประสบการณ์ในบทบาทบริหารอย่างน้อย 5 ปี โดยต้องเคยบริหารผู้จัดการคนอื่น ทีมที่มีขนาดตั้งแต่ 15 คนขึ้นไป หรือหัวหน้าทีมหลายคน  \n* เคยรับผิดชอบงบกำไรขาดทุนของหน่วยธุรกิจหรือสายผลิตภัณฑ์ที่มีรายได้ต่อปีอยู่ในระดับตัวเลข 8–9 หลัก  \n* มีผลงานที่แสดงให้เห็นว่าสามารถขยายธุรกิจให้เติบโตขึ้น 2–5 เท่าในช่วงที่ดำรงตำแหน่ง\n\n# **ทักษะด้านธุรกิจและการเงิน**\n\n## **Business & Financial Skills — Must-have**\n\n* มีความเข้าใจอย่างดีเกี่ยวกับงบการเงิน ได้แก่ งบกำไรขาดทุน งบดุล และงบกระแสเงินสด ในระดับที่สามารถนำไปใช้ประกอบการตัดสินใจได้  \n* มีความสามารถและประสบการณ์ที่พิสูจน์ได้ในการบริหารงบประมาณและการจัดทำประมาณการในระดับหน่วยธุรกิจ  \n* มีความเข้าใจ Unit Economics ของธุรกิจ B2C ได้แก่ CAC, LTV, ระยะเวลาคืนทุน, Contribution Margin และ Churn  \n* สามารถทำ Scenario Planning และ Financial Modeling ได้อย่างมั่นใจ\n\n# **ทักษะด้านการตลาดและการขาย**\n\n## **Marketing & Sales Skills — Must-have**\n\n* มีความเข้าใจการตลาดแบบครบทั้ง Funnel ตั้งแต่ Awareness, Acquisition, Conversion ไปจนถึง Retention  \n* มีประสบการณ์ในการดำเนินงานทั้ง Performance Marketing เช่น โฆษณาแบบชำระเงินและช่องทางที่เน้นผลลัพธ์ และ Brand Marketing  \n* มีความเข้าใจด้าน Sales Operations ได้แก่ กลไกของ Funnel, Conversion Rate, ประสิทธิภาพการขาย และโครงสร้างค่าคอมมิชชัน  \n* คุ้นเคยกับตัวชี้วัดด้านประสบการณ์ลูกค้าและการรักษาลูกค้า\n\n# **ทักษะด้านภาวะผู้นำ**\n\n## **Leadership Skills — Must-have**\n\n* มีผลงานที่แสดงให้เห็นว่าสามารถสร้างทีมที่มีประสิทธิภาพสูง โดยมีกรอบการทำงานที่ชัดเจนสำหรับการ Coaching การประเมินผลงาน และการพัฒนาบุคลากร  \n* มีทักษะในการจัดการความขัดแย้ง การสนทนาที่ยาก และปัญหาด้านผลการปฏิบัติงานอย่างมืออาชีพ  \n* มีทักษะการสื่อสารที่ดี ทั้งกับผู้บริหารระดับเดียวกันและทีมงานระดับปฏิบัติการ  \n* สามารถตัดสินใจได้ภายใต้สถานการณ์ที่มีความไม่แน่นอนและมีข้อจำกัดด้านเวลา\n\n# **คุณสมบัติที่พิจารณาเป็นพิเศษ**\n\n## **Nice-to-have**\n\n* มีประสบการณ์ในธุรกิจ EdTech การเรียนออนไลน์ หรือธุรกิจที่มีคอร์สเป็นผลิตภัณฑ์หลัก  \n* มีประสบการณ์ในการขยายองค์กรจากระยะ Startup ไปสู่ระยะ Growth Stage  \n* มีความรู้ความเข้าใจด้านผลิตภัณฑ์ดิจิทัล เทคโนโลยี หรือการวิเคราะห์ข้อมูลในระดับที่เพียงพอต่อการทำงานร่วมกับทีมวิศวกรรมได้อย่างมีประสิทธิภาพ  \n* มีเครือข่ายในระบบนิเวศของ Influencer, Creator หรือการศึกษา  \n* มีความสามารถด้านภาษาอังกฤษในระดับธุรกิจ\n\n# **Interview Talking Points: Head of B2C – FutureSkill**\n\n## **คำแนะนำตัวที่เชื่อมกับตำแหน่ง**\n\nประสบการณ์ของฉันมากกว่า 10 ปีอยู่ในธุรกิจ B2C, Digital Platform, Gaming, Fintech, Payments และ Web3 โดยทำงานตั้งแต่ Business Development จนขึ้นมารับผิดชอบในระดับ CEO\n\nจุดแข็งของฉันคือการนำธุรกิจตั้งแต่ช่วงเริ่มต้น หรือจาก 0 ไปสู่การสร้างรายได้จริง ฉันสามารถเชื่อมกลยุทธ์เข้ากับการทำงานของทีม Sales, Marketing, Product, Customer Experience, Finance และ Technology ได้\n\nในโครงการล่าสุด ฉันได้รับมอบหมายจากผู้ถือหุ้นให้สร้างแพลตฟอร์มเกมสำหรับผู้บริโภคตั้งแต่แนวคิด การระดมทุน Product Roadmap, Partnership, Pricing, Customer Acquisition ไปจนถึง Commercial Launch และสามารถสร้างรายได้ 66 ล้านบาทภายใน 3 เดือนแรก พร้อม Retention 38%, MoM Growth 26%, Peak Concurrent Users 299,000 คน และ ARPPU 898 บาท\n\nดังนั้นฉันมองว่าประสบการณ์ของฉันสอดคล้องกับ Head of B2C เพราะฉันไม่ได้ดูแค่ Marketing หรือ Sales แต่เคยรับผิดชอบภาพรวมของธุรกิจ ทั้งรายได้ กำไร ลูกค้า ผลิตภัณฑ์ ทีม และการดำเนินงาน\n\n---\n\n# **1\\. Business Performance & Growth**\n\n## **1.1 Drive revenue, profit and market share targets**\n\nฉันมีประสบการณ์รับผิดชอบการเติบโตของธุรกิจแบบ End-to-End ตั้งแต่การสร้าง Demand การหาลูกค้า การ Conversion การกำหนดราคา การสร้างรายได้ และการรักษาลูกค้า\n\nตัวอย่างที่ชัดเจนคือแพลตฟอร์มเกมที่ฉันสร้างจากศูนย์ ซึ่งสามารถสร้างรายได้ 66 ล้านบาทในช่วง 3 เดือนแรกหลังเปิดตัว โดยมีทั้งการเติบโตของผู้ใช้และการรักษาลูกค้า Retention 38%\n\nเวลาบริหารธุรกิจ ฉันไม่ได้ดูเฉพาะ Revenue แต่จะดูร่วมกับ Margin, Customer Acquisition Cost, Retention, ARPPU, Marketing ROI และค่าใช้จ่ายในการดำเนินงาน เพื่อให้ยอดขายที่เพิ่มขึ้นสามารถเปลี่ยนเป็นกำไรและกระแสเงินสดได้จริง\n\nสำหรับ FutureSkill ฉันจะตั้งเป้าทั้ง Revenue, Gross Margin, Contribution Margin, Active Learners, Repeat Purchase, Renewal และ Course Completion เพื่อให้การเติบโตไม่พึ่งยอดขายระยะสั้นเพียงอย่างเดียว\n\n---\n\n## **1.2 Define quarterly and 1–3 year B2C growth strategy**\n\nฉันคุ้นเคยกับการวางแผนทั้งระยะสั้นและระยะยาว\n\nในระยะสั้น ฉันจะเริ่มจากการวิเคราะห์ Funnel และ P\\&L เพื่อหาว่าปัจจุบันธุรกิจติดขัดตรงไหน เช่น Traffic ไม่พอ, Conversion ต่ำ, Average Order Value ต่ำ, ลูกค้าไม่กลับมาเรียน หรือ Subscription ไม่ต่ออายุ จากนั้นจึงกำหนด Quarterly Priorities และ Growth Experiments ที่วัดผลได้\n\nส่วนในระยะ 1–3 ปี ฉันจะมองว่า FutureSkill ไม่ควรเป็นเพียงแพลตฟอร์มขายคอร์ส แต่ควรพัฒนาไปเป็น Career and Skill Development Ecosystem ที่เชื่อม Assessment, Learning Path, Cohort, Event, Portfolio, Credential และโอกาสทางอาชีพเข้าด้วยกัน\n\nเป้าหมายคือทำให้ผู้เรียนไม่ซื้อเพียงครั้งเดียว แต่กลับมาเรียนต่อ พัฒนาระดับทักษะ และใช้บริการอื่นภายในระบบอย่างต่อเนื่อง\n\n---\n\n## **1.3 Allocate resources to maximize ROI**\n\nฉันมีประสบการณ์วางแผนงบประมาณ จัดสรรทรัพยากร ทำ Financial Modeling และประเมินผลตอบแทนของโครงการก่อนตัดสินใจลงทุน\n\nฉันจะไม่จัดสรรงบตามความรู้สึกหรือแบ่งให้ทุกทีมเท่ากัน แต่จะดูจากผลลัพธ์ที่แต่ละทีมสามารถสร้างให้กับธุรกิจ เช่น CAC, Conversion, Revenue Contribution, Gross Margin, Retention และ Payback Period\n\nตัวอย่างเช่น หากต้องเลือกระหว่างเพิ่มงบ Performance Marketing, เพิ่ม Sales Capacity หรือพัฒนา Product Feature ฉันจะสร้าง Scenario เพื่อดูว่าทางเลือกใดสร้าง Incremental Revenue และ Contribution Margin ได้มากที่สุด รวมถึงใช้เวลาคืนทุนเท่าไร\n\nฉันจะทบทวนการจัดสรรงบทุกเดือน และสามารถโยกทรัพยากรจากกิจกรรมที่ให้ผลตอบแทนต่ำไปยังช่องทางที่มีประสิทธิภาพสูงกว่าได้อย่างรวดเร็ว\n\n---\n\n## **1.4 Identify new growth levers**\n\nฉันมีประสบการณ์สร้างโมเดลรายได้และผลิตภัณฑ์ใหม่ ตั้งแต่ Subscription Platform, Loyalty Ecosystem, Pricing Logic, Monetization Framework และ Partnership Model\n\nสำหรับ FutureSkill ฉันมองว่า Growth Lever ไม่ควรมีเพียงการซื้อโฆษณาเพิ่ม แต่สามารถมาจากหลายด้าน เช่น\n\n* Stackable Credentials  \n* Career Membership  \n* Skill Assessment  \n* Mentor Marketplace  \n* Project Challenge  \n* Corporate-to-B2C Conversion  \n* Creator Membership  \n* Referral และ Affiliate  \n* Talent Matching  \n* Advanced Cohort Programs\n\nวิธีทำงานของฉันคือเริ่มจาก Pilot ขนาดเล็ก ตั้ง Success Metrics ให้ชัด ทดสอบกับกลุ่มลูกค้า แล้วจึงขยายโมเดลที่แสดงให้เห็นทั้ง Demand และ Unit Economics ที่ดี\n\n---\n\n# **2\\. Financial Management**\n\n## **2.1 Own the full BU P\\&L**\n\nฉันมีประสบการณ์บริหาร P\\&L, Revenue Forecast, Financial Model และงบประมาณในระดับธุรกิจ\n\nฉันมอง P\\&L เป็นเครื่องมือสำหรับการตัดสินใจ ไม่ใช่เพียงรายงานจากฝ่ายบัญชี ฉันจะติดตามตั้งแต่ Revenue, COGS, Gross Margin, Marketing and Sales Cost, OPEX, Contribution Margin ไปจนถึง EBITDA\n\nฉันสามารถเชื่อมตัวเลขทางการเงินกับการทำงานจริงได้ เช่น หาก Margin ลดลง ต้องแยกให้ได้ว่าเกิดจากราคาขาย ต้นทุนผู้สอน ค่าโฆษณา Commission หรือ Product Mix\n\nสำหรับ FutureSkill ฉันจะบริหารทั้งรายได้ที่เกิดขึ้นในปัจจุบันและกระแสเงินสดที่ต้องรองรับการให้บริการลูกค้าในอนาคต โดยเฉพาะแพ็กเกจ Subscription และคอร์สระยะยาว\n\n---\n\n## **2.2 Read and act on financial statements**\n\nฉันสามารถอ่านและใช้ P\\&L, Balance Sheet และ Cashflow เพื่อประกอบการตัดสินใจทางธุรกิจได้\n\nในระดับ BU ฉันจะให้ความสำคัญกับ Revenue Quality ด้วย เช่น รายได้มาจากสินค้าใด มี Margin เท่าไร ต้องใช้ Marketing Cost เท่าไร และลูกค้ากลับมาซื้ออีกหรือไม่\n\nหากรายได้เพิ่มแต่ Contribution Margin ลดลง ฉันจะไม่ถือว่าเป็นการเติบโตที่ดี แต่จะวิเคราะห์ต่อว่ามาจาก Discount, CAC, Commission หรือต้นทุนการให้บริการที่สูงขึ้น\n\nฉันสามารถนำข้อมูลเหล่านี้ไปตัดสินใจเรื่องราคา งบประมาณ การจ้างทีม การลงทุนในผลิตภัณฑ์ และการหยุดโครงการที่ไม่สร้างผลตอบแทนได้\n\n---\n\n## **2.3 Monthly forecasts and variance management**\n\nฉันมีประสบการณ์ทำ Revenue Forecast, KPI Dashboard, Business Review และ Executive Reporting\n\nฉันจะสร้าง Forecast แบบเชื่อมโยงกับ Driver ของธุรกิจ เช่น\n\nTraffic × Conversion Rate × Average Order Value  \nหรือ  \nจำนวนสมาชิก × ARPU × Retention Rate\n\nเมื่อผลจริงต่ำกว่าเป้า ฉันจะทำ Variance Analysis เพื่อแยกให้ชัดว่าเกิดจาก Volume, Price, Conversion, Customer Mix หรือ Cost\n\nหลังจากนั้นต้องมี Corrective Action ที่ระบุเจ้าของงาน ระยะเวลา และผลลัพธ์ที่ต้องการ เช่น ปรับ Campaign, เปลี่ยน Offer, เพิ่ม Retargeting, ปรับ Sales Script หรือทำ Retention Campaign กับลูกค้าเดิม\n\n---\n\n## **2.4 Financial discipline and unit economics**\n\nฉันมีแนวคิดในการบริหารธุรกิจแบบ ROI-driven และคุ้นเคยกับตัวเลขสำคัญของธุรกิจ B2C เช่น CAC, ARPPU, Retention, Conversion และ Revenue per User\n\nฉันจะทำงานร่วมกับ Finance เพื่อกำหนด Budget Guardrails และเกณฑ์ในการลงทุน เช่น CAC Ceiling, Minimum Contribution Margin และ Maximum Payback Period\n\nแต่ละแคมเปญและผลิตภัณฑ์ควรทราบว่าใช้เงินเท่าไร สร้างลูกค้าและกำไรเท่าไร และคืนทุนภายในกี่เดือน\n\nสิ่งนี้ช่วยให้ทีมเติบโตอย่างมีวินัย และไม่สร้างยอดขายด้วยการใช้ Promotion หรือ Marketing Spend ที่สูงจนธุรกิจไม่มีกำไร\n\n---\n\n# **3\\. Team Leadership & People Management**\n\n## **3.1 Manage Directors and Managers**\n\nในบทบาท CEO ฉันเคยดูแลหลายสายงานพร้อมกัน และทำงานผ่านหัวหน้าทีม โดยเชื่อมเป้าหมายของ Sales, Marketing, Business Development, Product, Finance, Legal, Operations และ Technology เข้าด้วยกัน\n\nรูปแบบการบริหารของฉันคือกำหนด Business Objective ให้ชัด แล้วแปลงเป็น KPI ของแต่ละทีม โดยให้ Manager มี Ownership ในวิธีการทำงานและการตัดสินใจภายในขอบเขตที่รับผิดชอบ\n\nฉันใช้ทั้ง Weekly Review, One-on-One, Performance Review และการติดตาม Dashboard เพื่อช่วยให้ผู้จัดการเห็นปัญหาเร็วและพัฒนาความสามารถในการตัดสินใจ\n\nเป้าหมายของฉันไม่ใช่การลงไปทำแทนทุกทีม แต่คือทำให้ Manager สามารถบริหารทีมและสร้างผลลัพธ์ได้ด้วยตัวเอง\n\n---\n\n## **3.2 Build a high-performance culture**\n\nฉันใช้ OKR ร่วมกับ SMART KPI เพื่อทำให้เป้าหมายของบริษัท ทีม และรายบุคคลเชื่อมกัน\n\nฉันจะกำหนดให้ทุก KPI มีเจ้าของ มี Baseline มี Target มี Timeline และมีวิธีวัดผลที่ชัดเจน\n\nนอกจากผลลัพธ์ ฉันให้ความสำคัญกับพฤติกรรมการทำงาน เช่น Ownership, Collaboration, Customer Focus และความสามารถในการแก้ปัญหา\n\nสำหรับผู้ที่ผลงานต่ำกว่าเป้า ฉันจะเริ่มจากการแยกว่าเกิดจาก Skill, Resource, Process, Motivation หรือ Role Fit จากนั้นจึงกำหนด Coaching Plan หรือ Performance Improvement Plan ที่มีระยะเวลาและเป้าหมายชัดเจน\n\n---\n\n## **3.3 Hiring and onboarding**\n\nฉันมีประสบการณ์สร้างทีมและประสานงานกับทั้งพนักงานภายใน Contractor, Outsource, Vendor และ Partner\n\nก่อนเปิดตำแหน่ง ฉันจะเริ่มจาก Business Need ว่าตำแหน่งนั้นต้องเข้ามาแก้ปัญหาอะไร สร้างผลลัพธ์อะไร และมี KPI อย่างไร ไม่ใช่เริ่มจาก Job Title เพียงอย่างเดียว\n\nสำหรับ Manager-level ฉันจะประเมินทั้ง Functional Skill, Business Judgment, Leadership, Ownership และความสามารถในการทำงานข้ามทีม\n\nช่วง Onboarding ต้องมี 30-60-90 Day Plan เพื่อให้เข้าใจ Business Model, Customer, P\\&L, Team, Product และสามารถเริ่มสร้างผลงานได้เร็ว\n\n---\n\n## **3.4 Career paths and succession plans**\n\nฉันมองว่าการรักษาคนเก่งต้องทำให้พนักงานเห็นเส้นทางการเติบโต ไม่ใช่รอเฉพาะการปรับตำแหน่งประจำปี\n\nฉันจะกำหนด Career Path ของแต่ละสายงาน โดยระบุความแตกต่างระหว่างแต่ละระดับในด้าน Scope, Decision Making, Business Impact, Leadership และ Competency\n\nในส่วน Succession Plan ฉันจะระบุตำแหน่งสำคัญของ BU และประเมินว่าใครสามารถขึ้นมารับผิดชอบแทนได้ รวมถึงต้องพัฒนาทักษะด้านใดเพิ่มเติม\n\nวิธีนี้ลด Key Person Risk และช่วยให้ธุรกิจขยายได้โดยไม่ต้องพึ่งการจ้างจากภายนอกทุกตำแหน่ง\n\n---\n\n# **4\\. Cross-Functional Collaboration**\n\n## **4.1 Partner with B2B, Partnership and CTO**\n\nประสบการณ์ของฉันส่วนใหญ่เป็นงานข้ามสายงาน ฉันเคยเชื่อม Product, Finance, Legal, Compliance, Marketing, Technology และ Strategic Partners เพื่อพัฒนาและเปิดตัวแพลตฟอร์ม\n\nฉันเข้าใจว่าแต่ละฝ่ายมีเป้าหมายและข้อจำกัดต่างกัน หน้าที่ของ Head of B2C คือทำให้ทุกฝ่ายเห็นเป้าหมายทางธุรกิจเดียวกัน และตัดสินใจจากข้อมูล ไม่ใช่จากความต้องการของฝ่ายใดฝ่ายหนึ่ง\n\nสำหรับ FutureSkill ฉันจะหา Synergy ระหว่าง B2C และ B2B เช่น การนำคอร์สที่มี Demand สูงไปขายองค์กร การเปลี่ยน Corporate Learners เป็น Personal Members และการใช้ Partnership เพิ่ม Creator, Instructor และ Distribution Channel\n\n---\n\n## **4.2 Translate customer feedback into product roadmap**\n\nฉันมีประสบการณ์กำหนด Product Roadmap, Customer Journey, Platform Requirement, Pricing และ Monetization Framework\n\nฉันจะรวบรวม Feedback จาก Customer Support, Sales, Survey, Interview และ Product Analytics แล้วจัดกลุ่มเป็น Customer Problem\n\nจากนั้นจะจัดลำดับความสำคัญโดยดูจาก Customer Impact, Revenue Impact, จำนวนผู้ใช้ที่ได้รับผลกระทบ, Development Effort และ Strategic Fit\n\nตัวอย่างเช่น หากผู้เรียนไม่กลับมาใช้บริการ ปัญหาอาจไม่ใช่ไม่มีคอร์ส แต่เป็นเพราะไม่รู้ว่าจะเรียนอะไรต่อ ดังนั้น Feature อย่าง Personalized Learning Path หรือ Next Best Course อาจมีผลต่อ Retention มากกว่าการเพิ่มจำนวนคอร์สเพียงอย่างเดียว\n\n---\n\n## **4.3 Collaborate with Tech**\n\nฉันเคยบริหาร Vendor และ Platform Execution ตั้งแต่ Business Requirement, PoC, Negotiation, Legal Review, Contract Signing ไปจนถึง Launch\n\nฉันสามารถสื่อสารกับทีมเทคโนโลยีในเชิง Business Requirement และ Product Outcome ได้ แม้ไม่ได้ทำหน้าที่เป็น Programmer\n\nฉันจะอธิบายให้ชัดว่า Feature ต้องแก้ปัญหาอะไร ใช้กับใคร ส่งผลต่อ KPI ใด และจะวัดความสำเร็จอย่างไร\n\nนอกจากนี้ฉันมีประสบการณ์นำ AI มาใช้ใน Marketing, Research, Reporting, Workflow Automation และ Decision Support ซึ่งสามารถนำมาช่วยพัฒนาเครื่องมือภายในของทีม B2C ได้\n\n---\n\n# **5\\. Customer & Market Insight**\n\n## **5.1 Own Voice of Customer**\n\nฉันมีประสบการณ์ด้าน Customer Journey, CRM, Loyalty, Retention และ Monetization จึงให้ความสำคัญกับการเข้าใจพฤติกรรมลูกค้าตั้งแต่ก่อนซื้อจนถึงหลังซื้อ\n\nฉันจะสร้าง Voice of Customer System ที่รวบรวมข้อมูลจากหลายแหล่ง เช่น Customer Interview, Survey, Complaint, Support Ticket, Course Review, Cancellation Reason และ Usage Data\n\nข้อมูลจะถูกนำมาแบ่งตาม Persona และ Customer Journey เพื่อดูว่าลูกค้าแต่ละกลุ่มต้องการอะไรและหลุดออกจาก Funnel ตรงไหน\n\nเป้าหมายคือเปลี่ยน Feedback ให้เป็น Action เช่น การปรับ Product, Pricing, Communication, Course Experience และ Retention Campaign\n\n---\n\n## **5.2 Track competition and EdTech trends**\n\nฉันมาจากธุรกิจ Technology, Digital Platform, Gaming, Fintech และ Web3 ซึ่งเป็นตลาดที่เปลี่ยนเร็วมาก จึงคุ้นเคยกับการติดตามคู่แข่ง เทคโนโลยี และพฤติกรรมผู้บริโภคอย่างต่อเนื่อง\n\nในการวิเคราะห์คู่แข่ง ฉันจะไม่ดูเพียงราคาและจำนวนคอร์ส แต่จะเปรียบเทียบทั้ง Business Model, Positioning, Content, User Experience, Community, Credential, Retention Mechanism และ Career Outcome\n\nสำหรับ EdTech ฉันให้ความสนใจกับแนวโน้ม เช่น AI Learning Companion, Cohort Learning, Skill-based Credentials, Career Assessment, Community Learning และ Creator-led Education\n\n---\n\n## **5.3 Product, pricing and positioning strategy**\n\nฉันเคยรับผิดชอบการกำหนด Pricing Strategy, Subscription Model, Loyalty Ecosystem และ Monetization Framework\n\nวิธีคิดของฉันคือเริ่มจากคุณค่าที่ลูกค้าได้รับและ Willingness to Pay ก่อนกำหนดราคา ไม่ใช่เริ่มจากการลดราคาเทียบคู่แข่ง\n\nFutureSkill สามารถแบ่งผลิตภัณฑ์ตามระดับความต้องการ เช่น Self-paced Learning, Career Membership, Cohort, Mentor Service และ Verified Professional Program\n\nในด้าน Positioning ฉันมองว่า FutureSkill ควรขยับจากการเป็นเว็บไซต์ขายคอร์ส ไปสู่แพลตฟอร์มที่ช่วยให้คนพัฒนาทักษะ สร้างผลงาน และเติบโตในอาชีพได้อย่างวัดผลได้\n\n---\n\n# **6\\. Operational Excellence**\n\n## **6.1 Establish operating rhythms**\n\nฉันมีประสบการณ์ใช้ KPI Dashboard, Business Review, Revenue Tracking, Forecasting และ Executive Reporting\n\nฉันจะกำหนด Operating Rhythm เป็นสามระดับ\n\nWeekly Review ใช้ดู Leading Indicators และปัญหาที่ต้องแก้ทันที เช่น Traffic, Leads, Conversion, Sales, Complaints และ Active Learners\n\nMonthly Business Review ใช้ดู P\\&L, Forecast, Variance, Campaign Performance, Retention และผลการดำเนินงานของแต่ละทีม\n\nQuarterly Planning ใช้กำหนด Revenue Target, Budget, OKR, Product Priorities, Hiring Plan และ Strategic Initiatives ของไตรมาสถัดไป\n\n---\n\n## **6.2 Build dashboards and metrics**\n\nฉันมีประสบการณ์สร้างและใช้ KPI Dashboard สำหรับ Revenue, Sales Forecast, Partner Pipeline และ Executive Reporting\n\nสำหรับ FutureSkill ฉันจะแบ่ง Dashboard เป็น 4 ส่วน\n\nCommercial ได้แก่ Traffic, Leads, Conversion, Revenue และ Average Order Value\n\nCustomer ได้แก่ Active Learners, Completion, Repeat Purchase, Renewal, Churn, NPS และ Complaint\n\nFinancial ได้แก่ Gross Margin, Contribution Margin, CAC, LTV, Payback และ EBITDA\n\nOperational ได้แก่ Course Launch, Sales Productivity, Response Time และ Project Delivery\n\nDashboard ต้องทำให้ CEO และทีมเห็นทั้งผลลัพธ์ปัจจุบัน แนวโน้ม และ Early Warning ก่อนที่ตัวเลขสิ้นเดือนจะเกิดขึ้น\n\n---\n\n## **6.3 Optimize Marketing → Sales → CX workflows**\n\nฉันมีประสบการณ์บริหารงานตั้งแต่ Marketing, Sales, Business Development ไปจนถึง Customer Journey และ Retention\n\nฉันจะเริ่มจากการทำ Funnel Mapping เพื่อกำหนดว่าแต่ละทีมรับผิดชอบขั้นตอนไหน ข้อมูลอะไรต้องส่งต่อ และมี SLA เท่าไร\n\nตัวอย่างเช่น Marketing ต้องกำหนด Lead Quality, Sales ต้องติดต่อลูกค้าภายในเวลาที่กำหนด และ CX ต้องเห็นข้อมูลว่า Sales เสนออะไรกับลูกค้าไว้\n\nนอกจากนี้ Feedback และ Complaint จาก CX ต้องย้อนกลับไปยัง Marketing, Product และ Course Team เพื่อแก้ปัญหาที่ต้นเหตุ ไม่ใช่แก้เฉพาะรายกรณี\n\n---\n\n# **Qualifications: Experience**\n\n## **7.1 5+ years in B2C Marketing, Growth or General Management**\n\nฉันมีประสบการณ์มากกว่า 10 ปีในธุรกิจ Technology และ Consumer Platform โดยครอบคลุม Marketing, Business Development, Growth และ General Management\n\nฉันเคยทำตั้งแต่ Marketing Project ในธุรกิจ Hardware Retail, Partnership และ Sponsorship ใน Gaming และ Esports, Business Development ใน Digital Platform จนถึงการบริหารบริษัทในฐานะ CEO\n\nดังนั้นฉันเข้าใจทั้งการทำงานระดับปฏิบัติการและการบริหารภาพรวมของธุรกิจ B2C\n\n---\n\n## **7.2 Managing managers and large teams**\n\nในบทบาท CEO ฉันบริหารผ่านหัวหน้าทีมและดูแลหลายสายงานพร้อมกัน โดยทีมที่เคยบริหารประกอบด้วยพนักงานภายในประมาณ 28 คน พนักงานสัญญาจ้าง 12 คน และ Outsource 6 คน มีผู้รายงานตรงประมาณ 8 คนจากหลายสายงาน\n\nประสบการณ์นี้สอนให้ฉันบริหารผ่านระบบและ Manager ไม่ใช่การควบคุมงานทุกเรื่องด้วยตัวเอง\n\nฉันใช้เป้าหมายร่วม KPI, Weekly Review และ One-on-One เพื่อให้แต่ละทีมทำงานไปในทิศทางเดียวกัน\n\nหมายเหตุ: ใช้ตัวเลขนี้ต่อเมื่อเป็นตัวเลขล่าสุดและสามารถอธิบายโครงสร้างทีมได้\n\n---\n\n## **7.3 P\\&L ownership with 8–9 figure revenue**\n\nฉันเคยรับผิดชอบการวางแผน P\\&L, Revenue Forecast, Financial Model และ Commercial Strategy ของแพลตฟอร์มที่สร้างรายได้ระดับหลายสิบล้านบาท\n\nโครงการที่ฉันสร้างจากศูนย์สามารถสร้างรายได้ 66 ล้านบาทภายใน 3 เดือนแรกหลังเปิดตัว\n\nนอกจากยอดขาย ฉันรับผิดชอบ Pricing, Customer Acquisition, Partnerships, Platform Roadmap และการจัดสรรทรัพยากรที่เกี่ยวข้องกับการสร้างรายได้\n\nจึงมีประสบการณ์บริหารธุรกิจในระดับรายได้ 8 หลัก พร้อมความเข้าใจความสัมพันธ์ระหว่างรายได้ ต้นทุน และกำไร\n\n---\n\n## **7.4 Track record of scaling the business**\n\nผลงานที่สะท้อนความสามารถด้าน Scaling ของฉันชัดที่สุดคือการสร้างแพลตฟอร์มใหม่จากแนวคิดไปสู่ Commercial Launch\n\nแพลตฟอร์มสามารถสร้างรายได้ 66 ล้านบาทใน 3 เดือน มีการเติบโตเฉลี่ย 26% ต่อเดือน มีผู้ใช้งานพร้อมกันสูงสุด 299,000 คน และรักษาผู้ใช้ได้ 38%\n\nฉันมองว่า Scaling ไม่ใช่แค่การทำ Campaign ให้ยอดขึ้น แต่ต้องเตรียม Product, Payment, Customer Support, Partner, Technology และ Operational Process ให้รองรับผู้ใช้จำนวนมากพร้อมกัน\n\n---\n\n# **Business & Financial Skills**\n\n## **8.1 Financial statements**\n\nฉันเข้าใจ P\\&L, Balance Sheet และ Cashflow ในระดับที่สามารถนำมาใช้ตัดสินใจเรื่องการลงทุน งบประมาณ ราคา และการควบคุมต้นทุนได้\n\nฉันผ่านการศึกษา MBA ด้าน Strategic Management และ MIS รวมถึงหลักสูตร IPO, Valuation, M\\&A และ Project Investment Analysis\n\nสิ่งที่ฉันให้ความสำคัญคือการเชื่อมตัวเลขเข้ากับ Business Driver เช่น Revenue, Margin, CAC, Retention และ Growth เพื่อให้การตัดสินใจตอบโจทย์ทั้งการเติบโตและความมั่นคงทางการเงิน\n\n---\n\n## **8.2 BU budgets and forecasts**\n\nฉันมีประสบการณ์จัดทำ Financial Model, P\\&L Plan, Revenue Forecast และ KPI Dashboard รวมถึงใช้ข้อมูลเหล่านี้ในการสื่อสารกับผู้ถือหุ้น นักลงทุน และผู้บริหาร\n\nฉันสามารถทำ Budget Allocation แยกตาม Channel, Product และ Team และติดตาม Actual เทียบกับ Forecast ได้\n\nหากตัวเลขเบี่ยงเบนจากแผน ฉันจะวิเคราะห์สาเหตุและเสนอทางเลือกพร้อมผลกระทบทางการเงิน ไม่ใช่รายงานเพียงว่าต่ำกว่าเป้า\n\n---\n\n## **8.3 B2C unit economics**\n\nฉันคุ้นเคยกับการบริหารตัวเลขของแพลตฟอร์ม B2C เช่น Customer Acquisition, Conversion, ARPPU, Retention, Revenue Growth และ Margin\n\nฉันเข้าใจว่าธุรกิจ Subscription ต้องดูความสัมพันธ์ระหว่าง CAC, LTV, Churn, Contribution Margin และ Payback Period\n\nตัวอย่างเช่น การลด Churn อาจสร้างผลตอบแทนมากกว่าการเพิ่มค่าโฆษณา เพราะช่วยเพิ่มอายุลูกค้าและ LTV โดยไม่ต้องเสีย CAC ใหม่ทุกครั้ง\n\n---\n\n## **8.4 Scenario planning and financial modeling**\n\nฉันมีประสบการณ์สร้าง Financial Model เพื่อใช้วางแผนธุรกิจ ระดมทุน และประเมินความเป็นไปได้ของโครงการ\n\nฉันสามารถทำ Best, Base และ Worst Case โดยเปลี่ยนสมมติฐานสำคัญ เช่น จำนวนผู้ใช้ Conversion, ARPU, CAC, Retention และต้นทุน\n\nScenario Planning ช่วยให้ผู้บริหารเห็นทั้ง Upside, Downside, Break-even Point และเงินทุนที่ต้องใช้ก่อนตัดสินใจลงทุน\n\n---\n\n# **Marketing & Sales Skills**\n\n## **9.1 Full-funnel marketing**\n\nฉันมอง Funnel ตั้งแต่ Awareness, Traffic, Lead, Conversion, Revenue ไปจนถึง Retention และ Repeat Purchase\n\nฉันมีประสบการณ์ทั้ง Marketing, Sales และ Business Development จึงเข้าใจว่าการเพิ่ม Traffic อย่างเดียวไม่เพียงพอ หาก Conversion หรือ Retention ต่ำ\n\nฉันจะกำหนด KPI ของแต่ละช่วง Funnel และวิเคราะห์ว่าลูกค้าหลุดตรงไหน เพื่อให้แต่ละทีมแก้ปัญหาในส่วนที่ตนเองรับผิดชอบ\n\n---\n\n## **9.2 Performance and brand marketing**\n\nฉันมีประสบการณ์ทำ Sales-driven Marketing, GTM, Customer Acquisition และ Commercial Campaign รวมถึงทำ Co-marketing กับ Technology Brands มากกว่า 30 แบรนด์\n\nฉันเข้าใจการทำ Performance Marketing ที่ต้องวัด CPA, CAC, Conversion และ ROAS ขณะเดียวกันก็มีประสบการณ์ด้าน Event, Partnership, Sponsorship และ Brand Visibility\n\nฉันเชื่อว่า Performance และ Brand ต้องทำงานร่วมกัน โดย Brand ช่วยลดต้นทุนการหาลูกค้าในระยะยาว ส่วน Performance ช่วยสร้างรายได้และ Feedback ที่วัดผลได้ในระยะสั้น\n\n---\n\n## **9.3 Sales operations**\n\nฉันเคยบริหาร Sales Pipeline, Partner Pipeline, Sales Forecast, Revenue Tracking และ Executive Reporting\n\nฉันจะวิเคราะห์ Sales Funnel ตั้งแต่ Lead Generation, Qualification, Contact, Proposal, Conversion และ Revenue\n\nนอกจากนี้ยังต้องดู Productivity ต่อพนักงานขาย จำนวน Lead ที่ดูแลได้ Conversion ของแต่ละคน Average Deal Size และ Commission Structure เพื่อให้ระบบค่าตอบแทนสนับสนุนทั้งยอดขายและคุณภาพของลูกค้า\n\n---\n\n## **9.4 Customer experience and retention**\n\nฉันมีประสบการณ์สร้าง Customer Journey, CRM, Loyalty Ecosystem และ Retention Strategy\n\nในแพลตฟอร์มที่ผ่านมา ฉันสามารถสร้าง Retention ได้ 38% ซึ่งเกิดจากการเชื่อม Product Experience, Customer Communication, Community และ Monetization เข้าด้วยกัน\n\nสำหรับ FutureSkill ฉันจะติดตาม Active Learning, Course Completion, Repeat Purchase, Renewal, Churn, NPS และ Customer Complaint เพื่อดูว่าลูกค้าได้รับคุณค่าหลังการซื้อจริงหรือไม่\n\n---\n\n# **Leadership Skills**\n\n## **10.1 Build high-performance teams**\n\nฉันใช้ Framework ที่เชื่อม Business Goal กับ Team Goal และ Individual KPI\n\nฉันให้แต่ละ Manager เข้าใจทั้งเป้าหมาย ตัวเลข และเหตุผลทางธุรกิจ ไม่ใช่เพียงรับ Task ไปทำ\n\nฉันใช้ Coaching, Review และ Feedback อย่างต่อเนื่อง และพยายามสร้าง Ownership ให้ทีมเสนอวิธีแก้ปัญหา ไม่รอคำสั่งจากผู้บริหารทุกเรื่อง\n\n---\n\n## **10.2 Conflict and difficult conversations**\n\nฉันเคยทำงานกับผู้ถือหุ้น นักลงทุน Partner, Vendor และหลายทีมที่มีเป้าหมายต่างกัน จึงคุ้นเคยกับการเจรจาและการจัดการความขัดแย้ง\n\nวิธีของฉันคือแยกคนออกจากปัญหา ใช้ข้อมูลและเป้าหมายธุรกิจเป็นจุดร่วม แล้วกำหนด Decision Owner และ Next Action ที่ชัดเจน\n\nหากเป็นปัญหาด้าน Performance ฉันจะให้ Feedback ตรงไปตรงมา พร้อมระบุ Expected Standard, Gap และระยะเวลาที่ต้องปรับปรุง โดยยังรักษาความเป็นธรรมและความเคารพต่อพนักงาน\n\n---\n\n## **10.3 Communicate with executives and frontline teams**\n\nฉันมีประสบการณ์รายงานต่อผู้ถือหุ้น นักลงทุน และผู้บริหาร รวมถึงบริหารทีมปฏิบัติการหลายสายงาน\n\nเวลาสื่อสารกับผู้บริหาร ฉันจะเน้น Business Impact, Financial Impact, Risk และ Decision Required\n\nเวลาสื่อสารกับทีมปฏิบัติการ ฉันจะทำให้เป้าหมายชัดเจนว่าใครต้องทำอะไร เมื่อไร วัดผลอย่างไร และงานนั้นเชื่อมกับเป้าหมายธุรกิจอย่างไร\n\n---\n\n## **10.4 Decisions under ambiguity**\n\nประสบการณ์สร้างแพลตฟอร์มจากศูนย์ทำให้ฉันคุ้นเคยกับสถานการณ์ที่ข้อมูลยังไม่ครบ เวลาและทรัพยากรจำกัด และต้องตัดสินใจอย่างรวดเร็ว\n\nฉันจะเริ่มจากระบุสมมติฐาน ความเสี่ยง และข้อมูลขั้นต่ำที่จำเป็น จากนั้นตัดสินใจในรูปแบบที่สามารถทดลองและย้อนกลับได้ก่อน\n\nหลังเริ่มดำเนินการ ฉันจะติดตาม Leading Indicator และปรับแผนเมื่อมีข้อมูลใหม่ แทนที่จะรอข้อมูลสมบูรณ์จนเสียโอกาสทางธุรกิจ\n\n---\n\n# **Nice-to-have**\n\n## **11.1 EdTech and online learning**\n\nแม้ว่าประสบการณ์หลักของฉันจะมาจาก Gaming, Fintech และ Digital Platform มากกว่า EdTech โดยตรง แต่ Business Model มีองค์ประกอบใกล้เคียงกันมาก เช่น Customer Acquisition, Digital Content, Subscription, Community, Retention และ Platform Engagement\n\nฉันยังมองว่าประสบการณ์จาก Gaming สามารถนำมาใช้กับ EdTech ได้ โดยเฉพาะ Gamification, Progression, Community, Reward และการสร้าง Habit ให้ผู้ใช้กลับมาอย่างต่อเนื่อง\n\n---\n\n## **11.2 Startup to growth stage**\n\nฉันมีประสบการณ์สร้างโครงการใหม่จาก Concept ไปสู่ Fundraising, Product Roadmap, Partnership, Commercialization และ Revenue\n\nจุดแข็งของฉันคือสามารถทำงานในช่วงที่โครงสร้างยังไม่สมบูรณ์ แล้วค่อยพัฒนา Process, KPI, Dashboard และทีมให้รองรับการเติบโต\n\n---\n\n## **11.3 Digital product, technology and analytics**\n\nฉันมีพื้นฐานด้าน Digital Platform, Payments, Web3 และ AI และเคยทำงานร่วมกับทีม Product และ Technology อย่างต่อเนื่อง\n\nฉันสามารถกำหนด Requirement, Product Roadmap, PoC, KPI และ Business Case รวมถึงใช้ข้อมูลเพื่อวิเคราะห์ Customer Journey และผลการดำเนินงาน\n\nฉันยังมี Professional Scrum Master I ซึ่งช่วยให้เข้าใจ Agile และการทำงานกับทีมพัฒนาผลิตภัณฑ์\n\n---\n\n## **11.4 Influencer, creator and education network**\n\nฉันมีเครือข่ายใน Gaming, Esports, Technology Brands, Publishers, Partners และ Content Ecosystem\n\nฉันเคยสร้าง Commercial Packages และบริหาร Partnership กับแบรนด์เทคโนโลยีมากกว่า 30 แบรนด์ รวมถึงงานออนไลน์และออฟไลน์ในระดับภูมิภาค\n\nแม้ Network จะไม่ได้อยู่ใน EdTech ทั้งหมด แต่สามารถต่อยอดไปสู่ Creator Partnership, Technology Instructor, Sponsored Content และ Learning Event ได้\n\n---\n\n## **11.5 Business English**\n\nฉันมีประสบการณ์เจรจาและทำงานกับ Partner ต่างประเทศ โดยเฉพาะ Game Studios และ Business Partners จากจีนและเกาหลี\n\nฉันสามารถใช้งานภาษาอังกฤษในด้าน Business Communication, Presentation, Negotiation, Documentation และการประสานงานโครงการ\n\nฉันยังพัฒนาภาษาอังกฤษอย่างต่อเนื่อง เพื่อให้สามารถสื่อสารกับผู้บริหารและ Partner ระดับนานาชาติได้อย่างมั่นใจมากขึ้น\n\n---\n\n# **คำตอบสรุป: Why should we hire you?**\n\nฉันคิดว่าสิ่งที่ฉันนำมาสู่ FutureSkill ได้ คือประสบการณ์ในการบริหาร B2C Business แบบครบวงจร ไม่ได้จำกัดอยู่เพียง Marketing หรือ Sales\n\nฉันเคยสร้างแพลตฟอร์มจากศูนย์ไปสู่รายได้ 66 ล้านบาทใน 3 เดือน พร้อมบริหาร Product, Pricing, Customer Acquisition, Retention, Partnership, Financial Model และทีมข้ามสายงาน\n\nฉันสามารถดูทั้ง Growth และ P\\&L ทำให้กลยุทธ์กลายเป็นแผนงานที่มี KPI ชัดเจน และสร้างระบบให้ทีมสามารถดำเนินงานได้อย่างต่อเนื่อง\n\nแม้ประสบการณ์หลักของฉันไม่ได้มาจาก EdTech โดยตรง แต่ฉันมีประสบการณ์ใน Digital Platform และ Consumer Ecosystem ที่สามารถนำมาประยุกต์ใช้กับ FutureSkill ได้ โดยเฉพาะการสร้าง Engagement, Subscription, Community, Gamification และ Retention\n\nฉันไม่ได้มองว่า FutureSkill ควรขายคอร์สเพิ่มเพียงอย่างเดียว แต่ควรสร้างระบบที่ทำให้ผู้เรียนเห็นความก้าวหน้า ได้ผลลัพธ์ทางอาชีพ และมีเหตุผลกลับมาเรียนและจ่ายซ้ำอย่างต่อเนื่อง\n\n# **Strategic Direction**\n\n## **เปลี่ยน FutureSkill จาก Course Platform เป็น Career Growth Ecosystem**\n\nแนวคิดหลักที่เสนอคือ:\n\n**ไม่ขายการเข้าถึงวิดีโอ แต่ขายความก้าวหน้าทางทักษะและอาชีพที่ผู้เรียนมองเห็นและพิสูจน์ได้**\n\nRevenue Flywheel ควรเป็นดังนี้:\n\nFree Content / Event  \n        ↓  \nSkill Assessment  \n        ↓  \nPersonalized Career Path  \n        ↓  \nSubscription / Cohort / Premium Program  \n        ↓  \nLearning Progress \\+ Community  \n        ↓  \nProject \\+ Verified Skill \\+ Portfolio  \n        ↓  \nCareer Outcome / Recognition  \n        ↓  \nAdvanced Path / Renewal / Referral  \n        ↓  \nกลับมาซื้อและเรียนต่อ\n\nFutureSkill มีสินทรัพย์ตั้งต้นค่อนข้างครบแล้ว ทั้งคลังคอร์สมากกว่า 490 คอร์ส แบบฝึกหัด/โปรเจกต์ Certificate แพ็กเกจรายปี และฝั่งองค์กรที่มี Personalized Learning Journey การมอบหมายหลักสูตร และ Dashboard ติดตามผล ดังนั้นโจทย์ถัดไปไม่ควรเป็นเพียง “เพิ่มจำนวนคอร์ส” แต่ควรเชื่อมสิ่งที่มีให้กลายเป็นระบบที่สร้าง **การซื้อครั้งแรก → การเรียนต่อเนื่อง → ผลลัพธ์จริง → การซื้อซ้ำ → การต่อสมาชิก** ([page.futureskill.co](https://page.futureskill.co/yearpack?utm_source=chatgpt.com))\n\n# **Strategic Direction**\n\n## **เปลี่ยน FutureSkill จาก Course Platform เป็น Career Growth Ecosystem**\n\nแนวคิดหลักที่เสนอคือ:\n\n**ไม่ขายการเข้าถึงวิดีโอ แต่ขายความก้าวหน้าทางทักษะและอาชีพที่ผู้เรียนมองเห็นและพิสูจน์ได้**\n\nRevenue Flywheel ควรเป็นดังนี้:\n\nFree Content / Event  \n        ↓  \nSkill Assessment  \n        ↓  \nPersonalized Career Path  \n        ↓  \nSubscription / Cohort / Premium Program  \n        ↓  \nLearning Progress \\+ Community  \n        ↓  \nProject \\+ Verified Skill \\+ Portfolio  \n        ↓  \nCareer Outcome / Recognition  \n        ↓  \nAdvanced Path / Renewal / Referral  \n        ↓  \nกลับมาซื้อและเรียนต่อ\n\n---\n\n# **1\\. Career Goal–Based Personalization**\n\n## **สิ่งที่ควรทำ**\n\nเมื่อผู้ใช้เข้ามา ไม่ควรเริ่มด้วยการให้เลือกจากคอร์สหลายร้อยรายการ แต่ควรถามก่อนว่า:\n\n* ต้องการเลื่อนตำแหน่ง  \n* ต้องการเปลี่ยนสายงาน  \n* ต้องการเพิ่มรายได้  \n* ต้องการใช้ AI เพิ่มประสิทธิภาพงาน  \n* ต้องการเริ่มธุรกิจ  \n* ต้องการสร้าง Portfolio  \n* ต้องการสอบหรือรับ Credential\n\nจากนั้นให้ทำ **Skill Assessment 5–10 นาที** และสร้างเส้นทางเฉพาะบุคคล เช่น:\n\nเป้าหมาย: เปลี่ยนจาก Marketing Executive เป็น AI Marketing Manager  \nระดับปัจจุบัน: 42%  \nทักษะที่มีแล้ว: Marketing Fundamentals, Content Strategy  \nทักษะที่ขาด: AI Workflow, Data Analysis, Automation  \nระยะเวลาแนะนำ: 12 สัปดาห์  \nคอร์สที่ต้องเรียน: 4 คอร์ส  \nโปรเจกต์ที่ต้องทำ: 2 โปรเจกต์\n\n## **เหตุผลเชิงพฤติกรรม**\n\nการมีตัวเลือกมากเกินไปอาจสร้าง Choice Overload ทำให้ผู้บริโภคตัดสินใจยากหรือเลื่อนการซื้อ การลดจำนวนทางเลือกและจัดเป็นเส้นทางตามเป้าหมายจะช่วยให้ลูกค้าเข้าใจว่า “ควรเริ่มจากอะไร” ได้ง่ายขึ้น แม้ผลของ Choice Overload จะขึ้นอยู่กับบริบท แต่มีหลักฐานว่าความซับซ้อนของตัวเลือกและความไม่แน่ใจในความต้องการเพิ่มโอกาสเกิด Decision Paralysis ได้ ([Wiley Online Library](https://onlinelibrary.wiley.com/doi/10.1111/ijcs.13029?utm_source=chatgpt.com))\n\nCoursera ใช้ Skills Dashboard เพื่อแสดง Skill Gap, Skill Mastery, Learner Effort และ Benchmark ส่วน LinkedIn Learning ใช้ Learning Path และ Professional Certificate แยกตามบทบาทและระดับทักษะ แทนการให้ผู้เรียนเลือกคอร์สแบบไม่มีทิศทาง ([Coursera](https://www.coursera.org/business/products/skillsdashboard?utm_source=chatgpt.com))\n\n## **KPI**\n\n* Assessment completion rate  \n* Assessment-to-paid conversion  \n* Learning Path activation  \n* Courses started per learner  \n* Path completion  \n* Revenue per learner\n\n## **ประโยคใช้พูดในที่ประชุม**\n\n“FutureSkill มีคอร์สจำนวนมากอยู่แล้ว แต่จำนวนคอร์สไม่ควรเป็นประสบการณ์หลักของผู้ใช้ ผู้ใช้ควรเห็นเป้าหมายอาชีพของตนเองก่อน แล้วระบบจึงเลือกคอร์สที่เหมาะสมให้ การเปลี่ยนจาก Course Discovery เป็น Career Diagnosis จะช่วยทั้ง Conversion และ Cross-sell”\n\n---\n\n# **2\\. ออกแบบแพ็กเกจแบบ Good–Better–Best**\n\n## **สิ่งที่ควรทำ**\n\nควรลดความซับซ้อนของราคาให้เหลือประมาณสามทางเลือกหลัก\n\n### **Learn**\n\nสำหรับผู้ที่ต้องการเรียนด้วยตนเอง\n\n* Self-paced courses  \n* Certificate of Completion  \n* Basic Learning Path  \n* Community พื้นฐาน\n\n### **Career Pro — Recommended**\n\nสำหรับผู้ที่ต้องการพัฒนาอาชีพอย่างเป็นระบบ\n\n* ทุกอย่างใน Learn  \n* Skill Assessment  \n* Career Path  \n* AI Learning Coach  \n* Cohort Challenge  \n* Project Portfolio  \n* Workshop Credits  \n* Verified Skill\n\n### **Career Plus**\n\nสำหรับผู้ที่ต้องการผลลัพธ์ด้านงานโดยตรง\n\n* ทุกอย่างใน Career Pro  \n* Mentor Clinic  \n* Portfolio Review  \n* Mock Interview  \n* Employer Project  \n* Talent Showcase  \n* Premium Networking Event\n\nควรให้แพ็กเกจกลางเป็นตัวเลือกแนะนำ เพราะเป็นจุดสมดุลระหว่างราคาและคุณค่า แต่ต้องให้แต่ละแพ็กเกจมีความเหมาะสมจริง ไม่ใช่ออกแบบแพ็กเกจล่างให้แย่โดยเจตนา\n\n## **จิตวิทยาที่ใช้**\n\n### **Anchoring**\n\nให้ลูกค้าเห็นมูลค่าขององค์ประกอบแต่ละส่วนก่อนเห็นราคาจริง เช่น:\n\n* คอร์ส 12,000 บาท  \n* Workshop 3,000 บาท  \n* Assessment 1,500 บาท  \n* Mentor Credit 2,000 บาท  \n* รวมมูลค่า 18,500 บาท  \n* ราคาสมาชิก 6,900 บาทต่อปี\n\nมูลค่าที่แสดงต้องเป็นราคาที่ขายจริงหรือมีฐานรองรับ ไม่ควรสร้างราคาอ้างอิงปลอม\n\n### **Choice Architecture**\n\nแสดงเพียงสามตัวเลือก โดยมีข้อความชัดเจนว่าแต่ละแพ็กเกจเหมาะกับใคร แทนการให้ลูกค้าเปรียบเทียบคอร์สและโปรโมชั่นจำนวนมากด้วยตนเอง\n\n### **Certainty Effect**\n\nลดความเสี่ยงในการตัดสินใจด้วย:\n\n* ทดลองเรียน  \n* Preview  \n* แผนเรียนที่เห็นก่อนซื้อ  \n* รับประกันคืนเงินตามเงื่อนไข  \n* สามารถเปลี่ยน Learning Path ได้\n\n## **KPI**\n\n* Pricing page conversion  \n* Average order value  \n* Package mix  \n* Annual-plan adoption  \n* Refund rate  \n* Contribution margin per package\n\n## **ประโยคใช้พูด**\n\n“เราไม่ควรแข่งขันด้วยการลดราคาอย่างเดียว แต่ควรทำให้ลูกค้าเปรียบเทียบคุณค่าได้ง่าย แพ็กเกจต้องสะท้อนระดับผลลัพธ์ ตั้งแต่เรียนด้วยตนเอง ไปจนถึงได้รับคำแนะนำ Portfolio และโอกาสทางอาชีพ”\n\n---\n\n# **3\\. ใช้ Scarcity และ Loss Aversion อย่างมีจริยธรรม**\n\n## **สิ่งที่ควรทำ**\n\nสามารถใช้ความเร่งด่วนได้ แต่ต้องเป็นข้อจำกัดที่เกิดขึ้นจริง เช่น:\n\n* Cohort เปิดรับเพียง 100 คน เพราะ Mentor มีจำนวนจำกัด  \n* Early-bird สิ้นสุดก่อนเริ่มรุ่น  \n* Workshop มีจำนวนที่นั่งจริง  \n* Premium Project เปิดรับเฉพาะไตรมาส  \n* Credit สำหรับ Cohort มีวันหมดอายุที่แจ้งชัดเจน  \n* Limited Course มี Live Feedback เฉพาะรุ่นแรก\n\nงาน Meta-analysis พบว่า Scarcity Cue สามารถส่งผลต่อการรับรู้คุณค่า ความต้องการ และความตั้งใจซื้อได้ แต่ผลลัพธ์ขึ้นอยู่กับประเภทสินค้า แหล่งที่มาของความขาดแคลน และความน่าเชื่อถือของข้อความ ([Bond University Research Portal](https://research.bond.edu.au/files/182976505/Scarcity_tactics_in_marketing.pdf.))\n\n## **สิ่งที่ไม่ควรทำ**\n\n* Countdown ที่เริ่มใหม่ทุกครั้ง  \n* บอกว่าเหลือสองที่นั่งทั้งที่ไม่จริง  \n* ราคาปกติที่ไม่เคยขายจริง  \n* อ้างว่าคนกำลังซื้อโดยไม่มีข้อมูล  \n* ทำให้ลูกค้ากลัวจนไม่มีเวลาอ่านเงื่อนไข  \n* ล็อกผู้ใช้ไว้โดยยกเลิกยาก\n\nScarcity ปลอมอาจสร้างยอดขายระยะสั้น แต่ลดความไว้วางใจและเพิ่มการคืนเงินหรือ Complaint ในระยะยาว งานวิจัยบางส่วนยังพบว่า Scarcity Appeal อาจส่งผลลบเมื่อผู้บริโภคตีความว่าเป็นการทำการตลาดที่ไม่น่าเชื่อถือ ([Frontiers](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2024.1225011/full?utm_source=chatgpt.com))\n\n## **ประโยคใช้พูด**\n\n“ฉันสนับสนุนการใช้ Limited Cohort และ Time-bound Offer แต่ข้อจำกัดต้องเกิดขึ้นจริง เราควรใช้ความเร่งด่วนเพื่อช่วยให้ลูกค้าตัดสินใจ ไม่ใช่ใช้ Dark Pattern เพื่อกดดันลูกค้า”\n\n---\n\n# **4\\. Progress Architecture: ทำให้ความก้าวหน้ามองเห็นได้**\n\n## **สิ่งที่ควรทำ**\n\nไม่ควรมีเพียง Progress Bar ของวิดีโอ แต่ควรมีความก้าวหน้าสามระดับ\n\n### **Course Progress**\n\nเรียนแล้ว 65% เหลือประมาณ 42 นาที\n\n### **Skill Progress**\n\nคุณพัฒนา AI Productivity แล้ว 3 จาก 5 ทักษะ\n\n### **Career Progress**\n\nคุณมีความพร้อมสำหรับตำแหน่ง AI Marketing Specialist 68%\n\nควรเพิ่ม:\n\n* Skill Tree  \n* Weekly Milestone  \n* Level  \n* XP  \n* Badge  \n* Career Passport  \n* Portfolio Progress  \n* Next Best Action  \n* Completion Celebration\n\n## **Goal-Gradient Effect**\n\nงานวิจัยเกี่ยวกับ Reward Program พบว่าผู้บริโภคมีแนวโน้มเพิ่มความพยายามเมื่อรู้สึกว่าใกล้ถึงเป้าหมาย และผู้ที่รู้สึกว่าได้เริ่มต้นไปแล้วมีแนวโน้มทำต่อมากขึ้น ([Columbia University](https://www.columbia.edu/~rk566/Session4/Goal-Gradient_Illusionary_Goal_Progress.pdf))\n\nFutureSkill สามารถใช้หลักการนี้อย่างตรงไปตรงมา เช่น:\n\n* เมื่อลงทะเบียนและทำ Assessment สำเร็จ ให้ Career Path เริ่มที่ 10% เพราะผู้ใช้ทำสองขั้นตอนสำเร็จจริง  \n* แบ่งคอร์สยาวเป็น Milestone สั้น  \n* แสดงเวลาที่เหลือ  \n* เมื่อถึง 80% ให้ Reminder ว่าเหลืออีกหนึ่งบทเพื่อรับ Certificate  \n* ให้ Bonus Credit เมื่อจบ Track ไม่ใช่เพียงจบวิดีโอ\n\n## **หลักการสำคัญ**\n\nReward mastery, not screen time.\n\nไม่ควรให้ XP จำนวนมากจากการเปิดวิดีโอทิ้งไว้ แต่ควรให้จาก:\n\n* ทำแบบทดสอบผ่าน  \n* ส่งโปรเจกต์  \n* ทบทวนความรู้  \n* ให้ Feedback ที่มีคุณภาพ  \n* ช่วยสมาชิกใน Community  \n* ผ่าน Skill Verification\n\n## **KPI**\n\n* Lesson completion  \n* Course completion  \n* Path completion  \n* Project submission  \n* Time to first completion  \n* D7/D30 learning retention\n\n## **ประโยคใช้พูด**\n\n“Progress Bar ไม่ควรวัดแค่ว่าดูวิดีโอไปกี่เปอร์เซ็นต์ แต่ควรตอบได้ว่าผู้เรียนเข้าใกล้เป้าหมายอาชีพมากขึ้นเท่าไร เมื่อผู้เรียนรู้สึกว่าใกล้สำเร็จ แรงจูงใจในการเรียนต่อจะเพิ่มขึ้น”\n\n---\n\n# **5\\. Habit Loop: ทำให้การเรียนกลายเป็นกิจวัตร**\n\n## **สิ่งที่ควรทำ**\n\nเมื่อผู้ใช้ซื้อคอร์ส ระบบควรถามทันทีว่า:\n\n“คุณต้องการเรียนวันไหน เวลาใด และกี่นาทีต่อสัปดาห์”\n\nตัวอย่าง:\n\nทุกวันอังคารและพฤหัส เวลา 20.00 น. ฉันจะเรียนครั้งละ 20 นาที\n\nนี่เป็นรูปแบบ **Implementation Intention** หรือแผนแบบ “เมื่อเกิด X ฉันจะทำ Y” ซึ่งมีหลักฐานว่าสามารถช่วยแปลงความตั้งใจให้กลายเป็นการลงมือทำได้ดีขึ้น ([cancercontrol.cancer.gov](https://cancercontrol.cancer.gov/brp/research/constructs/implementation-intentions?utm_source=chatgpt.com))\n\nควรเพิ่ม:\n\n* Weekly Learning Goal  \n* Calendar Integration  \n* Smart Reminder  \n* Flexible Streak  \n* Streak Freeze  \n* Recovery Mission  \n* Weekly Learning Report  \n* Review Quiz หลัง 1, 3, 7 และ 14 วัน\n\nสำหรับผู้เรียนวัยทำงาน ควรใช้ **Weekly Streak** มากกว่าบังคับ Daily Streak เช่น:\n\nเรียนอย่างน้อยสองวันต่อสัปดาห์ ต่อเนื่องห้าสัปดาห์\n\nDuolingo ใช้ Streak, Friend Quest และ Friend Streak เพื่อสร้างความต่อเนื่อง โดยบริษัทระบุว่าผู้เรียนที่มี Friend Streak อย่างน้อยหนึ่งรายการมีแนวโน้มทำบทเรียนประจำวันสูงขึ้น 22% ในข้อมูลของบริษัทเอง ([Duolingo Blog](https://blog.duolingo.com/how-duolingo-streak-builds-habit/?utm_source=chatgpt.com))\n\n## **KPI**\n\n* Weekly active learners  \n* Learning days per week  \n* Streak participation  \n* Reminder-to-session conversion  \n* Reactivation rate  \n* D30 learner retention\n\n## **ประโยคใช้พูด**\n\n“ผู้เรียนส่วนใหญ่ไม่ได้ขาดแรงบันดาลใจ แต่ขาดระบบที่ช่วยเปลี่ยนความตั้งใจให้เป็นกิจวัตร เราควรให้ผู้เรียนเลือกวันและเวลาเรียนเอง แล้วใช้ Reminder, Weekly Streak และ Recovery Mechanism ช่วยรักษาความต่อเนื่อง”\n\n---\n\n# **6\\. Social Proof 2.0: ใช้หลักฐานที่ตรงกับ Persona**\n\n## **สิ่งที่ควรทำ**\n\nSocial Proof ไม่ควรมีเพียงข้อความว่า “มีผู้เรียนจำนวนมาก” แต่ควรเป็นหลักฐานที่ช่วยลดความไม่แน่นอนในการซื้อ\n\n### **Persona-matched testimonials**\n\nตัวอย่าง:\n\n* จากบัญชีไป Data Analyst  \n* จาก Marketing ไป AI Marketing  \n* เจ้าของธุรกิจใช้ AI ลดเวลาทำงาน  \n* Manager เลื่อนตำแหน่งหลังพัฒนาทักษะ Leadership\n\n### **Outcome-based proof**\n\n* เรียนจบในกี่สัปดาห์  \n* ทำโปรเจกต์อะไร  \n* นำไปใช้งานจริงอย่างไร  \n* ได้งานหรือเลื่อนตำแหน่งหรือไม่  \n* ประหยัดเวลาหรือลดต้นทุนเท่าไร\n\n### **Product-level proof**\n\n* Completion rate  \n* คะแนนความพึงพอใจ  \n* จำนวน Project ที่ส่ง  \n* จำนวนผู้เรียนที่ได้ Verified Skill  \n* ตัวอย่าง Portfolio จริง\n\n### **Authority proof**\n\n* ประสบการณ์ผู้สอน  \n* บริษัทที่ผู้สอนเคยทำงาน  \n* Professional Certification  \n* องค์กรที่นำหลักสูตรไปใช้\n\nงานวิจัยด้าน Online Review แสดงให้เห็นว่า Rating และความคล้ายคลึงระหว่างผู้รีวิวกับผู้ซื้อสามารถมีอิทธิพลต่อความตั้งใจซื้อ โดยเฉพาะเมื่อผู้บริโภครู้สึกว่าหลักฐานนั้นเกี่ยวข้องและช่วยวินิจฉัยคุณภาพของสินค้าได้จริง ([MDPI](https://www.mdpi.com/0718-1876/19/2/55?utm_source=chatgpt.com))\n\n## **หลักการ**\n\nProof from people like me is stronger than generic popularity.\n\n## **KPI**\n\n* Course page conversion  \n* Testimonial interaction  \n* Conversion by persona  \n* Review submission rate  \n* Verified review ratio\n\n## **ประโยคใช้พูด**\n\n“Social Proof ที่มีประสิทธิภาพไม่ใช่แค่การบอกว่ามีคนเรียนเยอะ แต่ต้องทำให้ลูกค้าเห็นคนที่มีจุดเริ่มต้นคล้ายเขา และเห็นผลลัพธ์ที่เกิดขึ้นหลังเรียนอย่างตรวจสอบได้”\n\n---\n\n# **7\\. เปลี่ยน Certificate เป็น Stackable Credential และ Portfolio**\n\n## **สิ่งที่ควรทำ**\n\nCertificate ควรมีหลายระดับ\n\n### **Level 1: Certificate of Completion**\n\nยืนยันว่าเรียนครบ\n\n### **Level 2: Skill Badge**\n\nยืนยันว่าผ่านแบบทดสอบหรือโจทย์เฉพาะทักษะ\n\n### **Level 3: Verified Professional Credential**\n\nต้องผ่านหลายคอร์ส แบบทดสอบ และ Capstone Project\n\nตัวอย่าง:\n\nAI Fundamentals  \n        \\+  \nPrompt Engineering  \n        \\+  \nAI Workflow Automation  \n        \\+  \nCapstone Project  \n        \\=  \nFutureSkill Certified AI Productivity Professional\n\nเมื่อผู้เรียนได้ 3 จาก 5 Badge ระบบต้องแสดงว่า:\n\nเหลืออีกสองทักษะเพื่อรับ Professional Credential\n\nนี่สร้างเหตุผลให้กลับมาซื้อคอร์สถัดไปโดยไม่ต้องขายแบบตรงเกินไป\n\n## **Portfolio Layer**\n\nทุกโปรเจกต์ควรถูกเก็บไว้ใน FutureSkill Profile:\n\n* ชื่อโปรเจกต์  \n* เครื่องมือที่ใช้  \n* คะแนนตาม Rubric  \n* Feedback จาก Mentor  \n* Skill ที่พิสูจน์ได้  \n* ลิงก์สำหรับแชร์  \n* Employer Endorsement\n\nLinkedIn Learning ใช้ Learning Path และ Professional Certificate เพื่อให้ผู้เรียนพัฒนา ฝึก และแสดงทักษะ ส่วน Coursera วางตำแหน่งแพลตฟอร์มองค์กรในแนว Skills-first และทักษะที่วัดผลได้ ([LinkedIn](https://www.linkedin.com/business/learning/blog/ai-skills-that-stick-with-practice-first-learning?utm_source=chatgpt.com))\n\n## **KPI**\n\n* Credential enrollment  \n* Multi-course completion  \n* Second-course purchase  \n* Project submission  \n* Portfolio sharing  \n* Credential-to-job outcome\n\n## **ประโยคใช้พูด**\n\n“Certificate ใบเดียวอาจไม่เพียงพอที่จะสร้างการซื้อซ้ำ เราควรออกแบบ Credential ให้สะสมได้ เมื่อผู้เรียนเห็นว่ายังขาดอีกสองทักษะเพื่อได้ระดับ Professional เขาจะมีเหตุผลที่ชัดเจนในการกลับมาเรียนต่อ”\n\n---\n\n# **8\\. Community และ Social Accountability**\n\n## **สิ่งที่ควรทำ**\n\nสร้าง Community แยกตามเป้าหมาย ไม่ควรรวมทุกคนไว้ในกลุ่มเดียว เช่น:\n\n* AI Productivity Club  \n* Data Career Club  \n* Marketing Growth Club  \n* Leadership Circle  \n* Founder and SME Community\n\nภายในควรมี:\n\n* Weekly Challenge  \n* Study Buddy  \n* Team Quest  \n* Peer Review  \n* Mentor Office Hours  \n* Project Showcase  \n* Alumni Event  \n* Job and Project Opportunities\n\n## **รูปแบบ Gamification**\n\n### **Friend Quest**\n\nจับคู่ผู้เรียนสองคนให้ทำภารกิจ เช่น:\n\nเรียนครบคนละสองบทและส่ง Mini-project ภายในวันอาทิตย์\n\n### **Team Quest**\n\nทีม 4–6 คนได้รับคะแนนเมื่อสมาชิกทุกคนเรียนสำเร็จ ไม่ใช่ให้คนเก่งคนเดียวทำคะแนนสูงสุด\n\n### **Contribution Badge**\n\nให้รางวัลแก่ผู้ที่:\n\n* ตอบคำถามได้มีประโยชน์  \n* ให้ Feedback ที่มีคุณภาพ  \n* ช่วยผู้เรียนใหม่  \n* แชร์ Case Study  \n* จัดกิจกรรม Community\n\nHBS Online นำ Case Method, Peer Perspective และ Community มาเป็นส่วนหนึ่งของผลิตภัณฑ์ ผู้เรียนที่จบหลักสูตรสามารถเข้าถึง Networking Group และกิจกรรมต่าง ๆ ต่อหลังเรียน โดยข้อมูลสำรวจของ HBS Online ระบุว่าผู้เข้าร่วมจำนวนมากให้คุณค่ากับความรู้สึกเป็นส่วนหนึ่งของ Community และการเรียนรู้จากเพื่อนร่วมชั้น ([Harvard Business School](https://online.hbs.edu/?utm_source=chatgpt.com))\n\n## **KPI**\n\n* Community active rate  \n* Peer interactions per learner  \n* Friend Quest completion  \n* Cohort completion  \n* Alumni event participation  \n* Community-assisted retention\n\n## **ประโยคใช้พูด**\n\n“Community ไม่ควรเป็นแค่กลุ่มพูดคุย แต่ต้องเป็นส่วนหนึ่งของ Learning Journey ผู้เรียนควรต้องการกลับมาเพราะมีเพื่อน มีทีม มีชื่อเสียง และมีโอกาสที่เกิดจาก Community”\n\n---\n\n# **9\\. เปลี่ยน Event ให้เป็น Conversion Funnel**\n\nFutureSkill มี Event และคอร์สแบบรุ่นอยู่แล้ว แต่ Event ควรเชื่อมเข้ากับ Journey ก่อนและหลังงาน\n\n## **ก่อน Event**\n\n* Free Assessment  \n* Persona Survey  \n* เลือก Career Goal  \n* Preview Learning Path  \n* สมัคร Community  \n* เก็บข้อมูลความสนใจ\n\n## **ระหว่าง Event**\n\n* Case Workshop  \n* Live Poll  \n* Mini Challenge  \n* Skill Score  \n* Mentor Interaction  \n* เสนอ Next Step ที่ตรงกับผล Assessment\n\n## **หลัง Event**\n\nภายใน 24 ชั่วโมง:\n\n* ส่ง Personal Skill Report  \n* แนะนำคอร์สหรือ Cohort ถัดไป  \n* ให้ Bonus Credit ที่มีวันหมดอายุจริง  \n* เปิด Challenge เจ็ดวัน  \n* เชิญเข้า Community\n\nJourney ควรเป็น:\n\nEvent → Assessment → Free Challenge → Paid Cohort → Membership → Portfolio → Advanced Program\n\n## **KPI**\n\n* Registration-to-attendance  \n* Event-to-trial  \n* Event-to-paid conversion  \n* Revenue per attendee  \n* Cohort enrollment  \n* 30-day active rate\n\n## **ประโยคใช้พูด**\n\n“Event ไม่ควรจบเมื่อผู้เข้าร่วมเดินออกจากงาน ทุก Event ต้องมี Next Product และ Next Action ที่ชัดเจน เราต้องวัดรายได้และ Retention ที่เกิดขึ้นภายใน 30–90 วันหลัง Event”\n\n---\n\n# **10\\. B2B2C Flywheel**\n\nFutureSkill มีฐานลูกค้าองค์กร ระบบมอบหมายคอร์ส Personalized Learning Journey และ Dashboard อยู่แล้ว จึงควรสร้างระบบที่เปลี่ยน Corporate Learner ให้กลายเป็นสมาชิกส่วนตัวระยะยาว ([corporate.futureskill.co](https://corporate.futureskill.co/?utm_source=chatgpt.com))\n\n## **โมเดลที่เสนอ**\n\n### **Learning Wallet**\n\nบริษัทซื้อ Credit ให้พนักงาน เช่น:\n\n* 5,000 บาทต่อคนต่อปี  \n* ใช้กับคอร์ส Cohort, Workshop หรือ Assessment  \n* พนักงานสามารถจ่ายเพิ่มเองเมื่อ Credit ไม่พอ\n\n### **Portable Skill Passport**\n\nเมื่อโปรแกรมองค์กรจบ พนักงานยังสามารถเก็บ:\n\n* Learning History  \n* Skill Score  \n* Certificate  \n* Portfolio  \n* Community Status\n\nจากนั้นเสนอ:\n\nCorporate Alumni Membership ราคาพิเศษ 3–6 เดือน\n\n### **Co-pay Model**\n\n* บริษัทสนับสนุน 50%  \n* พนักงานจ่าย 50%  \n* FutureSkill มีรายได้ทั้งจากองค์กรและผู้เรียน\n\n### **Employer Challenge**\n\nบริษัทนำโจทย์จริงเข้ามาให้ผู้เรียนทำ เช่น:\n\n* สร้าง AI Workflow  \n* วิเคราะห์ข้อมูล  \n* ออกแบบแคมเปญ  \n* ปรับปรุง Customer Journey\n\nบริษัทจ่ายค่า Sponsor และสามารถมองเห็น Talent ที่มีผลงานจริง\n\n## **KPI**\n\n* Corporate seat activation  \n* Course completion by company  \n* Corporate learner-to-B2C conversion  \n* Co-pay adoption  \n* Corporate renewal  \n* Employer Challenge revenue\n\n## **ประโยคใช้พูด**\n\n“จุดแข็งที่คู่แข่ง B2C ทั่วไปไม่มีคือ FutureSkill มีความสัมพันธ์กับ HR อยู่แล้ว เราควรทำให้ผู้เรียนจากองค์กรสามารถเก็บ Skill Profile และต่อยอดเป็นสมาชิกส่วนตัวได้ โดยไม่ต้องเริ่มใหม่เมื่อโครงการบริษัทสิ้นสุด”\n\n---\n\n# **11\\. AI Learning Coach และ Next Best Action**\n\n## **สิ่งที่ควรทำ**\n\nAI Coach ไม่ควรทำหน้าที่แค่ตอบคำถาม แต่ควรช่วยกำกับ Journey:\n\n* แนะนำบทเรียนถัดไป  \n* สร้าง Weekly Mission  \n* สรุปบทเรียน  \n* สร้าง Quiz จากจุดอ่อน  \n* เตือนเมื่อใกล้หลุดจากเส้นทาง  \n* วิเคราะห์ Project ตาม Rubric  \n* แนะนำคอร์สต่อไป  \n* จำลองการสัมภาษณ์  \n* สร้าง Portfolio Summary\n\nตัวอย่างข้อความ:\n\n“คุณเรียน AI Fundamentals จบแล้ว แต่คะแนน Workflow Design ยังต่ำกว่าเป้าหมาย ทำภารกิจ 20 นาทีนี้เพื่อปลดล็อก AI Operator Level 2”\n\nNetflix ใช้ประวัติการใช้งานและข้อมูลคอนเทนต์เพื่อปรับ Recommendation และ Homepage ให้สัมพันธ์กับความสนใจและเจตนาของสมาชิก หลักการเดียวกันสามารถนำมาใช้กับ Next Best Course และ Next Best Action ของ FutureSkill ได้ ([Netflix Tech Blog](https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39?utm_source=chatgpt.com))\n\n## **KPI**\n\n* Recommendation click-through  \n* Recommended-course start  \n* Weekly mission completion  \n* Learning hours per active learner  \n* Churn prediction accuracy  \n* Reactivation conversion\n\n---\n\n# **12\\. OKR และ SMART ควรใช้อย่างไร**\n\nไม่ควรเรียกรวมว่า “OKR แบบ SMART” ทั้งหมด เพราะแต่ละกรอบมีหน้าที่ต่างกัน\n\n* **Objective:** ทิศทางที่มีความหมายและสร้างแรงขับเคลื่อน  \n* **Key Results:** ผลลัพธ์ที่วัดได้  \n* **SMART:** ใช้ตรวจสอบว่า KPI, Initiative หรือ Action Plan มีความชัดเจนและมีกรอบเวลาหรือไม่\n\nงานวิจัยด้าน Goal Setting พบว่าเป้าหมายที่เฉพาะเจาะจงและท้าทายมักนำไปสู่ผลงานที่ดีกว่าคำสั่งกว้าง ๆ เช่น “ทำให้ดีที่สุด” แต่สำหรับงานใหม่ที่ซับซ้อนควรใช้ Learning Goal และ Milestone ระยะสั้นร่วมด้วย\n\nGoogle re:Work แนะนำให้ OKR ใช้คำที่เป็นรูปธรรม เป็นกลาง และไม่กำกวม พร้อมเตือนว่า OKR ที่เขียนไม่ดีอาจทำให้กลยุทธ์สับสนหรือทำให้ทีมมุ่งรักษาตัวเลขเดิมแทนการสร้างผลลัพธ์ใหม่ ([Rework](https://rework.withgoogle.com/intl/en/guides/set-goals-with-okrs?utm_source=chatgpt.com))\n\n## **ตัวอย่าง OKR ที่ 1: Revenue**\n\n**Objective:** สร้างเครื่องยนต์รายได้ B2C ที่เติบโตจากลูกค้าเดิมและรายได้ประจำ\n\n**Key Results**\n\n* เพิ่ม Repeat Purchase ภายใน 90 วันจาก X% เป็น Y%  \n* เพิ่ม Annual Renewal จาก X% เป็น Y%  \n* เพิ่มรายได้จากสมาชิกและลูกค้าเดิมเป็น Y% ของรายได้ B2C  \n* รักษา LTV/CAC ไม่ต่ำกว่าเป้าหมายที่กำหนด\n\n## **ตัวอย่าง OKR ที่ 2: Learning Retention**\n\n**Objective:** ทำให้ผู้เรียนมองเห็นความก้าวหน้าและสร้างนิสัยเรียนต่อเนื่อง\n\n**Key Results**\n\n* เพิ่ม D30 Active Learner Retention จาก X% เป็น Y%  \n* เพิ่ม Course Completion จาก X% เป็น Y%  \n* เพิ่มผู้เรียนที่มี Weekly Goal อย่างน้อย X%  \n* เพิ่มจำนวน Verified Skills ต่อเดือนเป็น Y รายการ\n\n## **ตัวอย่าง OKR ที่ 3: Ecosystem**\n\n**Objective:** เชื่อม Event, B2B, Cohort และ B2C Membership เป็น Journey เดียวกัน\n\n**Key Results**\n\n* เปลี่ยนผู้ร่วม Event เป็นผู้ซื้อภายใน 30 วันอย่างน้อย X%  \n* เปลี่ยน Corporate Learner เป็น Personal Member อย่างน้อย X%  \n* สร้างรายได้จาก Employer Challenge จำนวน Y บาท  \n* เพิ่มสมาชิก Community ที่ Active รายเดือนเป็น Y คน\n\n---\n\n# **North Star Metric**\n\nตัวชี้วัดหลักที่เสนอคือ:\n\n**Monthly Verified Skill Progressors**\n\nหมายถึงจำนวนผู้ใช้ที่มีความก้าวหน้าทางทักษะที่พิสูจน์ได้ในแต่ละเดือน เช่น:\n\n* ผ่าน Skill Assessment  \n* เรียนจบ Milestone  \n* ผ่านแบบทดสอบ  \n* ส่ง Project  \n* ได้ Verified Badge  \n* เลื่อนระดับใน Career Path\n\nเหตุผลคือ Metric นี้เชื่อม:\n\n* การใช้งาน  \n* ผลลัพธ์การเรียน  \n* Retention  \n* Credential  \n* การซื้อซ้ำ  \n* Career Outcome\n\nไม่ควรใช้เพียงจำนวนวิดีโอที่เปิดดูหรือเวลาบนแพลตฟอร์ม เพราะอาจเพิ่ม Engagement โดยไม่เพิ่มความสามารถจริง\n\n---\n\n# **90-Day Execution Plan**\n\n## **วันที่ 1–30: Diagnose and Design**\n\n* วิเคราะห์ Funnel ปัจจุบันตั้งแต่ Traffic ถึง Renewal  \n* แบ่ง Persona และ Jobs-to-be-Done  \n* ตรวจสอบ Baseline ของ CAC, Conversion, Completion และ Repeat Purchase  \n* ออกแบบ Assessment Prototype  \n* เลือก Career Track สำหรับ Pilot สองสาย  \n* กำหนด Event-to-paid Funnel  \n* สร้าง Dashboard กลาง\n\n## **วันที่ 31–60: Pilot**\n\nเปิด Pilot สองเส้นทาง เช่น:\n\n* AI Productivity for Professionals  \n* Data Analytics Career Track\n\nทดลอง:\n\n* Good–Better–Best Pricing  \n* Personalized Roadmap  \n* Progress Bar สามระดับ  \n* Weekly Goal  \n* Stackable Badge  \n* Friend Quest  \n* Verified Social Proof\n\nใช้ A/B Test เทียบกับหน้าขายและ Journey เดิม\n\n## **วันที่ 61–90: Scale What Works**\n\n* ขยาย Feature ที่เพิ่ม Conversion และ Retention  \n* เปิด Employer-sponsored Challenge  \n* เชื่อม Corporate Learner เข้ากับ Personal Profile  \n* เปิด Corporate Alumni Offer  \n* สร้าง Quarterly Season  \n* กำหนด Product Roadmap 6–12 เดือน\n\n---\n\n# **สิ่งที่ควรหยุดหรือหลีกเลี่ยง**\n\n1. ลดราคาซ้ำจนลูกค้ารอแต่โปรโมชั่น  \n2. เพิ่มคอร์สโดยไม่มี Learning Path  \n3. ใช้แต้มจากการดูวิดีโอแทนผลลัพธ์จริง  \n4. ใช้ Countdown และ Scarcity ปลอม  \n5. สร้าง Community ที่ไม่มีภารกิจหรือเจ้าของ  \n6. จัด Event โดยไม่มี Next Product  \n7. วัดเพียงยอดขาย โดยไม่วัด Retention และ Completion  \n8. ให้ Recommendation เหมือนกันทุกคน  \n9. แจก Certificate ทุกแบบจน Credential ไม่มีความหมาย  \n10. แยก B2B, B2C, Event และ Cohort ออกจากกันจนไม่มี Customer Journey ต่อเนื่อง\n\n# **สคริปต์สรุปสำหรับใช้พูดในที่ประชุม**\n\nมุมมองของฉันคือ FutureSkill มีสินทรัพย์สำคัญอยู่แล้ว ทั้งคอร์สจำนวนมาก ผู้สอน Event, Cohort และฐานลูกค้าองค์กร สิ่งที่ควรทำต่อไม่ใช่เพียงเพิ่มคอร์สหรือเพิ่มงบโฆษณา แต่คือเชื่อมสินทรัพย์ทั้งหมดให้เป็น Career Growth Ecosystem เดียวกัน\n\nJourney ควรเริ่มจาก Skill Assessment เพื่อให้ผู้ใช้รู้ว่าตนเองอยู่ระดับใดและต้องพัฒนาอะไรต่อ ระบบจึงสร้าง Personalized Career Path และเสนอแพ็กเกจที่เหมาะกับเป้าหมาย ไม่ใช่ให้ลูกค้าเลือกจากคอร์สหลายร้อยรายการเอง\n\nในด้าน Conversion ฉันเสนอให้ลดความซับซ้อนของราคาเป็นสามระดับ ได้แก่ Learn, Career Pro และ Career Plus โดยใช้การเปรียบเทียบคุณค่าที่ชัดเจน พร้อมกลุ่มรุ่นที่มีจำนวนจำกัดหรือ Time-bound Offer เฉพาะกรณีที่มีจำนวนที่นั่งและระยะเวลาจริง เพื่อสร้างความเร่งด่วนโดยไม่ทำลายความน่าเชื่อถือของแบรนด์\n\nหลังการซื้อ เราต้องสร้างระบบที่ทำให้ความก้าวหน้ามองเห็นได้ ไม่ใช่มีเพียงเปอร์เซ็นต์การดูวิดีโอ แต่ต้องมี Course Progress, Skill Progress และ Career Progress รวมถึง Weekly Goal, Flexible Streak, Skill Tree และ Next Best Action เพื่อทำให้ผู้เรียนรู้ว่าต้องทำอะไรต่อและใกล้ถึงเป้าหมายเพียงใด\n\nSocial Proof ควรเปลี่ยนจากการบอกว่ามีคนเรียนจำนวนมาก ไปเป็นการแสดงผลลัพธ์จากผู้เรียนที่มีพื้นฐานคล้ายกับลูกค้า เช่น เปลี่ยนสายงาน สร้าง Portfolio ใช้ AI ลดเวลาทำงาน หรือได้รับการเลื่อนตำแหน่ง หลักฐานต้องตรวจสอบได้และเชื่อมกับแต่ละ Persona\n\nCertificate ควรพัฒนาเป็น Stackable Credential ผู้เรียนสะสมหลาย Skill Badge เพื่อปลดล็อก Professional Credential พร้อมเก็บ Project ไว้ใน Portfolio Profile วิธีนี้ทำให้การเรียนคอร์สถัดไปเป็นส่วนหนึ่งของเป้าหมาย ไม่ใช่การขายคอร์สแยกอีกหนึ่งรายการ\n\nEvent และ Cohort ต้องเป็นส่วนหนึ่งของ Funnel ก่อนงานเราควรมี Assessment ระหว่างงานมี Mini Challenge และหลังงานต้องส่ง Personal Skill Report พร้อม Next Product ที่ชัดเจน เพื่อเปลี่ยนผู้เข้าร่วม Event ไปสู่ Cohort, Membership และ Advanced Program\n\nอีกโอกาสสำคัญคือการเชื่อม B2B กับ B2C พนักงานที่เรียนผ่านบริษัทควรเก็บ Skill Profile, Certificate และ Portfolio ไว้ได้หลังโปรแกรมจบ จากนั้น FutureSkill สามารถเสนอ Corporate Alumni Membership หรือโมเดลที่บริษัทและพนักงานร่วมกันจ่าย เพื่อเปลี่ยนผู้เรียนองค์กรให้เป็นสมาชิกระยะยาว\n\nNorth Star Metric ที่ฉันเสนอไม่ใช่จำนวนคอร์สที่ขายหรือจำนวนชั่วโมงที่ดู แต่คือ Monthly Verified Skill Progressors หรือจำนวนผู้เรียนที่มีความก้าวหน้าทางทักษะที่พิสูจน์ได้ในแต่ละเดือน เพราะตัวเลขนี้เชื่อมทั้ง Engagement, Completion, Retention, Career Outcome และรายได้ระยะยาว\n\nเป้าหมายสุดท้ายคือทำให้ลูกค้าไม่ได้กลับมาเพราะ FutureSkill มีโปรโมชั่นใหม่ แต่กลับมาเพราะเห็นว่าตนเองกำลังเข้าใกล้เป้าหมายทางอาชีพ และการออกจาก Ecosystem หมายถึงการสูญเสียความก้าวหน้า Community, Portfolio และโอกาสที่สะสไว้\n\n# **ชุดคำถาม–คำตอบสัมภาษณ์เชิงลึก**\n\n## **ตำแหน่ง Head of B2C — FutureSkill**\n\n---\n\n# **1\\. ช่วยแนะนำตัวและอธิบายว่าประสบการณ์ของคุณเหมาะกับ Head of B2C อย่างไร**\n\n**คำตอบ**\n\nฉันมีประสบการณ์มากกว่า 10 ปีในธุรกิจ B2C, Digital Platform, Gaming, Fintech, Payment และ Web3 โดยเริ่มจากสาย Marketing และ Business Development ก่อนเติบโตมารับผิดชอบธุรกิจในระดับ CEO\n\nจุดแข็งของฉันคือการเชื่อมกลยุทธ์กับการปฏิบัติจริง ฉันไม่ได้ดูเฉพาะ Marketing หรือ Sales แต่เคยรับผิดชอบตั้งแต่ Business Model, Product Roadmap, Pricing, Customer Acquisition, Retention, Partnership, Financial Model, P\\&L Planning และการบริหารทีมข้ามสายงาน\n\nผลงานที่ชัดเจนที่สุดคือการสร้างแพลตฟอร์มผู้บริโภคใหม่ตั้งแต่ศูนย์ ตั้งแต่แนวคิด การระดมทุน การพัฒนาผลิตภัณฑ์ การหาพันธมิตร ไปจนถึง Commercial Launch และสร้างรายได้ 66 ล้านบาทใน 3 เดือนแรก พร้อม Retention 38% และการเติบโตเฉลี่ย 26% ต่อเดือน\n\nดังนั้นสิ่งที่สอดคล้องกับ Head of B2C คือฉันสามารถรับผิดชอบธุรกิจแบบครบวงจร ทั้งรายได้ กำไร ลูกค้า ผลิตภัณฑ์ กระบวนการทำงาน และทีมงาน\n\n**คำถามเจาะต่อ: คุณต่างจาก Head of Marketing อย่างไร**\n\nHead of Marketing มักรับผิดชอบ Demand Generation, Brand และ Customer Acquisition แต่ Head of B2C ต้องรับผิดชอบผลประกอบการทั้งหมด ตั้งแต่ Revenue, Margin, Retention, Product, Customer Experience ไปจนถึง Team Performance\n\nฉันมองตำแหน่งนี้เหมือน General Manager หรือ CEO ของหน่วยธุรกิจย่อย ซึ่งตรงกับประสบการณ์เดิมของฉันมากกว่าเป็นตำแหน่งการตลาดเพียงอย่างเดียว\n\n---\n\n# **2\\. อะไรคือผลงานด้านการขยายธุรกิจที่สำคัญที่สุดของคุณ**\n\n**คำตอบ**\n\nผลงานที่สำคัญที่สุดคือการสร้างแพลตฟอร์มเกมสำหรับผู้บริโภคตั้งแต่แนวคิดจนเปิดให้บริการจริง\n\n**แนวคิด**\n\nฉันเริ่มจากการมองว่าธุรกิจต้องมี Product–Market Fit และ Unit Economics ที่เป็นไปได้ก่อน ไม่ใช่เริ่มจากการใช้เงินทำการตลาดทันที\n\n**กระบวนการ**\n\nฉันวางแผนครบตั้งแต่:\n\n1. วิเคราะห์กลุ่มลูกค้าและพฤติกรรมการจ่าย  \n2. กำหนด Product Positioning และ Pricing  \n3. วาง Customer Acquisition Plan  \n4. สร้าง Product Roadmap  \n5. ทำ Financial Model และ P\\&L Plan  \n6. หา Partner และ Game Studio จากจีนและเกาหลี  \n7. เตรียม Payment, Customer Service และระบบหลังบ้าน  \n8. เปิดตัวและติดตาม KPI แบบรายวันและรายสัปดาห์\n\n**ผลลัพธ์**\n\nแพลตฟอร์มสร้างรายได้ 66 ล้านบาทภายใน 3 เดือนแรก มี Retention 38%, MoM Growth 26%, Peak Concurrent Users 299,000 คน และ ARPPU 898 บาท\n\nบทเรียนสำคัญคือการ Scale ไม่ได้เกิดจาก Marketing อย่างเดียว แต่ต้องทำให้ Product, Payment, Customer Experience, Technology และ Operation รองรับการเติบโตพร้อมกัน\n\n---\n\n# **3\\. หากได้รับตำแหน่ง คุณจะเริ่มต้นวิเคราะห์ธุรกิจ B2C ของ FutureSkill อย่างไร**\n\n**คำตอบ**\n\nฉันจะเริ่มจากการวิเคราะห์ธุรกิจใน 4 มิติ ได้แก่ Customer, Funnel, Financial และ Organization\n\n### **1\\. Customer**\n\nฉันจะดูว่าใครคือลูกค้าหลักของ FutureSkill แต่ละกลุ่มซื้อเพราะอะไร และผลลัพธ์ที่ต้องการคืออะไร เช่น:\n\n* ต้องการเพิ่มทักษะในงานปัจจุบัน  \n* ต้องการเปลี่ยนสายงาน  \n* ต้องการเลื่อนตำแหน่ง  \n* ต้องการใช้ AI เพิ่ม Productivity  \n* ต้องการ Certificate หรือ Portfolio\n\n### **2\\. Funnel**\n\nฉันจะวิเคราะห์ตั้งแต่:\n\nTraffic → Registration → Trial → Purchase → Course Start → Completion → Repeat Purchase → Renewal\n\nเพื่อหาว่าลูกค้าหลุดออกจาก Journey มากที่สุดตรงไหน\n\n### **3\\. Financial**\n\nฉันจะดู:\n\n* Revenue by product  \n* Gross Margin  \n* Contribution Margin  \n* CAC  \n* LTV  \n* Payback Period  \n* Churn  \n* Average Order Value  \n* Repeat Purchase\n\n### **4\\. Organization**\n\nฉันจะดูโครงสร้างทีม KPI กระบวนการระหว่าง Marketing, Sales, Customer Experience และ Course Team รวมถึงความพร้อมของข้อมูลและระบบ\n\nหลังจากนั้นฉันจะสรุปออกมาเป็น:\n\n* ปัญหาที่ต้องแก้ทันที  \n* Quick Wins  \n* Structural Problems  \n* Growth Opportunities  \n* Roadmap ระยะ 90 วันและ 1 ปี\n\n---\n\n# **4\\. แผน 90 วันแรกของคุณจะเป็นอย่างไร**\n\n**คำตอบ**\n\nฉันจะแบ่งเป็นสามช่วง\n\n## **วันที่ 1–30: Diagnose**\n\nเป้าหมายคือทำความเข้าใจธุรกิจจริงก่อนเปลี่ยนแปลง\n\nฉันจะ:\n\n* อ่าน P\\&L และ Forecast  \n* วิเคราะห์ Funnel  \n* สัมภาษณ์ทีมและผู้บริหาร  \n* ฟัง Voice of Customer  \n* วิเคราะห์ Product Portfolio  \n* ตรวจสอบ KPI และ Dashboard  \n* ดู Conversion, Completion, Repeat Purchase และ Churn  \n* ระบุช่องว่างระหว่าง Marketing, Sales และ CX\n\nผลลัพธ์ที่ต้องได้คือ Baseline และ Business Diagnosis ที่ทุกฝ่ายเห็นตรงกัน\n\n## **วันที่ 31–60: Prioritize and Pilot**\n\nฉันจะเลือกโครงการที่มีผลกระทบสูงประมาณ 2–3 เรื่อง เช่น:\n\n* ปรับ Pricing และ Packaging  \n* สร้าง Personalized Learning Path  \n* ปรับ Event-to-paid Funnel  \n* สร้าง Retention Campaign  \n* ทดลอง Stackable Credential  \n* ปรับ Sales และ Marketing Handoff\n\nทุกโครงการต้องมี Owner, KPI, Timeline และ Financial Impact\n\n## **วันที่ 61–90: Scale and Institutionalize**\n\nฉันจะขยายสิ่งที่ Pilot แล้วได้ผล พร้อมกำหนด:\n\n* Quarterly OKR  \n* Weekly Business Review  \n* Monthly Business Review  \n* Dashboard กลาง  \n* Budget Allocation  \n* Product Roadmap  \n* Hiring และ Capability Plan\n\nเป้าหมายของ 90 วันแรกไม่ใช่เปลี่ยนทุกอย่าง แต่คือทำให้ทีมรู้ว่าปัญหาหลักอยู่ที่ไหน และเริ่มเห็นผลจากโครงการที่วัดได้\n\n---\n\n# **5\\. คุณจะกำหนดกลยุทธ์รายไตรมาสและระยะ 1–3 ปีอย่างไร**\n\n**คำตอบ**\n\nฉันจะแยก Strategy ออกเป็นสองระดับ\n\n## **ระดับรายไตรมาส**\n\nฉันจะเน้นปัญหาที่มีผลต่อผลประกอบการในระยะสั้น เช่น:\n\n* Conversion ต่ำ  \n* CAC สูง  \n* ผู้เรียนซื้อแล้วไม่เริ่มเรียน  \n* Completion ต่ำ  \n* Repeat Purchase ต่ำ  \n* Subscription Renewal ต่ำ\n\nจากนั้นกำหนด Objective และ Key Results ที่วัดได้ เช่น:\n\n**Objective:** เพิ่มรายได้จากลูกค้าเดิมและการซื้อซ้ำ\n\n**Key Results:**\n\n* เพิ่ม Repeat Purchase จาก X% เป็น Y%  \n* เพิ่ม Course Completion จาก X% เป็น Y%  \n* เพิ่ม Renewal จาก X% เป็น Y%  \n* ลด Churn ลง X%  \n* รักษา Contribution Margin ไม่ต่ำกว่า Y%\n\n## **ระยะ 1–3 ปี**\n\nฉันจะกำหนดว่า FutureSkill ควรพัฒนาไปเป็นธุรกิจแบบใด\n\nมุมมองของฉันคือ FutureSkill ควรขยับจาก Course Marketplace ไปสู่ Career Growth Ecosystem ที่เชื่อม:\n\n* Skill Assessment  \n* Personalized Learning Path  \n* Course  \n* Cohort  \n* Event  \n* Community  \n* Project  \n* Credential  \n* Portfolio  \n* Career Opportunity\n\nกลยุทธ์ระยะยาวต้องตอบให้ได้ว่า FutureSkill จะสร้าง Recurring Revenue, Customer Lifetime Value และ Competitive Advantage อย่างไร\n\n---\n\n# **6\\. คุณจะเลือก Growth Lever ใหม่อย่างไร**\n\n**คำตอบ**\n\nฉันจะไม่เริ่มจากการถามว่า “เราควรสร้างอะไรเพิ่ม” แต่จะเริ่มจากสามคำถาม:\n\n1. ลูกค้ามีปัญหาอะไรที่ยังไม่ได้รับการแก้ไข  \n2. FutureSkill มีสินทรัพย์อะไรอยู่แล้ว  \n3. โมเดลใดสามารถสร้างทั้ง Revenue และ Retention ได้\n\nฉันจะประเมิน Growth Lever ด้วยกรอบ:\n\n* Customer Demand  \n* Strategic Fit  \n* Revenue Potential  \n* Margin  \n* Development Cost  \n* Time to Market  \n* Scalability  \n* Risk\n\nตัวอย่าง Growth Lever ที่เหมาะกับ FutureSkill ได้แก่:\n\n* Skill Assessment  \n* Career Membership  \n* Stackable Credential  \n* Mentor Marketplace  \n* Employer-sponsored Challenge  \n* Corporate-to-B2C Conversion  \n* Creator Subscription  \n* SME Learning Wallet  \n* Talent Profile\n\nฉันจะเริ่มด้วย MVP หรือ Pilot ขนาดเล็ก ตั้ง Success Metrics และหยุดโครงการเร็วหากไม่ผ่านสมมติฐาน\n\n---\n\n# **7\\. คุณจะจัดสรรงบ Marketing, Sales และ Product อย่างไร**\n\n**คำตอบ**\n\nฉันจะจัดสรรงบจากผลตอบแทน ไม่ใช่จากงบของปีที่แล้วหรือการแบ่งเท่ากันทุกทีม\n\n**กระบวนการ**\n\nฉันจะทำสามขั้นตอน:\n\n### **1\\. กำหนดเป้าหมายของแต่ละงบ**\n\nตัวอย่าง:\n\n* Marketing ใช้สร้าง Demand และ Acquisition  \n* Sales ใช้เพิ่ม Conversion  \n* Product ใช้เพิ่ม Activation, Retention หรือ Revenue  \n* CX ใช้ลด Churn และ Complaint\n\n### **2\\. คำนวณผลตอบแทน**\n\nฉันจะดู:\n\n* Incremental Revenue  \n* Contribution Margin  \n* CAC  \n* Payback Period  \n* Retention Impact  \n* Strategic Value\n\n### **3\\. ทำ Scenario Comparison**\n\nเช่น หากมีงบเพิ่ม 5 ล้านบาท ฉันจะเปรียบเทียบว่า:\n\n* เพิ่ม Paid Media  \n* เพิ่ม Sales Capacity  \n* พัฒนา Personalized Recommendation  \n* ลงทุนใน Retention Program\n\nทางเลือกใดสร้าง Contribution Margin สูงที่สุดและคืนทุนเร็วที่สุด\n\nฉันจะทบทวนการจัดสรรงบเป็นรายเดือน และสามารถโยกงบจากช่องทางที่ให้ผลตอบแทนต่ำไปยังช่องทางที่ดีกว่าได้\n\n---\n\n# **8\\. คุณมีแนวคิดอย่างไรกับการใช้จิตวิทยาการขาย**\n\n**คำตอบ**\n\nฉันเชื่อว่าจิตวิทยาการขายควรใช้เพื่อลดความไม่แน่ใจและช่วยให้ลูกค้าตัดสินใจง่ายขึ้น ไม่ใช่ใช้เพื่อกดดันหรือหลอกลูกค้า\n\nแนวทางที่ฉันใช้ ได้แก่:\n\n### **Choice Architecture**\n\nลดจำนวนตัวเลือกและจัดแพ็กเกจให้เปรียบเทียบง่าย เช่น Learn, Career Pro และ Career Plus\n\n### **Anchoring**\n\nแสดงคุณค่าและองค์ประกอบทั้งหมดก่อนแสดงราคาสมาชิก แต่ราคาที่ใช้อ้างอิงต้องเป็นราคาที่มีอยู่จริง\n\n### **Social Proof**\n\nใช้ผลลัพธ์ของผู้เรียนที่มี Persona ใกล้เคียงกับลูกค้า ไม่ใช่บอกเพียงว่ามีคนเรียนจำนวนมาก\n\n### **Loss Aversion**\n\nแสดงให้ลูกค้าเห็นต้นทุนของการไม่พัฒนาทักษะ เช่น พลาดโอกาสเลื่อนตำแหน่ง แต่ต้องไม่สร้างความกลัวเกินจริง\n\n### **Scarcity และ Urgency**\n\nใช้กับ Cohort, Workshop หรือ Mentor Slot ที่มีข้อจำกัดจริง ไม่ใช้ Countdown ปลอม\n\n### **Progress Effect**\n\nแสดงให้ลูกค้าเห็นว่าเขาเริ่มต้นไปแล้วและเหลืออีกเท่าไรจึงถึงเป้าหมาย\n\nหลักการสำคัญของฉันคือทุกกลยุทธ์ต้องรักษา Trust เพราะธุรกิจการศึกษาต้องพึ่งการซื้อซ้ำและการบอกต่อระยะยาว\n\n---\n\n# **9\\. คุณมีประสบการณ์บริหาร P\\&L อย่างไร**\n\n**คำตอบ**\n\nฉันเคยรับผิดชอบ Financial Model, P\\&L Planning, Revenue Forecast, Pricing และการจัดสรรงบประมาณของธุรกิจและโครงการใหม่\n\nเวลาบริหาร P\\&L ฉันจะมองเป็น Driver Tree ไม่ใช่มองเพียงตัวเลขรวม\n\nตัวอย่างเช่น:\n\nRevenue \\= Traffic × Conversion × Average Order Value\n\nและ:\n\nContribution Margin \\= Revenue − Variable COGS − Variable Sales and Marketing Cost\n\nหากกำไรต่ำกว่าเป้า ฉันจะแยกดูว่าเกิดจาก:\n\n* Volume ต่ำ  \n* Price ต่ำ  \n* Product Mix เปลี่ยน  \n* Discount สูง  \n* CAC สูง  \n* COGS สูง  \n* Commission สูง  \n* Retention ต่ำ\n\nจากนั้นจึงกำหนด Corrective Action ที่ตรงกับต้นเหตุ\n\nฉันให้ความสำคัญกับ Cashflow ด้วย เพราะบางธุรกิจอาจมี Revenue ทางบัญชีหรือยอดขายสูง แต่กระแสเงินสดไม่เพียงพอสำหรับการดำเนินงานและการลงทุน\n\n---\n\n# **10\\. หากรายได้ต่ำกว่า Forecast คุณจะจัดการอย่างไร**\n\n**คำตอบ**\n\nฉันจะไม่เริ่มด้วยการลดราคาหรือเพิ่มงบโฆษณาทันที แต่จะทำ Variance Analysis ก่อน\n\n**กระบวนการ**\n\n### **ขั้นที่ 1: แยก Gap**\n\nตัวอย่าง:\n\n* Target 20 ล้านบาท  \n* Forecast ล่าสุด 18 ล้านบาท  \n* Actual 16 ล้านบาท  \n* Gap เท่ากับ 4 ล้านบาท\n\n### **ขั้นที่ 2: วิเคราะห์ Driver**\n\nฉันจะดูว่าเกิดจาก:\n\n* Traffic ต่ำกว่าเป้า  \n* Lead ต่ำ  \n* Conversion ลดลง  \n* Average Order Value ลด  \n* Sales Productivity ต่ำ  \n* Product Launch ล่าช้า  \n* Renewal ต่ำ  \n* Refund สูง\n\n### **ขั้นที่ 3: แยกปัจจัยภายในและภายนอก**\n\nปัจจัยภายในอาจแก้ด้วย Process, Offer, Product หรือทีม ส่วนปัจจัยภายนอกอาจต้องปรับ Forecast และ Resource Allocation\n\n### **ขั้นที่ 4: Corrective Action**\n\nทุก Action ต้องมี:\n\n* Owner  \n* Deadline  \n* Expected Impact  \n* Cost  \n* Risk  \n* Leading Indicator\n\nตัวอย่างเช่น หาก Traffic ปกติแต่ Conversion ลด ฉันจะเน้น Offer, Pricing, Landing Page และ Sales Process มากกว่าซื้อ Traffic เพิ่ม\n\n---\n\n# **11\\. คุณจะบริหาร CAC, LTV และ Churn อย่างไร**\n\n**คำตอบ**\n\nฉันจะไม่ดู CAC แยกจาก LTV เพราะช่องทางที่ CAC สูงอาจยังคุ้ม หากลูกค้ามี Retention และ Lifetime Value สูง\n\nฉันจะแบ่งลูกค้าตาม:\n\n* Acquisition Channel  \n* Product  \n* Persona  \n* Cohort  \n* Payment Plan  \n* Customer Tenure\n\nจากนั้นวิเคราะห์ว่าแต่ละกลุ่มมี:\n\n* CAC เท่าไร  \n* Conversion เท่าไร  \n* Gross Margin เท่าไร  \n* Repeat Purchase เท่าไร  \n* Churn เท่าไร  \n* Payback Period เท่าไร\n\nสำหรับการลด Churn ฉันจะดูทั้ง:\n\n* Product Churn  \n* Content Churn  \n* Experience Churn  \n* Price Churn  \n* Motivation Churn\n\nตัวอย่างเช่น หากผู้เรียนซื้อแล้วไม่เริ่มเรียนภายใน 7 วัน ความเสี่ยงที่จะไม่เรียนจบและไม่ต่ออายุจะสูงขึ้น ระบบจึงควรมี Activation Flow, Learning Plan และ Reminder ตั้งแต่วันแรก\n\n---\n\n# **12\\. คุณจะออกแบบ Pricing และ Packaging ให้ FutureSkill อย่างไร**\n\n**คำตอบ**\n\nฉันจะเริ่มจาก Customer Segment และ Jobs-to-be-Done ไม่ใช่เริ่มจากคู่แข่งตั้งราคาเท่าไร\n\nตัวอย่างแพ็กเกจอาจแบ่งเป็น:\n\n### **Learn**\n\nสำหรับผู้เรียนด้วยตนเอง เน้นคอร์สและ Certificate\n\n### **Career Pro**\n\nเพิ่ม Assessment, Career Path, Community, Project และ Workshop Credit\n\n### **Career Plus**\n\nเพิ่ม Mentor, Portfolio Review, Employer Project และ Talent Showcase\n\n**แนวคิด**\n\nลูกค้าไม่ได้ต้องการ Feature มากที่สุด แต่ต้องการแพ็กเกจที่เหมาะกับผลลัพธ์ของตนเอง\n\n**กระบวนการทดสอบ**\n\nฉันจะใช้:\n\n* Customer Interview  \n* Willingness-to-pay Survey  \n* A/B Testing  \n* Price Elasticity  \n* Package Mix  \n* Conversion  \n* Contribution Margin  \n* Refund Rate\n\nเป้าหมายไม่ใช่เพิ่ม Conversion อย่างเดียว แต่ต้องเพิ่ม Revenue per Customer และ Margin โดยไม่ทำลาย Brand Value\n\n---\n\n# **13\\. คุณมีแนวคิดอย่างไรกับ Full-funnel Marketing**\n\n**คำตอบ**\n\nฉันมอง Full Funnel เป็นระบบเดียวกัน ไม่ควรแบ่งว่า Marketing จบเมื่อได้ Lead และ Sales เริ่มจากจุดนั้น\n\nFunnel ที่ฉันจะติดตามคือ:\n\nAwareness → Traffic → Registration → Qualified Lead → Purchase → Activation → Completion → Repeat Purchase → Renewal → Referral\n\nแต่ละช่วงต้องมี:\n\n* Owner  \n* KPI  \n* Conversion Rate  \n* Customer Message  \n* Data Source  \n* Improvement Plan\n\nตัวอย่างเช่น:\n\n* Awareness วัด Reach, Search Lift และ Branded Traffic  \n* Acquisition วัด CPL และ CAC  \n* Conversion วัด Purchase Rate และ Average Order Value  \n* Activation วัดการเริ่มเรียนภายใน 7 วัน  \n* Retention วัด Active Learning, Completion และ Renewal  \n* Advocacy วัด Referral และ Review\n\nจุดสำคัญคือทีมต้องไม่ Optimize KPI ของตัวเองจนกระทบ Funnel รวม เช่น Marketing สร้าง Lead จำนวนมากแต่คุณภาพต่ำ หรือ Sales ลดราคามากจน Margin และ Retention เสีย\n\n---\n\n# **14\\. คุณจะสร้างสมดุลระหว่าง Performance Marketing กับ Brand Marketing อย่างไร**\n\n**คำตอบ**\n\nPerformance Marketing สร้างผลลัพธ์ระยะสั้นที่วัดได้ ส่วน Brand Marketing ลดความไม่แน่ใจ สร้าง Trust และช่วยลด CAC ในระยะยาว\n\nฉันจะไม่แบ่งงบเป็นสัดส่วนตายตัว แต่พิจารณาจาก Stage ของธุรกิจ เป้าหมาย และ Demand\n\nPerformance Marketing ควรตอบคำถามว่า:\n\n* ใช้งบเท่าไร  \n* ได้ลูกค้ากี่คน  \n* CAC เท่าไร  \n* Payback เท่าไร  \n* ลูกค้ากลุ่มนั้นมี LTV เท่าไร\n\nBrand Marketing ควรวัดผ่าน:\n\n* Branded Search  \n* Direct Traffic  \n* Organic Conversion  \n* Share of Voice  \n* Consideration  \n* Assisted Conversion  \n* CAC Trend  \n* Referral\n\nสำหรับ FutureSkill Brand ควรยืนอยู่บนผลลัพธ์จริงของผู้เรียน ไม่ใช่เพียงการสื่อสารว่าเป็นแพลตฟอร์มที่มีคอร์สมาก\n\n---\n\n# **15\\. คุณจะทำให้ผู้เรียนกลับมาเรียนและซื้อซ้ำได้อย่างไร**\n\n**คำตอบ**\n\nฉันมองว่าการซื้อซ้ำต้องเริ่มตั้งแต่หลังการซื้อครั้งแรก ไม่ใช่รอจนลูกค้าเรียนจบแล้วจึงเสนอขายเพิ่ม\n\nฉันจะออกแบบ Retention Loop ดังนี้:\n\n1. ลูกค้าเลือก Career Goal  \n2. ทำ Skill Assessment  \n3. ได้ Personalized Learning Path  \n4. ตั้ง Weekly Learning Goal  \n5. เห็น Course, Skill และ Career Progress  \n6. ทำ Project  \n7. ได้ Skill Badge  \n8. ปลดล็อก Credential ระดับถัดไป  \n9. ได้รับคำแนะนำคอร์สหรือ Cohort ต่อเนื่อง\n\nGamification ที่ใช้ควรสร้างแรงจูงใจจากความก้าวหน้า เช่น:\n\n* Progress Bar  \n* Skill Tree  \n* Weekly Streak  \n* Milestone  \n* Badge  \n* Portfolio Completion  \n* Next Best Action\n\nฉันจะไม่ให้รางวัลเพียงจากการเปิดวิดีโอ แต่ให้จากการเรียนรู้และผลลัพธ์จริง เช่น ทำแบบทดสอบ ส่งงาน หรือสร้างโปรเจกต์สำเร็จ\n\n---\n\n# **16\\. คุณจะเปลี่ยน Customer Feedback ให้เป็น Product Roadmap อย่างไร**\n\n**คำตอบ**\n\nฉันจะสร้าง Voice of Customer System ที่รวมข้อมูลจาก:\n\n* Customer Interview  \n* Survey  \n* Support Ticket  \n* Course Review  \n* Refund Reason  \n* Cancellation Reason  \n* Sales Feedback  \n* Usage Data  \n* Funnel Drop-off\n\nจากนั้นแบ่งข้อมูลตาม Persona และ Customer Journey\n\n**กระบวนการจัดลำดับ**\n\nฉันจะประเมินแต่ละปัญหาจาก:\n\n* จำนวนลูกค้าที่ได้รับผลกระทบ  \n* ความรุนแรงของปัญหา  \n* Revenue Impact  \n* Retention Impact  \n* Strategic Fit  \n* Development Effort  \n* Risk\n\nตัวอย่างเช่น หากลูกค้าบอกว่า “มีคอร์สเยอะ แต่ไม่รู้จะเรียนอะไร” ปัญหาอาจไม่ใช่ Content Supply แต่เป็น Discovery และ Personalization\n\nดังนั้น Feature อย่าง Assessment, Personalized Path และ Next Best Course อาจสำคัญกว่าการเพิ่มคอร์สใหม่อีก 100 คอร์ส\n\n---\n\n# **17\\. คุณบริหารผู้จัดการและหลายทีมอย่างไร**\n\n**คำตอบ**\n\nในโครงสร้างทีมล่าสุด ฉันเคยดูแลพนักงานภายในประมาณ 28 คน พนักงานสัญญาจ้าง 12 คน Outsource 6 คน และมีผู้รายงานตรงประมาณ 8 คนจากหลายสายงาน\n\nแนวทางของฉันคือบริหารผ่านระบบและ Manager ไม่ใช่ลงไปควบคุมทุก Task\n\nฉันจะกำหนด:\n\n* Business Objective  \n* Team KPI  \n* Decision Rights  \n* Weekly Review  \n* One-on-One  \n* Monthly Performance Review  \n* Development Plan\n\nฉันใช้ OKR เพื่อกำหนดทิศทาง และใช้ SMART KPI เพื่อทำให้แต่ละงานมีเป้าหมาย ตัวเลข เจ้าของ และ Timeline ที่ชัดเจน\n\nเป้าหมายของฉันคือทำให้ Manager สามารถวิเคราะห์ปัญหา ตัดสินใจ และบริหารทีมได้เอง ไม่ต้องรอคำตอบจาก Head of B2C ทุกเรื่อง\n\n---\n\n# **18\\. หากผู้จัดการมีผลงานต่ำกว่าเป้า คุณจะทำอย่างไร**\n\n**คำตอบ**\n\nฉันจะไม่สรุปทันทีว่าเป็นปัญหาของคน แต่จะแยกสาเหตุออกเป็นห้าด้าน:\n\n1. Goal — เป้าหมายชัดหรือไม่  \n2. Skill — มีความสามารถเพียงพอหรือไม่  \n3. Resource — มีคน งบ และเครื่องมือเพียงพอหรือไม่  \n4. Process — กระบวนการมีปัญหาหรือไม่  \n5. Will — มีแรงจูงใจและ Ownership หรือไม่\n\nหลังจากทราบสาเหตุ ฉันจะให้ Feedback อย่างตรงไปตรงมา โดยระบุ:\n\n* Expected Standard  \n* Current Gap  \n* Business Impact  \n* Improvement Action  \n* Timeline  \n* Support ที่จะได้รับ\n\nหากจำเป็นจะทำ Performance Improvement Plan โดยมี Milestone ที่วัดได้\n\nหากได้รับการสนับสนุนแล้วแต่ยังไม่สามารถทำตามมาตรฐานได้ ฉันจะพิจารณาปรับบทบาทหรือเปลี่ยนคนอย่างมืออาชีพ เพราะการหลีกเลี่ยงบทสนทนาที่ยากจะสร้างผลกระทบกับทั้งทีม\n\n---\n\n# **19\\. คุณจัดการความขัดแย้งระหว่าง Marketing, Sales และ Customer Experience อย่างไร**\n\n**คำตอบ**\n\nฉันจะเริ่มจากทำให้ทุกทีมเห็น Customer Journey และ Business Goal เดียวกัน\n\nความขัดแย้งมักเกิดจาก KPI ที่ไม่เชื่อมกัน เช่น:\n\n* Marketing ต้องการ Lead จำนวนมาก  \n* Sales ต้องการ Lead คุณภาพสูง  \n* CX ต้องรับผลจากสิ่งที่ Sales สัญญาไว้\n\nฉันจะกำหนด:\n\n* Lead Definition  \n* Qualification Criteria  \n* SLA  \n* Handoff Process  \n* Shared Dashboard  \n* Shared KPI\n\nตัวอย่าง Shared KPI อาจเป็น Revenue Quality, 30-day Activation หรือ Repeat Purchase ไม่ใช่แค่จำนวน Lead หรือยอดขายครั้งแรก\n\nเมื่อเกิดความขัดแย้ง ฉันจะแยกคนออกจากปัญหา ใช้ข้อมูลและผลกระทบต่อลูกค้าเป็นหลัก แล้วกำหนด Decision Owner และ Next Action ที่ชัดเจน\n\n---\n\n# **20\\. คุณจะทำงานร่วมกับ CEO, B2B, Partnership และ CTO อย่างไร**\n\n**คำตอบ**\n\nฉันจะเริ่มจาก Company-level Objective ก่อน แล้วจึงแปลงเป็น BU Objective เพื่อป้องกันไม่ให้แต่ละฝ่าย Optimize เฉพาะเป้าหมายของตนเอง\n\nกับ CEO ฉันจะสื่อสารในรูปแบบ:\n\n* Business Performance  \n* Financial Impact  \n* Strategic Risk  \n* Options  \n* Decision Required\n\nกับ B2B ฉันจะหา Synergy เช่น:\n\n* ใช้ Content ร่วมกัน  \n* เปลี่ยน Corporate Learner เป็น B2C Member  \n* นำ B2C Trend ไปพัฒนาหลักสูตรองค์กร  \n* สร้าง Co-pay Model\n\nกับ Partnership ฉันจะพัฒนา Instructor, Creator, Employer และ Distribution Ecosystem\n\nกับ CTO ฉันจะสื่อสารเป็น Business Problem และ Product Outcome เช่น:\n\n* Feature นี้แก้ปัญหาอะไร  \n* ผู้ใช้กลุ่มใดได้รับผล  \n* KPI ใดจะเปลี่ยน  \n* ต้องใช้ทรัพยากรเท่าไร  \n* จะวัดความสำเร็จอย่างไร\n\nฉันมีประสบการณ์ดูแล Platform Execution ตั้งแต่ Requirement, PoC, Vendor Negotiation, Contract และ Launch จึงสามารถทำงานร่วมกับทีม Technology ได้ดี\n\n---\n\n# **21\\. Dashboard ของ Head of B2C ควรมีอะไรบ้าง**\n\n**คำตอบ**\n\nฉันจะแบ่ง Dashboard เป็นสี่ส่วน\n\n## **1\\. Commercial**\n\n* Traffic  \n* Leads  \n* Conversion  \n* Revenue  \n* Average Order Value  \n* Repeat Purchase  \n* Renewal\n\n## **2\\. Customer**\n\n* Active Learners  \n* Activation Rate  \n* Course Completion  \n* NPS  \n* CSAT  \n* Complaint  \n* Churn\n\n## **3\\. Financial**\n\n* Gross Margin  \n* Contribution Margin  \n* CAC  \n* LTV  \n* Payback Period  \n* OPEX  \n* EBITDA  \n* Cashflow\n\n## **4\\. Operational**\n\n* Course Launch  \n* Sales Productivity  \n* First Response Time  \n* Resolution Time  \n* Project Delivery  \n* Technology Issues\n\nDashboard ต้องแสดงทั้ง Lagging Indicator และ Leading Indicator\n\nRevenue เป็น Lagging Indicator แต่ Traffic, Qualified Lead, Activation และ Learning Frequency เป็น Leading Indicator ที่ช่วยเตือนปัญหาก่อนสิ้นเดือน\n\n---\n\n# **22\\. คุณจะจัด Operating Rhythm ของ BU อย่างไร**\n\n**คำตอบ**\n\nฉันจะกำหนดสามระดับ\n\n## **Weekly Business Review**\n\nใช้เวลาแก้ปัญหาระยะสั้นและดู Leading Indicator เช่น:\n\n* Traffic  \n* Lead  \n* Conversion  \n* Revenue  \n* Campaign  \n* Complaint  \n* Active Learners  \n* Project Risk\n\nประชุมต้องจบด้วย Owner และ Action ไม่ใช่เพียงรายงานตัวเลข\n\n## **Monthly Business Review**\n\nดูภาพรวม:\n\n* P\\&L  \n* Forecast  \n* Variance  \n* Funnel  \n* Customer Insight  \n* Team Performance  \n* Product Progress  \n* Resource Allocation\n\n## **Quarterly Planning**\n\nกำหนด:\n\n* Revenue Target  \n* Profit Target  \n* OKR  \n* Budget  \n* Product Priorities  \n* Campaign Calendar  \n* Hiring Plan  \n* Strategic Initiative  \n* Risk Scenario\n\nOperating Rhythm ที่ดีช่วยลดการประชุมที่ไม่มีการตัดสินใจ และทำให้ CEO เห็นสุขภาพของธุรกิจอย่างต่อเนื่อง\n\n---\n\n# **23\\. คุณตัดสินใจอย่างไรเมื่อข้อมูลไม่ครบและเวลาจำกัด**\n\n**คำตอบ**\n\nฉันจะแบ่งการตัดสินใจออกเป็นสองประเภท\n\n### **Reversible Decision**\n\nการตัดสินใจที่ทดลองและย้อนกลับได้ เช่น Campaign, Offer หรือ Landing Page ฉันจะตัดสินใจเร็ว ทำ Pilot และเก็บข้อมูล\n\n### **Irreversible Decision**\n\nการตัดสินใจที่มีต้นทุนสูงหรือย้อนกลับยาก เช่น Platform Investment, Long-term Contract หรือการปรับโครงสร้าง ฉันจะใช้ข้อมูลและ Risk Analysis มากขึ้น\n\nกระบวนการของฉันคือ:\n\n1. ระบุข้อมูลที่ทราบและไม่ทราบ  \n2. ระบุสมมติฐานสำคัญ  \n3. ประเมิน Upside และ Downside  \n4. กำหนดข้อมูลขั้นต่ำที่ต้องมี  \n5. ตัดสินใจ  \n6. ติดตาม Leading Indicator  \n7. ปรับแผนเมื่อมีข้อมูลใหม่\n\nประสบการณ์สร้างแพลตฟอร์มจากศูนย์ทำให้ฉันคุ้นเคยกับการทำงานในสถานการณ์ที่ข้อมูลไม่สมบูรณ์ แต่ยังต้องรักษาความเร็วในการแข่งขัน\n\n---\n\n# **24\\. คุณไม่มีประสบการณ์ EdTech โดยตรง จะเป็นข้อจำกัดหรือไม่**\n\n**คำตอบ**\n\nฉันยอมรับว่าประสบการณ์หลักของฉันไม่ได้มาจาก EdTech โดยตรง แต่ฉันมีประสบการณ์ในธุรกิจ Digital Platform และ Consumer Ecosystem ซึ่งมีองค์ประกอบใกล้เคียงกันมาก ได้แก่:\n\n* Customer Acquisition  \n* Subscription  \n* Digital Content  \n* Community  \n* Engagement  \n* Retention  \n* Monetization  \n* Platform Experience\n\nโดยเฉพาะประสบการณ์จาก Gaming สามารถนำมาประยุกต์ใช้กับ EdTech ได้ในเรื่อง:\n\n* Gamification  \n* Progression  \n* Reward  \n* Habit Loop  \n* Social Community  \n* Retention  \n* Personalization\n\nนอกจากนี้ฉันมีประสบการณ์เรียนรู้ธุรกิจใหม่และสร้างระบบจากศูนย์ จุดแข็งของฉันไม่ใช่เพียงความรู้ในอุตสาหกรรมเดิม แต่คือความสามารถในการวิเคราะห์ Business Model, Customer Behavior และสร้าง Growth System ที่วัดผลได้\n\nในช่วงแรกฉันจะชดเชยช่องว่างด้วยการฟังผู้เรียน ผู้สอน ทีมงาน และข้อมูลการใช้งานอย่างเป็นระบบ\n\n---\n\n# **25\\. กลยุทธ์ Ecosystem ที่คุณจะเสนอให้ FutureSkill คืออะไร**\n\n**คำตอบ**\n\nมุมมองของฉันคือ FutureSkill มีสินทรัพย์สำคัญอยู่แล้ว ทั้งคอร์ส ผู้สอน Event, Cohort และฐานลูกค้าองค์กร สิ่งที่ควรทำต่อไม่ใช่เพียงเพิ่มคอร์สหรือเพิ่มงบโฆษณา แต่คือเชื่อมสินทรัพย์ทั้งหมดให้เป็น Career Growth Ecosystem เดียวกัน\n\nJourney ควรเริ่มจาก Skill Assessment เพื่อให้ผู้ใช้รู้ว่าตนเองอยู่ระดับใดและต้องพัฒนาอะไรต่อ ระบบจึงสร้าง Personalized Career Path และเสนอแพ็กเกจที่เหมาะกับเป้าหมาย\n\nหลังการซื้อ ผู้เรียนควรเห็น Course Progress, Skill Progress และ Career Progress รวมถึง Weekly Goal, Flexible Streak, Skill Tree และ Next Best Action\n\nCertificate ควรพัฒนาเป็น Stackable Credential โดยให้ผู้เรียนสะสม Skill Badge และ Project เพื่อปลดล็อก Professional Credential\n\nEvent และ Cohort ควรเชื่อมเป็น Funnel ตั้งแต่ Assessment, Mini Challenge, Paid Program ไปจนถึง Membership และ Advanced Program\n\nอีกโอกาสสำคัญคือการเชื่อม B2B กับ B2C โดยให้พนักงานที่เรียนผ่านบริษัทสามารถเก็บ Skill Profile, Certificate และ Portfolio แล้วต่อยอดเป็นสมาชิกส่วนตัวได้\n\nเป้าหมายคือทำให้ลูกค้าไม่ได้กลับมาเพราะโปรโมชั่นใหม่ แต่กลับมาเพราะเห็นว่าตนเองกำลังเข้าใกล้เป้าหมายทางอาชีพ\n\n---\n\n# **26\\. North Star Metric ที่คุณเสนอคืออะไร**\n\n**คำตอบ**\n\nฉันเสนอให้ใช้ **Monthly Verified Skill Progressors**\n\nหมายถึงจำนวนผู้เรียนที่มีความก้าวหน้าทางทักษะที่พิสูจน์ได้ในแต่ละเดือน เช่น:\n\n* ผ่าน Assessment  \n* เรียนจบ Milestone  \n* ผ่านแบบทดสอบ  \n* ส่ง Project  \n* ได้ Skill Badge  \n* เลื่อนระดับใน Career Path\n\nฉันไม่เลือกจำนวนชั่วโมงที่ดูหรือจำนวนวิดีโอที่เปิด เพราะตัวเลขเหล่านั้นอาจเพิ่มขึ้นโดยที่ผู้เรียนไม่ได้พัฒนาทักษะจริง\n\nMonthly Verified Skill Progressors เชื่อมกับ:\n\n* Engagement  \n* Completion  \n* Retention  \n* Credential  \n* Repeat Purchase  \n* Career Outcome\n\nจากนั้นจึงดู Revenue, Renewal, LTV และ Contribution Margin เป็น Business Outcome ประกอบ\n\n---\n\n# **27\\. เหตุใดเราจึงควรเลือกคุณ**\n\n**คำตอบ**\n\nฉันคิดว่าสิ่งที่ฉันนำมาสู่ FutureSkill ได้คือประสบการณ์ในการบริหารธุรกิจ B2C แบบครบวงจร ไม่ได้จำกัดอยู่เพียง Marketing หรือ Sales\n\nฉันเคยสร้างแพลตฟอร์มจากศูนย์ไปสู่รายได้ 66 ล้านบาทใน 3 เดือน พร้อมรับผิดชอบ Product, Pricing, Customer Acquisition, Retention, Partnership, Financial Model และทีมข้ามสายงาน\n\nฉันสามารถมองทั้ง Growth และ P\\&L และสามารถเปลี่ยนกลยุทธ์ให้เป็นแผนงานที่มี KPI, Owner, Timeline และผลลัพธ์ที่วัดได้\n\nฉันยังมีประสบการณ์จาก Gaming และ Digital Platform ซึ่งสามารถนำมาประยุกต์ใช้กับ EdTech ในด้าน Gamification, Engagement, Subscription, Community และ Retention\n\nสิ่งที่ฉันต้องการทำไม่ใช่เพียงเพิ่มยอดขายระยะสั้น แต่คือสร้างระบบที่ทำให้ผู้เรียนได้รับผลลัพธ์จริง กลับมาเรียนต่อ ซื้อซ้ำ และทำให้ FutureSkill มีรายได้ที่เติบโตอย่างยั่งยืน\n\n---\n\n# \n\n# **คำถามกลับที่ควรถาม CEO**\n\n## **1\\. เป้าหมายสำคัญที่สุดของ B2C ใน 12 เดือนข้างหน้าคืออะไร**\n\n“ในมุมของ CEO ความสำเร็จที่สำคัญที่สุดของ Head of B2C ภายใน 12 เดือนคือ Revenue Growth, Profitability, Subscription Renewal หรือการเปลี่ยน Business Model คะ”\n\n## **2\\. ปัจจุบันปัญหาหลักของ B2C อยู่ตรงไหน**\n\n“ปัจจุบัน Challenge ที่สำคัญที่สุดอยู่ที่ Customer Acquisition, Conversion, Course Completion, Repeat Purchase หรือ Team Execution คะ”\n\n## **3\\. บริษัทมอง FutureSkill B2C ในระยะ 3 ปีอย่างไร**\n\n“บริษัทต้องการให้ FutureSkill B2C เติบโตเป็น Course Platform, Subscription Platform หรือ Career Development Ecosystem คะ”\n\n## **4\\. Head of B2C มี Decision Authority มากเพียงใด**\n\n“ตำแหน่งนี้มีอำนาจตัดสินใจด้าน Budget, Pricing, Product Priority และ Organization Structure ในระดับใดคะ”\n\n## **5\\. ความสัมพันธ์ระหว่าง B2C และ B2B เป็นอย่างไร**\n\n“ปัจจุบัน B2C และ B2B แชร์ Content, Customer Data, Technology และ Partnership กันอย่างไร และ CEO ต้องการให้เกิด Synergy เพิ่มขึ้นในด้านใดคะ”\n\n## **6\\. ตัวเลขที่ CEO ต้องการเห็นทุกสัปดาห์คืออะไร**\n\n“หากฉันต้องจัด Weekly Business Review ตัวเลขสามถึงห้าตัวที่ CEO ให้ความสำคัญมากที่สุดในปัจจุบันคืออะไรคะ”\n\n";
+
+    const CATEGORIES = {
+      root: { id: "root", label: "Head of B2C", short: "Root", color: "var(--gold)", icon: "◆" },
+      role_jd: { id: "role_jd", label: "Role & JD", short: "JD", color: "var(--blue)", icon: "R" },
+      candidate_profile: { id: "candidate_profile", label: "Candidate Profile", short: "Profile", color: "var(--cyan)", icon: "P" },
+      business_growth: { id: "business_growth", label: "Business Performance & Growth", short: "Growth", color: "var(--green)", icon: "G" },
+      financial_management: { id: "financial_management", label: "Financial Management", short: "Financial", color: "var(--amber)", icon: "F" },
+      team_leadership: { id: "team_leadership", label: "Team Leadership", short: "Leadership", color: "var(--purple)", icon: "L" },
+      cross_functional: { id: "cross_functional", label: "Cross-Functional Collaboration", short: "Cross-Functional", color: "var(--teal)", icon: "X" },
+      customer_market: { id: "customer_market", label: "Customer & Market Insight", short: "Customer", color: "var(--pink)", icon: "C" },
+      operational_excellence: { id: "operational_excellence", label: "Operational Excellence", short: "Operations", color: "var(--orange)", icon: "O" },
+      marketing_sales: { id: "marketing_sales", label: "Marketing & Sales", short: "Marketing", color: "var(--coral)", icon: "M" },
+      unit_economics: { id: "unit_economics", label: "B2C Unit Economics", short: "Unit Economics", color: "var(--yellow)", icon: "U" },
+      product_pricing: { id: "product_pricing", label: "Product, Pricing & Positioning", short: "Product", color: "var(--indigo)", icon: "P" },
+      retention_ecosystem: { id: "retention_ecosystem", label: "Retention & Ecosystem Strategy", short: "Ecosystem", color: "var(--indigo)", icon: "E" },
+      leadership_scenarios: { id: "leadership_scenarios", label: "Leadership Scenarios", short: "Scenarios", color: "var(--red)", icon: "S" },
+      day_90: { id: "day_90", label: "90-Day Plan", short: "90-Day", color: "var(--emerald)", icon: "90" },
+      executive_qa: { id: "executive_qa", label: "Executive Interview Q&A", short: "Interview Q&A", color: "var(--emerald)", icon: "Q" },
+      why_sasion: { id: "why_sasion", label: "Why Sasion", short: "Why Sasion", color: "var(--green)", icon: "W" },
+      questions_ceo: { id: "questions_ceo", label: "Questions for CEO", short: "Ask CEO", color: "var(--lightblue)", icon: "CEO" }
+    };
+
+    const PROOF_CARDS = [
+      { value: "฿66M", label: "Revenue in 3 months", queries: ["66 ล้านบาท", "66 million", "66 ล้านบาทภายใน 3 เดือน", "66 ล้านบาทใน 3 เดือนแรก"] },
+      { value: "38%", label: "Retention", queries: ["Retention 38%", "Retention 38", "38% retention", "Retention 38%"] },
+      { value: "26%", label: "MoM Growth", queries: ["26% ต่อเดือน", "26% month", "MoM Growth 26%", "26%"] },
+      { value: "299K", label: "Peak Concurrent Users", queries: ["299,000", "Peak Concurrent Users 299,000", "299000"] },
+      { value: "฿898", label: "ARPPU", queries: ["ARPPU 898", "898 บาท"] },
+      { value: "10+ Years", label: "Experience", queries: ["มากกว่า 10 ปี", "10 years"] },
+      { value: "28 Internal", label: "Team Members", queries: ["28 คน", "พนักงานภายในประมาณ 28 คน"] },
+      { value: "12 Contract", label: "Contract Team", queries: ["12 คน", "พนักงานสัญญาจ้าง 12 คน"] },
+      { value: "6 Outsource", label: "Outsource Team", queries: ["Outsource 6 คน", "Outsource 6"] },
+      { value: "8", label: "Direct Reports", queries: ["ผู้รายงานตรงประมาณ 8 คน", "8 คน"] }
+    ];
+
+    const JD_ALIGNMENT_ROWS = [
+      { requirement: "Scale B2C business", evidenceQuery: "66 ล้านบาทใน 3 เดือนแรก", proof: "฿66M in 3 months", questionQuery: "อะไรคือผลงานด้านการขยายธุรกิจที่สำคัญที่สุดของคุณ" },
+      { requirement: "Retention", evidenceQuery: "Retention 38%", proof: "38% retention", questionQuery: "คุณจะทำให้ผู้เรียนกลับมาเรียนและซื้อซ้ำได้อย่างไร" },
+      { requirement: "Financial management", evidenceQuery: "P&L", proof: "Revenue, forecast and variance management", questionQuery: "คุณมีประสบการณ์บริหาร P&L อย่างไร" },
+      { requirement: "Team leadership", evidenceQuery: "พนักงานภายในประมาณ 28 คน", proof: "28 + 12 + 6 with 8 direct reports", questionQuery: "คุณบริหารผู้จัดการและหลายทีมอย่างไร" },
+      { requirement: "Cross-functional", evidenceQuery: "CEO, B2B, Partnership และ CTO", proof: "End-to-end execution", questionQuery: "คุณจะทำงานร่วมกับ CEO, B2B, Partnership และ CTO อย่างไร" }
+    ];
+
+    const VIEW_STORAGE_KEY = "head_b2c_view";
+    const SIDEBAR_STORAGE_KEY = "head_b2c_sidebar";
+    const SELECTED_STORAGE_KEY = "head_b2c_selected";
+    const COLLAPSED_STORAGE_KEY = "head_b2c_collapsed";
+    const PRACTICE_STORAGE_KEY = "head_b2c_practice";
+    const NODE_LOCK_STORAGE_KEY = "head_b2c_lock";
+    const PROOF_STORAGE_KEY = "head_b2c_proof";
+
+    const STATE = {
+      sections: [],
+      sectionMap: new Map(),
+      nodes: [],
+      links: [],
+      nodeMap: new Map(),
+      questionIndex: [],
+      selectedNodeId: localStorage.getItem(SELECTED_STORAGE_KEY) || null,
+      currentCategory: "all",
+      currentView: localStorage.getItem(VIEW_STORAGE_KEY) || "graph",
+      currentSearch: "",
+      searchResults: [],
+      collapsed: new Set(JSON.parse(localStorage.getItem(COLLAPSED_STORAGE_KEY) || "[]")),
+      selectedProof: localStorage.getItem(PROOF_STORAGE_KEY) || "",
+      locked: localStorage.getItem(NODE_LOCK_STORAGE_KEY) === "true",
+      practice: JSON.parse(localStorage.getItem(PRACTICE_STORAGE_KEY) || "{}"),
+      practiceIndex: 0,
+      practiceReveal: false,
+      practiceTimer: null,
+      practiceRemaining: 0,
+      activePresentationNodeId: null
+    };
+
+    const DOM = {};
+    let graphState = null;
+
+    function normalizeText(text) {
+      return (text || "")
+        .replace(/\r/g, "")
+        .replace(/\s+/g, " ")
+        .replace(/[“”]/g, '"')
+        .replace(/[‘’]/g, "'")
+        .replace(/\u00a0/g, " ")
+        .trim()
+        .toLowerCase();
+    }
+
+    function stripMarkdown(text) {
+      const bt = String.fromCharCode(96);
+      return (text || "")
+        .replace(new RegExp("\\\\([\\\\" + bt + "*_{}\\[\\]()#+\\-.!&])", "g"), "$1")
+        .replace(/\*\*(.*?)\*\*/g, "$1")
+        .replace(/\*(.*?)\*/g, "$1")
+        .replace(new RegExp(bt + "([^" + bt + "]+)" + bt, "g"), "$1")
+        .replace(/\[(.*?)\]\((.*?)\)/g, "$1")
+        .replace(/^#{1,6}\s+/gm, "")
+        .trim();
+    }
+
+    function slugify(text) {
+      const cleaned = stripMarkdown(text)
+        .toLowerCase()
+        .replace(/&/g, " and ")
+        .replace(/[^a-z0-9ก-๙]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+      return cleaned || "section";
+    }
+
+    function extractKeywords(section) {
+      const matches = new Set();
+      const text = section.plainText;
+      const metricMatches = text.match(/(?:฿\s?\d+[\d,]*(?:\.\d+)?[MK]?|\d+[\d,]*(?:\.\d+)?%|\b(?:CAC|LTV|P&L|EBITDA|ARPPU|OKR|KPI|NPS|CSAT|PoC|MVP|ROI|COGS|OPEX|CX|B2C|B2B2C|CRM|PMF)\b)/gi) || [];
+      metricMatches.forEach((m) => matches.add(m.trim()));
+      const labelMatches = text.match(/(?:แนวคิด|กระบวนการ|ผลลัพธ์|คำตอบ|คำถามเจาะต่อ|สิ่งที่ควรทำ|สิ่งที่ไม่ควรทำ|หลักการสำคัญ|North Star Metric|Weekly Business Review|Monthly Business Review|Quarterly Planning)/g) || [];
+      labelMatches.forEach((m) => matches.add(m));
+      return Array.from(matches).slice(0, 10);
+    }
+
+    function escapeRegExp(text) {
+      return (text || "").replace(/[.*+?^$()|[\]\\]/g, "\\$&");
+    }
+
+    function parseMarkdown(source) {
+      const lines = source.split("\n");
+      const headingRe = /^(#{1,6})\s+(.*)$/;
+      const sections = [];
+      const headings = [];
+      for (let i = 0; i < lines.length; i += 1) {
+        const match = lines[i].match(headingRe);
+        if (!match) continue;
+        const rawTitle = match[2] || "";
+        const title = stripMarkdown(rawTitle);
+        if (!title) continue;
+        headings.push({
+          id: "heading-" + headings.length,
+          lineStart: i,
+          lineNumber: i + 1,
+          level: match[1].length,
+          rawTitle,
+          title
+        });
+      }
+      for (let i = 0; i < headings.length; i += 1) {
+        const heading = headings[i];
+        const next = headings[i + 1];
+        const lineEnd = next ? next.lineStart - 1 : lines.length - 1;
+        const fullMarkdown = lines.slice(heading.lineStart, lineEnd + 1).join("\n").trim();
+        const bodyMarkdown = lines.slice(heading.lineStart + 1, lineEnd + 1).join("\n").trim();
+        sections.push({
+          ...heading,
+          lineEnd,
+          fullMarkdown,
+          bodyMarkdown,
+          plainText: stripMarkdown(fullMarkdown),
+          bodyPlainText: stripMarkdown(bodyMarkdown),
+          children: [],
+          parentId: null,
+          categoryId: null,
+          evidence: [],
+          keywords: []
+        });
+      }
+      const stack = [];
+      for (const section of sections) {
+        while (stack.length && stack[stack.length - 1].level >= section.level) {
+          stack.pop();
+        }
+        const parent = stack[stack.length - 1];
+        if (parent) {
+          section.parentId = parent.id;
+          parent.children.push(section.id);
+        }
+        stack.push(section);
+      }
+      const deepDiveIndex = sections.findIndex((section) => section.title.includes("ชุดคำถาม–คำตอบสัมภาษณ์เชิงลึก"));
+      const ceoIndex = sections.findIndex((section) => section.title.includes("คำถามกลับที่ควรถาม CEO"));
+
+      function matchCategory(section) {
+        const title = section.title;
+        const body = section.plainText;
+        const numMatch = title.match(/^(\d+)(?:\.(\d+))?/);
+        const major = numMatch ? Number(numMatch[1]) : null;
+        const isDeepDive = deepDiveIndex >= 0 && section.lineStart >= sections[deepDiveIndex].lineStart;
+        const isCEO = ceoIndex >= 0 && section.lineStart >= sections[ceoIndex].lineStart;
+
+        if (isCEO) return "questions_ceo";
+        if (title === "Head of B2C") return "root";
+        if (/ภาพรวมของตำแหน่ง|Role Overview|หน้าที่และความรับผิดชอบหลัก|Key Responsibilities|Qualifications/.test(title)) return "role_jd";
+        if (/คำแนะนำตัวที่เชื่อมกับตำแหน่ง|Interview Talking Points|Why should we hire you\?|คำตอบสรุป: Why should we hire you\?|เหตุใดเราจึงควรเลือกคุณ|Why Sasion/i.test(title)) return "why_sasion";
+        if (/ประสบการณ์ที่จำเป็น|Experience — Must-have|คุณสมบัติ|Nice-to-have|Leadership Skills — Must-have|Business & Financial Skills — Must-have|Marketing & Sales Skills — Must-have|Business & Financial Skills|Marketing & Sales Skills|Leadership Skills/.test(title)) {
+          if (/Business & Financial Skills|8\./.test(title)) return "unit_economics";
+          if (/Marketing & Sales Skills|9\./.test(title)) return "marketing_sales";
+          if (/Leadership Skills|10\./.test(title)) return "team_leadership";
+          return "candidate_profile";
+        }
+        if (/Business Performance & Growth|Drive revenue|Define quarterly|Allocate resources|Identify new growth levers/.test(title)) return "business_growth";
+        if (/Financial Management|Own the full BU P&L|Read and act on financial statements|Monthly forecasts|Variance/.test(title)) return "financial_management";
+        if (/Team Leadership|People Management|Manage Directors|high-performance culture|Hiring and onboarding|succession plans/.test(title)) return "team_leadership";
+        if (/Cross-Functional Collaboration|Partner with B2B|Translate customer feedback|Collaborate with Tech/.test(title)) return "cross_functional";
+        if (/Customer & Market Insight|Voice of Customer|Track competition|Product, pricing and positioning/.test(title)) return "customer_market";
+        if (/Operational Excellence|operating rhythms|dashboards and metrics|Marketing → Sales → CX workflows/.test(title)) return "operational_excellence";
+        if (/Strategic Direction|Career Goal–Based Personalization|Stackable Credential|Community และ Social Accountability|B2B2C Flywheel|AI Learning Coach|North Star Metric|Ecosystem/.test(title)) return "retention_ecosystem";
+        if (/Good–Better–Best|Pricing|Packaging|Scarcity|Progress Architecture|Habit Loop|Social Proof|Event ให้เป็น Conversion Funnel|Product, pricing and positioning/.test(title)) return "product_pricing";
+        if (/OKR และ SMART|Dashboard ของ Head of B2C|Operating Rhythm|สิ่งที่ควรหยุดหรือหลีกเลี่ยง/.test(title)) return "operational_excellence";
+        if (/90-Day Execution Plan|วันที่ 1–30|วันที่ 31–60|วันที่ 61–90|แผน 90 วันแรก/.test(title)) return "day_90";
+        if (isDeepDive) {
+          if (major >= 1 && major <= 7) return major === 4 ? "day_90" : (major === 7 ? "financial_management" : "executive_qa");
+          if (major >= 8 && major <= 16) return "executive_qa";
+          if (major >= 17 && major <= 23) return major >= 17 && major <= 20 ? "leadership_scenarios" : "operational_excellence";
+          if (major >= 24 && major <= 26) return "retention_ecosystem";
+          if (major === 27) return "why_sasion";
+          return "executive_qa";
+        }
+        if (/P&L|Forecast|CAC|LTV|Payback|Contribution Margin|EBITDA|Revenue =|Contribution Margin =/.test(body)) return "unit_economics";
+        return "candidate_profile";
+      }
+
+      sections.forEach((section, idx) => {
+        section.id = "sec-" + String(idx + 1).padStart(3, "0") + "-" + slugify(section.title).slice(0, 48);
+      });
+      const idMap = new Map(sections.map((section) => [section.lineNumber, section.id]));
+      sections.forEach((section) => {
+        if (section.parentId && typeof section.parentId === "string" && !section.parentId.startsWith("sec-")) {
+          const parent = sections.find((item) => item.title === section.parentId);
+          if (parent) section.parentId = parent.id;
+        } else if (section.parentId && section.parentId.id) {
+          section.parentId = section.parentId.id;
+        }
+      });
+      const stack2 = [];
+      sections.forEach((section) => {
+        while (stack2.length && stack2[stack2.length - 1].level >= section.level) {
+          stack2.pop();
+        }
+        const parent = stack2[stack2.length - 1];
+        section.parentId = parent ? parent.id : null;
+        stack2.push(section);
+      });
+      sections.forEach((section) => {
+        section.children = sections.filter((candidate) => candidate.parentId === section.id).map((candidate) => candidate.id);
+        section.categoryId = matchCategory(section);
+        section.keywords = extractKeywords(section);
+        section.evidence = PROOF_CARDS.filter((card) => card.queries.some((query) => normalizeText(section.plainText).includes(normalizeText(query)))).map((card) => card.value);
+        section.isInterviewQuestion = section.categoryId !== "questions_ceo"
+          && section.level === 1
+          && /^\d+\./.test(section.title)
+          && deepDiveIndex >= 0
+          && section.lineStart >= sections[deepDiveIndex].lineStart;
+        section.isCEOQuestion = section.categoryId === "questions_ceo" && section.level === 2 && /^\d+\./.test(section.title);
+        section.questionNumber = section.isInterviewQuestion || section.isCEOQuestion
+          ? Number((section.title.match(/^(\d+)/) || [])[1] || 0)
+          : null;
+        section.hasAnswer = !!section.bodyPlainText;
+      });
+      return sections;
+    }
+
+    function buildGraphModel(sections) {
+      const nodes = [];
+      const links = [];
+
+      nodes.push({
+        id: "root",
+        label: "HEAD OF B2C",
+        kind: "root",
+        categoryId: "root",
+        parentId: null,
+        r: 28,
+        sectionId: null,
+        description: "Business Growth · P&L · Team Leadership · Customer · Product · Operations",
+        fullMarkdown: "# HEAD OF B2C\n\nBusiness Growth · P&L · Team Leadership · Customer · Product · Operations",
+        plainText: "HEAD OF B2C Business Growth P&L Team Leadership Customer Product Operations",
+        keywords: ["Business Growth", "P&L", "Leadership", "Customer", "Product", "Operations"],
+        evidence: [],
+        isInterviewQuestion: false,
+        sortIndex: 0
+      });
+
+      Object.values(CATEGORIES).forEach((category, index) => {
+        if (category.id === "root") return;
+        nodes.push({
+          id: "cat-" + category.id,
+          label: category.label,
+          kind: "category",
+          categoryId: category.id,
+          parentId: "root",
+          r: 18,
+          sectionId: null,
+          description: category.label,
+          fullMarkdown: "# " + category.label,
+          plainText: category.label,
+          keywords: [category.label, category.short],
+          evidence: [],
+          isInterviewQuestion: false,
+          sortIndex: index + 1
+        });
+        links.push({ source: "root", target: "cat-" + category.id, type: "primary" });
+      });
+
+      const sectionIdToNodeId = new Map();
+      sections.forEach((section, index) => {
+        const category = CATEGORIES[section.categoryId] || CATEGORIES.candidate_profile;
+        const nodeId = "node-" + section.id;
+        sectionIdToNodeId.set(section.id, nodeId);
+        nodes.push({
+          id: nodeId,
+          label: section.title,
+          kind: section.isInterviewQuestion ? "interview-question" : (section.isCEOQuestion ? "ceo-question" : "section"),
+          categoryId: section.categoryId,
+          parentId: null,
+          r: section.isInterviewQuestion ? 14 : section.level === 1 ? 16 : section.level === 2 ? 13 : 11,
+          sectionId: section.id,
+          description: section.bodyPlainText.split("\n")[0].slice(0, 180),
+          fullMarkdown: section.fullMarkdown,
+          bodyMarkdown: section.bodyMarkdown,
+          plainText: section.plainText,
+          keywords: section.keywords,
+          evidence: section.evidence,
+          isInterviewQuestion: section.isInterviewQuestion,
+          isCEOQuestion: section.isCEOQuestion,
+          questionNumber: section.questionNumber,
+          lineNumber: section.lineNumber,
+          sortIndex: 100 + index
+        });
+      });
+
+      sections.forEach((section) => {
+        const nodeId = sectionIdToNodeId.get(section.id);
+        const categoryNodeId = "cat-" + section.categoryId;
+        const parentSection = section.parentId ? sections.find((item) => item.id === section.parentId) : null;
+        const parentNodeId = parentSection ? sectionIdToNodeId.get(parentSection.id) : categoryNodeId;
+        const parentCategoryId = parentSection ? parentSection.categoryId : null;
+        const finalParentId = parentSection && parentCategoryId === section.categoryId ? parentNodeId : categoryNodeId;
+        const node = nodes.find((item) => item.id === nodeId);
+        node.parentId = finalParentId;
+        links.push({ source: finalParentId, target: nodeId, type: "tree" });
+      });
+
+      const questionIndex = nodes
+        .filter((node) => node.isInterviewQuestion)
+        .sort((a, b) => (a.questionNumber || 0) - (b.questionNumber || 0));
+
+      return { nodes, links, questionIndex };
+    }
+
+    function sanitizeAndRender(markdown) {
+      const raw = marked.parse(markdown || "", { breaks: true, gfm: true, headerIds: true, mangle: false });
+      return DOMPurify.sanitize(raw, {
+        ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto|tel):|[^a-z]|[a-z+.-]+(?:[^a-z+.-:]|$))/i
+      });
+    }
+
+    function highlightBusinessTerms(container) {
+      const terms = ["P&L", "CAC", "LTV", "EBITDA", "ARPPU", "ROI", "OKR", "KPI", "NPS", "CSAT", "Unit Economics"];
+      const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
+      const textNodes = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode);
+      textNodes.forEach((textNode) => {
+        const parent = textNode.parentNode;
+        if (!parent || ["SCRIPT", "STYLE", "CODE", "A"].includes(parent.nodeName)) return;
+        let text = textNode.nodeValue;
+        let changed = false;
+        terms.forEach((term) => {
+          const re = new RegExp(escapeRegExp(term), "g");
+          if (re.test(text)) {
+            changed = true;
+            text = text.replace(re, '<span class="highlight-term">' + term + '</span>');
+          }
+        });
+        if (changed) {
+          const span = document.createElement("span");
+          span.innerHTML = text;
+          parent.replaceChild(span, textNode);
+        }
+      });
+    }
+
+    function extractSubsectionLabels(markdown) {
+      const labels = [];
+      const re = /^(#{1,6})\s+(.+)$|^\*\*(แนวคิด|กระบวนการ|ผลลัพธ์|คำตอบ|คำถามเจาะต่อ|สิ่งที่ควรทำ|สิ่งที่ไม่ควรทำ|หลักการสำคัญ|KPI|ประโยคใช้พูด(?:ในที่ประชุม)?|Weekly Business Review|Monthly Business Review|Quarterly Planning|Commercial|Customer|Financial|Operational)\*\*$/gm;
+      let match;
+      while ((match = re.exec(markdown || ""))) {
+        const label = stripMarkdown(match[2] || match[3] || "");
+        if (label) labels.push(label);
+      }
+      return Array.from(new Set(labels)).slice(0, 14);
+    }
+
+    function getVisibleNodeIds() {
+      const hidden = new Set();
+      const nodeMap = STATE.nodeMap;
+      function hideDescendants(nodeId) {
+        STATE.links.forEach((link) => {
+          if (link.source !== nodeId) return;
+          hidden.add(link.target);
+          hideDescendants(link.target);
+        });
+      }
+      STATE.collapsed.forEach((id) => hideDescendants(id));
+      return STATE.nodes.filter((node) => !hidden.has(node.id)).map((node) => node.id);
+    }
+
+    function getNodeBreadcrumb(node) {
+      const crumbs = [];
+      let current = node;
+      const seen = new Set();
+      while (current && !seen.has(current.id)) {
+        seen.add(current.id);
+        crumbs.unshift(current.label);
+        current = STATE.nodeMap.get(current.parentId);
+      }
+      return crumbs.join(" > ");
+    }
+
+    function getRelatedNodes(node) {
+      return STATE.nodes
+        .filter((candidate) => candidate.id !== node.id)
+        .filter((candidate) => {
+          if (candidate.categoryId === node.categoryId) return true;
+          if (candidate.evidence.some((item) => node.evidence.includes(item))) return true;
+          return candidate.keywords.some((kw) => node.keywords.includes(kw));
+        })
+        .slice(0, 8);
+    }
+
+    function getQuestionNeighbors(node) {
+      const list = STATE.questionIndex;
+      const index = list.findIndex((item) => item.id === node.id);
+      return {
+        prev: index > 0 ? list[index - 1] : null,
+        next: index >= 0 && index < list.length - 1 ? list[index + 1] : null
+      };
+    }
+
+    function getSpeakingOutline(node) {
+      const labels = extractSubsectionLabels(node.fullMarkdown || "");
+      if (!labels.length) return [];
+      return labels.map((label, index) => (index + 1) + ". " + label);
+    }
+
+    function renderBadge(categoryId, text) {
+      const category = CATEGORIES[categoryId] || CATEGORIES.candidate_profile;
+      return '<span class="badge" style="background:' + category.color + '18;border-color:' + category.color + '55;color:' + category.color + '">' + text + '</span>';
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).catch(() => {});
+    }
+
+    function selectNode(nodeId, options = {}) {
+      const node = STATE.nodeMap.get(nodeId);
+      if (!node) return;
+      STATE.selectedNodeId = nodeId;
+      localStorage.setItem(SELECTED_STORAGE_KEY, nodeId);
+      renderDetail(node);
+      if (options.center !== false) centerOnNode(nodeId);
+      applyGraphState();
+      if (window.innerWidth <= 900) {
+        DOM.mobileDrawer.classList.add("open");
+      } else if (localStorage.getItem(SIDEBAR_STORAGE_KEY) !== "collapsed") {
+        DOM.detailSidebar.classList.remove("collapsed");
+      }
+    }
+
+    function clearSelection() {
+      STATE.selectedNodeId = null;
+      localStorage.removeItem(SELECTED_STORAGE_KEY);
+      renderDetail(null);
+      applyGraphState();
+    }
+
+    function renderDetail(node) {
+      const targets = [DOM.detailBody, DOM.mobileDetailBody];
+      if (!node) {
+        targets.forEach((target) => {
+          if (!target) return;
+          target.innerHTML = '<div class="detail-empty">Click any node to read the complete original content, search every question, or jump in from the deck and JD alignment views.</div>';
+        });
+        return;
+      }
+      targets.forEach((target) => {
+        if (!target) return;
+        const speakingOutline = getSpeakingOutline(node);
+        const related = getRelatedNodes(node);
+        const neighbors = getQuestionNeighbors(node);
+        const keywordsHtml = node.keywords.length
+          ? '<div class="keyword-list">' + node.keywords.map((kw) => '<span class="chip">' + kw + '</span>').join("") + '</div>'
+          : '<p>No extracted keywords</p>';
+        const relatedHtml = related.length
+          ? '<div class="related-list">' + related.map((item) => '<button class="chip actionable" data-related-node="' + item.id + '">' + item.label + '</button>').join("") + '</div>'
+          : '<p>No related nodes</p>';
+        const tocLabels = extractSubsectionLabels(node.fullMarkdown || "");
+        const tocHtml = tocLabels.length
+          ? '<details class="toc"' + (tocLabels.length < 7 ? ' open' : '') + '><summary>Jump Within This Answer</summary><div class="toc-list">' + tocLabels.map((label) => '<span class="toc-chip">' + label + '</span>').join("") + '</div></details>'
+          : '';
+        const speakingHtml = speakingOutline.length
+          ? '<div class="meta-card"><h4>Speaking Structure</h4><p>Speaking Structure — generated navigation aid, not original source text.</p><div class="related-list">' + speakingOutline.map((line) => '<span class="chip">' + line + '</span>').join("") + '</div></div>'
+          : '<div class="meta-card"><h4>Speaking Structure</h4><p>No generated outline for this node.</p></div>';
+        const proofHtml = node.evidence.length
+          ? '<div class="related-list">' + node.evidence.map((value) => '<span class="chip">' + value + '</span>').join("") + '</div>'
+          : '<p>No proof cards linked to this node.</p>';
+        const html = sanitizeAndRender(node.fullMarkdown || "");
+        target.innerHTML = ''
+          + '<article class="detail-card">'
+          +   '<div class="badge-row">'
+          +     renderBadge(node.categoryId, (CATEGORIES[node.categoryId] || CATEGORIES.candidate_profile).label)
+          +     (node.isInterviewQuestion ? renderBadge(node.categoryId, 'Interview Question ' + node.questionNumber) : '')
+          +     (node.isCEOQuestion ? renderBadge(node.categoryId, 'CEO Question') : '')
+          +   '</div>'
+          +   '<h1 class="detail-title">' + node.label + '</h1>'
+          +   '<div class="breadcrumb">' + getNodeBreadcrumb(node) + '</div>'
+          +   '<div class="detail-controls no-print">'
+          +     '<button class="btn" data-action="copy-answer">Copy Answer</button>'
+          +     '<button class="btn" data-action="copy-outline">Copy Short Speaking Outline</button>'
+          +     '<button class="btn" data-action="reader">Full-Screen Reading Mode</button>'
+          +     '<button class="btn" data-action="print-answer">Print Current Answer</button>'
+          +     '<button class="btn" data-action="export-answer">Export Answer as Text</button>'
+          +   '</div>'
+          +   tocHtml
+          +   '<div class="section-title">Original Source Content</div>'
+          +   '<div class="source-render" id="render-' + node.id + '">' + html + '</div>'
+          +   '<div class="detail-meta">'
+          +     '<div class="meta-card"><h4>Key Proof / Result</h4>' + proofHtml + '</div>'
+          +     '<div class="meta-card"><h4>Related Keywords</h4>' + keywordsHtml + '</div>'
+          +     speakingHtml
+          +     '<div class="meta-card"><h4>Related Nodes</h4>' + relatedHtml + '</div>'
+          +   '</div>'
+          +   '<div class="pager no-print">'
+          +     (neighbors.prev ? '<button class="btn" data-nav-node="' + neighbors.prev.id + '">Previous Question</button>' : '')
+          +     (neighbors.next ? '<button class="btn" data-nav-node="' + neighbors.next.id + '">Next Question</button>' : '')
+          +   '</div>'
+          + '</article>';
+      });
+      [DOM.detailBody, DOM.mobileDetailBody].forEach((target) => {
+        if (!target) return;
+        target.querySelectorAll('[data-related-node]').forEach((button) => {
+          button.addEventListener('click', () => selectNode(button.getAttribute('data-related-node')));
+        });
+        target.querySelectorAll('[data-nav-node]').forEach((button) => {
+          button.addEventListener('click', () => selectNode(button.getAttribute('data-nav-node')));
+        });
+        target.querySelectorAll('[data-action="copy-answer"]').forEach((button) => {
+          button.addEventListener('click', () => copyText((node.fullMarkdown || '').trim()));
+        });
+        target.querySelectorAll('[data-action="copy-outline"]').forEach((button) => {
+          button.addEventListener('click', () => copyText(getSpeakingOutline(node).join('\n') || 'No generated speaking outline.'));
+        });
+        target.querySelectorAll('[data-action="reader"]').forEach((button) => {
+          button.addEventListener('click', () => openReader(node));
+        });
+        target.querySelectorAll('[data-action="print-answer"]').forEach((button) => {
+          button.addEventListener('click', () => window.print());
+        });
+        target.querySelectorAll('[data-action="export-answer"]').forEach((button) => {
+          button.addEventListener('click', () => exportSelectedAnswer(node));
+        });
+      });
+      const renderTargets = document.querySelectorAll('#render-' + CSS.escape(node.id));
+      renderTargets.forEach((element) => highlightBusinessTerms(element));
+    }
+
+    function exportSelectedAnswer(node) {
+      const blob = new Blob([(node.fullMarkdown || '').trim()], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = slugify(node.label) + '.txt';
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function openReader(node) {
+      DOM.readerOverlay.classList.add('visible');
+      DOM.readerOverlay.setAttribute('aria-hidden', 'false');
+      DOM.readerContent.innerHTML = '<h2 class="detail-title">' + node.label + '</h2><div class="breadcrumb">' + getNodeBreadcrumb(node) + '</div><div class="source-render" style="margin-top:16px">' + sanitizeAndRender(node.fullMarkdown || '') + '</div>';
+      highlightBusinessTerms(DOM.readerContent);
+    }
+
+    function closeReader() {
+      DOM.readerOverlay.classList.remove('visible');
+      DOM.readerOverlay.setAttribute('aria-hidden', 'true');
+    }
+
+    function buildLegend() {
+      const items = [
+        'role_jd', 'candidate_profile', 'business_growth', 'financial_management', 'team_leadership',
+        'cross_functional', 'customer_market', 'operational_excellence', 'marketing_sales', 'unit_economics',
+        'product_pricing', 'retention_ecosystem', 'leadership_scenarios', 'day_90', 'executive_qa', 'why_sasion', 'questions_ceo'
+      ];
+      DOM.legend.innerHTML = '<h3>Legend</h3><div class="legend-grid">' + items.map((id) => {
+        const category = CATEGORIES[id];
+        return '<div class="legend-item"><span class="tab-dot" style="background:' + category.color + '"></span><span>' + category.short + '</span></div>';
+      }).join('') + '</div>';
+    }
+
+    function buildProofBar() {
+      DOM.proofBar.innerHTML = PROOF_CARDS.map((card) => {
+        return '<button class="proof-card' + (STATE.selectedProof === card.value ? ' active' : '') + '" data-proof="' + card.value + '"><strong>' + card.value + '</strong><span>' + card.label + '</span></button>';
+      }).join('');
+      DOM.proofBar.querySelectorAll('[data-proof]').forEach((button) => {
+        button.addEventListener('click', () => activateProof(button.getAttribute('data-proof')));
+      });
+    }
+
+    function activateProof(value) {
+      STATE.selectedProof = STATE.selectedProof === value ? '' : value;
+      if (STATE.selectedProof) localStorage.setItem(PROOF_STORAGE_KEY, STATE.selectedProof);
+      else localStorage.removeItem(PROOF_STORAGE_KEY);
+      buildProofBar();
+      applyGraphState();
+      if (!STATE.selectedProof) return;
+      const card = PROOF_CARDS.find((item) => item.value === STATE.selectedProof);
+      const node = findBestNodeForQueries(card.queries);
+      if (node) selectNode(node.id);
+    }
+
+    function buildCategoryTabs() {
+      const tabs = [
+        { id: 'all', label: 'All', color: '#9aadcb' },
+        { id: 'role_jd', label: 'JD', color: CATEGORIES.role_jd.color },
+        { id: 'candidate_profile', label: 'Profile', color: CATEGORIES.candidate_profile.color },
+        { id: 'business_growth', label: 'Growth', color: CATEGORIES.business_growth.color },
+        { id: 'financial_management', label: 'Financial', color: CATEGORIES.financial_management.color },
+        { id: 'team_leadership', label: 'Leadership', color: CATEGORIES.team_leadership.color },
+        { id: 'customer_market', label: 'Customer', color: CATEGORIES.customer_market.color },
+        { id: 'product_pricing', label: 'Product', color: CATEGORIES.product_pricing.color },
+        { id: 'marketing_sales', label: 'Marketing', color: CATEGORIES.marketing_sales.color },
+        { id: 'operational_excellence', label: 'Operations', color: CATEGORIES.operational_excellence.color },
+        { id: 'retention_ecosystem', label: 'Ecosystem', color: CATEGORIES.retention_ecosystem.color },
+        { id: 'executive_qa', label: 'Interview Q&A', color: CATEGORIES.executive_qa.color },
+        { id: 'questions_ceo', label: 'Ask CEO', color: CATEGORIES.questions_ceo.color }
+      ];
+      DOM.categoryTabs.innerHTML = tabs.map((tab) => '<button class="category-tab' + (STATE.currentCategory === tab.id ? ' active' : '') + '" data-category="' + tab.id + '" style="' + (STATE.currentCategory === tab.id ? 'background:' + tab.color + '20;border-color:' + tab.color + ';color:#fff;' : '') + '"><span class="tab-dot" style="background:' + tab.color + '"></span>' + tab.label + '</button>').join('');
+      DOM.categoryTabs.querySelectorAll('[data-category]').forEach((button) => {
+        button.addEventListener('click', () => {
+          STATE.currentCategory = button.getAttribute('data-category');
+          DOM.statCategory.textContent = STATE.currentCategory === 'all' ? 'All' : (CATEGORIES[STATE.currentCategory] || {}).label || STATE.currentCategory;
+          buildCategoryTabs();
+          applyGraphState();
+          fitVisibleNodes();
+        });
+      });
+    }
+
+    function buildDeckView() {
+      const pages = [
+        { title: 'Profile and Executive Introduction', subtitle: 'Candidate profile, intro, why this role fits', queries: ['คำแนะนำตัวที่เชื่อมกับตำแหน่ง', 'Candidate Profile', 'Why should we hire you?', 'เหตุใดเราจึงควรเลือกคุณ'] },
+        { title: 'Role Overview and JD', subtitle: 'Role expectations, responsibilities and qualifications', queries: ['Role Overview', 'Key Responsibilities', 'Qualifications'] },
+        { title: 'Key Proof Numbers', subtitle: 'Revenue, retention, growth and team evidence', queries: ['66 ล้านบาท', 'Retention 38%', 'พนักงานภายในประมาณ 28 คน'] },
+        { title: 'Business Growth', subtitle: 'Growth model, quarterly strategy and growth levers', queries: ['Business Performance & Growth', 'Growth Lever', 'กลยุทธ์รายไตรมาส'] },
+        { title: 'Financial Management', subtitle: 'P&L, forecast, variance and unit economics', queries: ['Financial Management', 'P&L', 'Variance', 'CAC'] },
+        { title: 'Marketing, Sales and Customer Journey', subtitle: 'Full-funnel, pricing, psychology and retention system', queries: ['Full-funnel Marketing', 'Pricing', 'Habit Loop', 'Social Proof', 'Event ให้เป็น Conversion Funnel'] },
+        { title: 'Team Leadership', subtitle: 'Managing managers, culture, hiring and underperformance', queries: ['Team Leadership', 'ผู้จัดการมีผลงานต่ำกว่าเป้า', 'Build high-performance teams'] },
+        { title: 'Cross-Functional Leadership', subtitle: 'CEO, B2B, Partnership, Product and CTO collaboration', queries: ['CEO, B2B, Partnership และ CTO', 'Cross-Functional Collaboration'] },
+        { title: 'Product and Technology', subtitle: 'Roadmap translation, AI coach, packaging and positioning', queries: ['Product, pricing and positioning strategy', 'AI Learning Coach', 'Good–Better–Best'] },
+        { title: 'FutureSkill Ecosystem Strategy', subtitle: 'Career ecosystem, B2B2C flywheel and North Star Metric', queries: ['Career Growth Ecosystem', 'B2B2C Flywheel', 'North Star Metric'] },
+        { title: 'Operational Excellence', subtitle: 'Dashboard, operating rhythm and execution system', queries: ['Dashboard ของ Head of B2C', 'Operating Rhythm', 'Operational Excellence'] },
+        { title: '90-Day Plan', subtitle: 'Diagnose, pilot and scale', queries: ['90-Day Execution Plan', 'แผน 90 วันแรกของคุณจะเป็นอย่างไร'] },
+      ];
+
+      const qaGroups = [
+        { title: 'Executive Interview Q&A 1–9', start: 1, end: 9 },
+        { title: 'Executive Interview Q&A 10–18', start: 10, end: 18 },
+        { title: 'Executive Interview Q&A 19–27', start: 19, end: 27 }
+      ];
+
+      DOM.deckWrap.innerHTML = pages.map((page, index) => {
+        const cards = page.queries
+          .map((query) => findBestNodeForQueries([query]))
+          .filter(Boolean)
+          .filter((node, idx, arr) => arr.findIndex((candidate) => candidate.id === node.id) === idx)
+          .map((node) => renderDeckCard(node))
+          .join('');
+        return '<section class="deck-page"><div class="deck-head"><div><h3>' + page.title + '</h3><p>' + page.subtitle + '</p></div><div class="badge" style="background:rgba(255,255,255,0.04);border-color:var(--border);color:var(--text3)">Section ' + (index + 1) + '</div></div><div class="deck-body"><div class="deck-grid">' + cards + '</div></div></section>';
+      }).join('') + '<section class="deck-page"><div class="deck-head"><div><h3>Executive Interview Q&A</h3><p>Grouped access to all 27 interview questions without shrinking the answers into unreadable cards.</p></div><div class="badge" style="background:rgba(255,255,255,0.04);border-color:var(--border);color:var(--text3)">Questions</div></div><div class="deck-body"><div class="deck-accordion">' + qaGroups.map((group) => {
+        const items = STATE.questionIndex.filter((node) => node.questionNumber >= group.start && node.questionNumber <= group.end).map((node) => renderDeckCard(node)).join('');
+        return '<details' + (group.start === 1 ? ' open' : '') + '><summary>' + group.title + '</summary><div class="deck-grid">' + items + '</div></details>';
+      }).join('') + '</div></div></section><section class="deck-page"><div class="deck-head"><div><h3>Questions to Ask the CEO</h3><p>CEO-facing questions preserved exactly from the source document.</p></div><div class="badge" style="background:rgba(255,255,255,0.04);border-color:var(--border);color:var(--text3)">Ask CEO</div></div><div class="deck-body"><div class="deck-grid">' + STATE.nodes.filter((node) => node.categoryId === 'questions_ceo' && node.kind !== 'category').map((node) => renderDeckCard(node)).join('') + '</div></div></section>';
+
+      DOM.deckWrap.querySelectorAll('[data-open-node]').forEach((button) => {
+        button.addEventListener('click', () => {
+          switchView('graph');
+          selectNode(button.getAttribute('data-open-node'));
+        });
+      });
+    }
+
+    function renderDeckCard(node) {
+      return '<article class="deck-card"><h4>' + node.label + '</h4><p>' + escapeHtml(node.description || node.plainText.slice(0, 160)) + '</p><button class="btn" data-open-node="' + node.id + '">Open in Graph</button></article>';
+    }
+
+    function buildAlignmentView() {
+      const rows = JD_ALIGNMENT_ROWS.map((row) => {
+        const evidenceNode = findBestNodeForQueries([row.evidenceQuery]);
+        const questionNode = findBestNodeForQueries([row.questionQuery]);
+        return { ...row, evidenceNode, questionNode };
+      });
+      DOM.alignmentWrap.innerHTML = '<table class="alignment-table"><thead><tr><th>JD Requirement</th><th>Candidate Evidence</th><th>Proof</th><th>Related Interview Question</th></tr></thead><tbody>' + rows.map((row) => {
+        return '<tr data-row-node="' + (row.evidenceNode ? row.evidenceNode.id : '') + '"><td>' + row.requirement + '</td><td>' + (row.evidenceNode ? escapeHtml(row.evidenceNode.label) : 'Not mapped') + '</td><td>' + row.proof + '</td><td>' + (row.questionNode ? '<button class="btn" data-open-node="' + row.questionNode.id + '">Open</button>' : 'Not mapped') + '</td></tr>';
+      }).join('') + '</tbody></table>';
+      DOM.alignmentWrap.querySelectorAll('[data-open-node]').forEach((button) => {
+        button.addEventListener('click', () => {
+          switchView('graph');
+          selectNode(button.getAttribute('data-open-node'));
+        });
+      });
+      DOM.alignmentWrap.querySelectorAll('[data-row-node]').forEach((row) => {
+        row.addEventListener('click', (event) => {
+          if (event.target.closest('[data-open-node]')) return;
+          const nodeId = row.getAttribute('data-row-node');
+          if (!nodeId) return;
+          switchView('graph');
+          selectNode(nodeId);
+        });
+      });
+    }
+
+    function buildPracticeView() {
+      if (!STATE.questionIndex.length) {
+        DOM.practiceWrap.innerHTML = '<p>No practice questions found.</p>';
+        return;
+      }
+      const current = STATE.questionIndex[STATE.practiceIndex] || STATE.questionIndex[0];
+      const status = STATE.practice[current.id] || 'Not practiced';
+      const progressCounts = {
+        total: STATE.questionIndex.length,
+        ready: Object.values(STATE.practice).filter((value) => value === 'Ready').length,
+        needs: Object.values(STATE.practice).filter((value) => value === 'Needs improvement').length,
+        untouched: STATE.questionIndex.length - Object.keys(STATE.practice).length
+      };
+      DOM.practiceWrap.innerHTML = '<div class="practice-shell"><section class="practice-card"><h3>Practice Mode</h3><p class="practice-question">' + current.label + '</p><div class="timer-display" id="timerDisplay">' + formatTimer(STATE.practiceRemaining) + '</div><div class="timer-row"><button class="btn" data-timer="30">30s</button><button class="btn" data-timer="60">60s</button><button class="btn" data-timer="90">90s</button><button class="btn" data-timer="120">2 min</button><button class="btn" id="stopTimerBtn">Stop</button><button class="btn gold" id="revealAnswerBtn">' + (STATE.practiceReveal ? 'Hide Answer' : 'Reveal Answer') + '</button></div>' + (STATE.practiceReveal ? '<div class="practice-answer"><div class="source-render">' + sanitizeAndRender(current.fullMarkdown) + '</div></div>' : '') + '<div class="status-row"><button class="btn' + (status === 'Not practiced' ? ' active' : '') + '" data-status="Not practiced">Not practiced</button><button class="btn' + (status === 'Needs improvement' ? ' active' : '') + '" data-status="Needs improvement">Needs improvement</button><button class="btn' + (status === 'Ready' ? ' active' : '') + '" data-status="Ready">Ready</button></div><div class="practice-nav"><button class="btn" id="practicePrevBtn">Previous</button><button class="btn" id="practiceNextBtn">Next</button><button class="btn" id="practiceRandomBtn">Random</button><button class="btn" id="practiceOpenGraphBtn">Open in Graph</button></div></section><aside class="practice-side"><div><h4>Practice Progress</h4><p>Total questions: ' + progressCounts.total + '</p><p>Ready: ' + progressCounts.ready + '</p><p>Needs improvement: ' + progressCounts.needs + '</p><p>Not practiced: ' + progressCounts.untouched + '</p></div><div><h4>Persistence</h4><p>Status is saved in localStorage on this browser only.</p></div><div><h4>Export</h4><div class="practice-nav"><button class="btn" id="exportPracticeBtn">Export Status JSON</button><button class="btn" id="resetPracticeBtn">Reset Progress</button></div></div></aside></div>';
+      DOM.practiceWrap.querySelectorAll('[data-timer]').forEach((button) => {
+        button.addEventListener('click', () => startPracticeTimer(Number(button.getAttribute('data-timer'))));
+      });
+      const stopBtn = DOM.practiceWrap.querySelector('#stopTimerBtn');
+      if (stopBtn) stopBtn.addEventListener('click', stopPracticeTimer);
+      const revealBtn = DOM.practiceWrap.querySelector('#revealAnswerBtn');
+      if (revealBtn) revealBtn.addEventListener('click', () => {
+        STATE.practiceReveal = !STATE.practiceReveal;
+        buildPracticeView();
+      });
+      DOM.practiceWrap.querySelectorAll('[data-status]').forEach((button) => {
+        button.addEventListener('click', () => {
+          STATE.practice[current.id] = button.getAttribute('data-status');
+          persistPractice();
+          buildPracticeView();
+        });
+      });
+      DOM.practiceWrap.querySelector('#practicePrevBtn').addEventListener('click', () => movePractice(-1));
+      DOM.practiceWrap.querySelector('#practiceNextBtn').addEventListener('click', () => movePractice(1));
+      DOM.practiceWrap.querySelector('#practiceRandomBtn').addEventListener('click', randomPractice);
+      DOM.practiceWrap.querySelector('#practiceOpenGraphBtn').addEventListener('click', () => {
+        switchView('graph');
+        selectNode(current.id);
+      });
+      DOM.practiceWrap.querySelector('#exportPracticeBtn').addEventListener('click', exportPracticeStatus);
+      DOM.practiceWrap.querySelector('#resetPracticeBtn').addEventListener('click', resetPracticeStatus);
+      const practiceRender = DOM.practiceWrap.querySelector('.source-render');
+      if (practiceRender) highlightBusinessTerms(practiceRender);
+    }
+
+    function formatTimer(seconds) {
+      const safe = Math.max(0, seconds || 0);
+      const mins = Math.floor(safe / 60);
+      const secs = safe % 60;
+      return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+    }
+
+    function startPracticeTimer(seconds) {
+      stopPracticeTimer();
+      STATE.practiceRemaining = seconds;
+      updatePracticeTimer();
+      STATE.practiceTimer = window.setInterval(() => {
+        STATE.practiceRemaining -= 1;
+        updatePracticeTimer();
+        if (STATE.practiceRemaining <= 0) {
+          stopPracticeTimer();
+        }
+      }, 1000);
+    }
+
+    function stopPracticeTimer() {
+      if (STATE.practiceTimer) {
+        window.clearInterval(STATE.practiceTimer);
+        STATE.practiceTimer = null;
+      }
+    }
+
+    function updatePracticeTimer() {
+      const display = document.getElementById('timerDisplay');
+      if (display) display.textContent = formatTimer(STATE.practiceRemaining);
+    }
+
+    function movePractice(delta) {
+      stopPracticeTimer();
+      STATE.practiceReveal = false;
+      STATE.practiceRemaining = 0;
+      STATE.practiceIndex = (STATE.practiceIndex + delta + STATE.questionIndex.length) % STATE.questionIndex.length;
+      buildPracticeView();
+    }
+
+    function randomPractice() {
+      stopPracticeTimer();
+      STATE.practiceReveal = false;
+      STATE.practiceRemaining = 0;
+      STATE.practiceIndex = Math.floor(Math.random() * STATE.questionIndex.length);
+      buildPracticeView();
+    }
+
+    function persistPractice() {
+      localStorage.setItem(PRACTICE_STORAGE_KEY, JSON.stringify(STATE.practice));
+    }
+
+    function exportPracticeStatus() {
+      const blob = new Blob([JSON.stringify(STATE.practice, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'head_of_b2c_practice_status.json';
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function resetPracticeStatus() {
+      STATE.practice = {};
+      persistPractice();
+      buildPracticeView();
+    }
+
+    function buildValidationReport() {
+      const headings = STATE.sections;
+      const questions = STATE.questionIndex;
+      const nodeHeadings = STATE.nodes.filter((node) => node.sectionId);
+      const missingHeadings = headings.filter((section) => !nodeHeadings.find((node) => node.sectionId === section.id)).map((section) => section.title);
+      const missingQuestions = questions.filter((node) => !node.fullMarkdown || !node.bodyMarkdown).map((node) => node.label);
+      const emptyAnswerNodes = STATE.nodes.filter((node) => node.isInterviewQuestion && !stripMarkdown(node.bodyMarkdown || '')).map((node) => node.label);
+      const totalNonEmptyLines = SOURCE_MARKDOWN.split('\n').filter((line) => line.trim()).length;
+      const coveredLineSet = new Set();
+      headings.forEach((section) => {
+        for (let i = section.lineStart; i <= section.lineEnd; i += 1) {
+          if (SOURCE_MARKDOWN.split('\n')[i] && SOURCE_MARKDOWN.split('\n')[i].trim()) coveredLineSet.add(i);
+        }
+      });
+      const coverage = totalNonEmptyLines ? (coveredLineSet.size / totalNonEmptyLines) * 100 : 100;
+      const report = {
+        headingsFound: headings.length,
+        questionsFound: questions.length,
+        questionNodes: STATE.nodes.filter((node) => node.isInterviewQuestion).length,
+        missingHeadings,
+        missingQuestions,
+        emptyAnswerNodes,
+        contentCoverage: Number(coverage.toFixed(2))
+      };
+      console.group('Head of B2C Validation Report');
+      console.table({
+        headingsFound: report.headingsFound,
+        questionsFound: report.questionsFound,
+        questionNodes: report.questionNodes,
+        contentCoverage: report.contentCoverage + '%'
+      });
+      if (report.missingHeadings.length) console.warn('Missing headings:', report.missingHeadings);
+      if (report.missingQuestions.length) console.warn('Missing questions:', report.missingQuestions);
+      if (report.emptyAnswerNodes.length) console.warn('Empty answer nodes:', report.emptyAnswerNodes);
+      if (!report.missingHeadings.length && !report.missingQuestions.length && !report.emptyAnswerNodes.length) {
+        console.info('Validation passed with full mapped coverage.');
+      }
+      console.groupEnd();
+      DOM.coveragePanel.innerHTML = '<h3>Validation</h3><p>Total Markdown headings found: <strong>' + report.headingsFound + '</strong></p><p>Total questions found: <strong>' + report.questionsFound + '</strong></p><p>Total questions converted into nodes: <strong>' + report.questionNodes + '</strong></p><p>Missing headings or sections: <strong>' + (report.missingHeadings.length || report.missingQuestions.length ? 'Review console' : 'None') + '</strong></p><p>Empty answer nodes: <strong>' + (report.emptyAnswerNodes.length ? report.emptyAnswerNodes.length : 'None') + '</strong></p><p>Content coverage percentage: <strong>' + report.contentCoverage + '%</strong></p>';
+      DOM.statCoverage.textContent = report.contentCoverage + '%';
+      window.__HEAD_OF_B2C_VALIDATION__ = report;
+      return report;
+    }
+
+    function escapeHtml(text) {
+      return (text || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function findBestNodeForQueries(queries) {
+      const normalizedQueries = queries.map(normalizeText);
+      let best = null;
+      let bestScore = -1;
+      STATE.nodes.forEach((node) => {
+        const text = normalizeText(node.plainText + ' ' + (node.description || '') + ' ' + (node.keywords || []).join(' '));
+        let score = 0;
+        normalizedQueries.forEach((query) => {
+          if (!query) return;
+          if (text.includes(query)) score += 4;
+          else if (query.length > 4 && text.includes(query.slice(0, Math.max(4, query.length - 2)))) score += 2;
+        });
+        if (score > bestScore) {
+          best = node;
+          bestScore = score;
+        }
+      });
+      return bestScore > 0 ? best : null;
+    }
+
+    function initDomRefs() {
+      Object.assign(DOM, {
+        detailSidebar: document.getElementById('detailSidebar'),
+        detailBody: document.getElementById('detailBody'),
+        mobileDrawer: document.getElementById('mobileDrawer'),
+        mobileDetailBody: document.getElementById('mobileDetailBody'),
+        proofBar: document.getElementById('proofBar'),
+        categoryTabs: document.getElementById('categoryTabs'),
+        statNodes: document.getElementById('statNodes'),
+        statVisibleNodes: document.getElementById('statVisibleNodes'),
+        statLinks: document.getElementById('statLinks'),
+        statQuestions: document.getElementById('statQuestions'),
+        statCategory: document.getElementById('statCategory'),
+        statSearch: document.getElementById('statSearch'),
+        statCoverage: document.getElementById('statCoverage'),
+        graphShell: document.getElementById('graphShell'),
+        graphSvg: document.getElementById('graph'),
+        tooltip: document.getElementById('tooltip'),
+        searchInput: document.getElementById('searchInput'),
+        searchCount: document.getElementById('searchCount'),
+        searchResults: document.getElementById('searchResults'),
+        legend: document.getElementById('legend'),
+        coveragePanel: document.getElementById('coveragePanel'),
+        deckWrap: document.getElementById('deckWrap'),
+        alignmentWrap: document.getElementById('alignmentWrap'),
+        practiceWrap: document.getElementById('practiceWrap'),
+        readerOverlay: document.getElementById('readerOverlay'),
+        readerContent: document.getElementById('readerContent'),
+        presentationOverlay: document.getElementById('presentationOverlay'),
+        presentationContent: document.getElementById('presentationContent')
+      });
+    }
+
+    function switchView(view) {
+      STATE.currentView = view;
+      localStorage.setItem(VIEW_STORAGE_KEY, view);
+      document.querySelectorAll('.view').forEach((element) => element.classList.remove('active'));
+      document.querySelectorAll('[data-view]').forEach((button) => button.classList.toggle('active', button.getAttribute('data-view') === view));
+      if (view === 'graph') document.getElementById('graphView').classList.add('active');
+      if (view === 'deck') document.getElementById('deckView').classList.add('active');
+      if (view === 'alignment') document.getElementById('alignmentView').classList.add('active');
+      if (view === 'practice') document.getElementById('practiceView').classList.add('active');
+      if (view === 'deck') buildDeckView();
+      if (view === 'alignment') buildAlignmentView();
+      if (view === 'practice') buildPracticeView();
+    }
+
+    function persistCollapsed() {
+      localStorage.setItem(COLLAPSED_STORAGE_KEY, JSON.stringify(Array.from(STATE.collapsed)));
+    }
+
+    function toggleSidebar(forceOpen) {
+      const collapsed = DOM.detailSidebar.classList.contains('collapsed');
+      const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : collapsed;
+      DOM.detailSidebar.classList.toggle('collapsed', !shouldOpen);
+      document.getElementById('toggleSidebarBtn').setAttribute('aria-expanded', String(shouldOpen));
+      localStorage.setItem(SIDEBAR_STORAGE_KEY, shouldOpen ? 'open' : 'collapsed');
+    }
+
+    function openPresentation(node) {
+      if (!node) return;
+      STATE.activePresentationNodeId = node.id;
+      DOM.presentationOverlay.classList.add('visible');
+      DOM.presentationOverlay.setAttribute('aria-hidden', 'false');
+      DOM.presentationContent.innerHTML = '<div class="badge-row">' + renderBadge(node.categoryId, (CATEGORIES[node.categoryId] || CATEGORIES.candidate_profile).label) + '</div><h2>' + node.label + '</h2><div class="breadcrumb">' + getNodeBreadcrumb(node) + '</div><div class="source-render" style="margin-top:18px">' + sanitizeAndRender(node.fullMarkdown || '') + '</div>';
+      highlightBusinessTerms(DOM.presentationContent);
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+    }
+
+    function closePresentation() {
+      DOM.presentationOverlay.classList.remove('visible');
+      DOM.presentationOverlay.setAttribute('aria-hidden', 'true');
+      if (document.fullscreenElement && document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    function movePresentation(delta) {
+      const current = STATE.nodeMap.get(STATE.activePresentationNodeId || STATE.selectedNodeId);
+      if (!current) return;
+      const list = current.isInterviewQuestion ? STATE.questionIndex : STATE.nodes.filter((node) => node.categoryId === current.categoryId && node.sectionId);
+      const index = list.findIndex((item) => item.id === current.id);
+      const next = list[(index + delta + list.length) % list.length];
+      if (next) {
+        selectNode(next.id);
+        openPresentation(next);
+      }
+    }
+
+    function initGraph() {
+      const svg = d3.select(DOM.graphSvg);
+      svg.selectAll('*').remove();
+      const width = DOM.graphShell.clientWidth;
+      const height = DOM.graphShell.clientHeight;
+      const defs = svg.append('defs');
+      const filter = defs.append('filter').attr('id', 'nodeGlow');
+      filter.append('feGaussianBlur').attr('stdDeviation', 4).attr('result', 'blur');
+      const merge = filter.append('feMerge');
+      merge.append('feMergeNode').attr('in', 'blur');
+      merge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+      Object.entries(CATEGORIES).forEach(([id, category]) => {
+        const gradient = defs.append('radialGradient').attr('id', 'grad-' + id).attr('cx', '50%').attr('cy', '40%').attr('r', '62%');
+        gradient.append('stop').attr('offset', '0%').attr('stop-color', lightenColor(category.color, 0.3));
+        gradient.append('stop').attr('offset', '100%').attr('stop-color', cssColorValue(category.color));
+      });
+
+      const zoomLayer = svg.append('g');
+      const linkLayer = zoomLayer.append('g');
+      const nodeLayer = zoomLayer.append('g');
+      const labelLayer = zoomLayer.append('g');
+
+      const nodes = STATE.nodes.map((node) => ({ ...node }));
+      const links = STATE.links.map((link) => ({ ...link }));
+      graphState = { svg, zoomLayer, linkLayer, nodeLayer, labelLayer, nodes, links, zoomBehavior: null, transform: d3.zoomIdentity };
+
+      const visibleSet = new Set(getVisibleNodeIds());
+      const filteredNodes = nodes.filter((node) => visibleSet.has(node.id));
+      const filteredLinks = links.filter((link) => visibleSet.has(link.source) && visibleSet.has(link.target));
+
+      const zoomBehavior = d3.zoom().scaleExtent([0.15, 3.2]).on('zoom', (event) => {
+        zoomLayer.attr('transform', event.transform);
+        graphState.transform = event.transform;
+      });
+      graphState.zoomBehavior = zoomBehavior;
+      svg.call(zoomBehavior);
+
+      const linkSel = linkLayer.selectAll('line')
+        .data(filteredLinks, (d) => d.source + '-' + d.target)
+        .join('line')
+        .attr('class', 'link')
+        .attr('stroke', (d) => cssColorValue((CATEGORIES[(STATE.nodeMap.get(d.target) || {}).categoryId] || CATEGORIES.candidate_profile).color))
+        .attr('stroke-width', 1.2);
+
+      const nodeSel = nodeLayer.selectAll('g')
+        .data(filteredNodes, (d) => d.id)
+        .join('g')
+        .attr('class', 'node')
+        .attr('tabindex', 0)
+        .attr('role', 'button')
+        .attr('aria-label', (d) => d.label)
+        .on('click', (event, d) => {
+          event.stopPropagation();
+          selectNode(d.id);
+        })
+        .on('dblclick', (event, d) => {
+          event.stopPropagation();
+          if (d.kind === 'category' || d.kind === 'section') {
+            if (STATE.collapsed.has(d.id)) STATE.collapsed.delete(d.id);
+            else STATE.collapsed.add(d.id);
+            persistCollapsed();
+            rerenderGraph();
+          }
+        })
+        .on('keydown', (event, d) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            selectNode(d.id);
+          }
+          if (event.key === 'ArrowRight' && (d.kind === 'category' || d.kind === 'section')) {
+            STATE.collapsed.delete(d.id);
+            persistCollapsed();
+            rerenderGraph();
+          }
+          if (event.key === 'ArrowLeft' && (d.kind === 'category' || d.kind === 'section')) {
+            STATE.collapsed.add(d.id);
+            persistCollapsed();
+            rerenderGraph();
+          }
+        })
+        .on('mouseover', (event, d) => showTooltip(event, d))
+        .on('mousemove', moveTooltip)
+        .on('mouseout', hideTooltip)
+        .call(d3.drag()
+          .on('start', (event, d) => {
+            if (!event.active) graphState.simulation.alphaTarget(0.18).restart();
+            if (!STATE.locked) {
+              d.fx = d.x;
+              d.fy = d.y;
+            }
+          })
+          .on('drag', (event, d) => {
+            d.fx = event.x;
+            d.fy = event.y;
+          })
+          .on('end', (event, d) => {
+            if (!event.active) graphState.simulation.alphaTarget(0);
+            if (!STATE.locked) {
+              d.fx = null;
+              d.fy = null;
+            }
+          }));
+
+      nodeSel.append('circle')
+        .attr('r', (d) => d.r)
+        .attr('fill', (d) => 'url(#grad-' + d.categoryId + ')')
+        .attr('stroke', (d) => cssColorValue((CATEGORIES[d.categoryId] || CATEGORIES.candidate_profile).color));
+
+      const labelSel = labelLayer.selectAll('text')
+        .data(filteredNodes, (d) => d.id)
+        .join('text')
+        .attr('text-anchor', 'middle')
+        .attr('fill', (d) => cssColorValue((CATEGORIES[d.categoryId] || CATEGORIES.candidate_profile).color))
+        .text((d) => truncateLabel(d.label, d.kind === 'category' ? 20 : 26));
+
+      graphState.linkSel = linkSel;
+      graphState.nodeSel = nodeSel;
+      graphState.labelSel = labelSel;
+
+      const simulation = d3.forceSimulation(filteredNodes)
+        .force('link', d3.forceLink(filteredLinks).id((d) => d.id).distance((d) => {
+          const source = STATE.nodeMap.get(d.source.id || d.source);
+          const target = STATE.nodeMap.get(d.target.id || d.target);
+          return source && target ? 56 + source.r + target.r * 2.2 : 100;
+        }).strength(0.5))
+        .force('charge', d3.forceManyBody().strength((d) => d.kind === 'category' ? -980 : d.kind === 'root' ? -1250 : -280))
+        .force('collision', d3.forceCollide().radius((d) => d.r + 18))
+        .force('x', d3.forceX((d) => radialX(d.categoryId, width)).strength((d) => d.kind === 'category' ? 0.24 : 0.08))
+        .force('y', d3.forceY((d) => radialY(d.categoryId, height)).strength((d) => d.kind === 'category' ? 0.24 : 0.08))
+        .alphaDecay(0.055)
+        .velocityDecay(0.32);
+
+      graphState.simulation = simulation;
+      simulation.on('tick', () => {
+        linkSel
+          .attr('x1', (d) => d.source.x)
+          .attr('y1', (d) => d.source.y)
+          .attr('x2', (d) => d.target.x)
+          .attr('y2', (d) => d.target.y);
+        nodeSel.attr('transform', (d) => 'translate(' + d.x + ',' + d.y + ')');
+        labelSel
+          .attr('x', (d) => d.x)
+          .attr('y', (d) => d.y - d.r - 8);
+      });
+      window.setTimeout(() => simulation.alpha(0), 6500);
+      svg.on('click', () => clearSelection());
+      fitAll();
+      applyGraphState();
+    }
+
+    function radialX(categoryId, width) {
+      const ordered = Object.keys(CATEGORIES).filter((id) => id !== 'root');
+      const index = Math.max(0, ordered.indexOf(categoryId));
+      const angle = (Math.PI * 2 * index) / ordered.length;
+      return width / 2 + Math.cos(angle) * Math.min(width * 0.24, 260) - width / 2;
+    }
+
+    function radialY(categoryId, height) {
+      const ordered = Object.keys(CATEGORIES).filter((id) => id !== 'root');
+      const index = Math.max(0, ordered.indexOf(categoryId));
+      const angle = (Math.PI * 2 * index) / ordered.length;
+      return height / 2 + Math.sin(angle) * Math.min(height * 0.24, 220) - height / 2;
+    }
+
+    function cssColorValue(value) {
+      const probe = document.createElement('div');
+      probe.style.color = value;
+      document.body.appendChild(probe);
+      const computed = getComputedStyle(probe).color;
+      probe.remove();
+      return computed;
+    }
+
+    function lightenColor(value, amount) {
+      const probe = document.createElement('div');
+      probe.style.color = value;
+      document.body.appendChild(probe);
+      const computed = getComputedStyle(probe).color;
+      probe.remove();
+      const nums = computed.match(/\d+/g).map(Number);
+      const adjusted = nums.map((n) => Math.min(255, Math.round(n + (255 - n) * amount)));
+      return 'rgb(' + adjusted.join(',') + ')';
+    }
+
+    function truncateLabel(text, max) {
+      return text.length > max ? text.slice(0, max - 1) + '…' : text;
+    }
+
+    function rerenderGraph() {
+      initGraph();
+    }
+
+    function getFilteredVisibleNodes() {
+      const visibleIds = new Set(getVisibleNodeIds());
+      return STATE.nodes.filter((node) => visibleIds.has(node.id)).filter((node) => {
+        const matchesCategory = STATE.currentCategory === 'all' || node.categoryId === STATE.currentCategory || node.id === 'cat-' + STATE.currentCategory;
+        const search = normalizeText(STATE.currentSearch);
+        const text = normalizeText(node.label + ' ' + (node.plainText || '') + ' ' + (node.keywords || []).join(' '));
+        const matchesSearch = !search || text.includes(search);
+        const matchesProof = !STATE.selectedProof || node.evidence.includes(STATE.selectedProof);
+        return matchesCategory && matchesSearch && matchesProof;
+      });
+    }
+
+    function applyGraphState() {
+      if (!graphState) return;
+      const visibleIds = new Set(getVisibleNodeIds());
+      const selectedNode = STATE.selectedNodeId ? STATE.nodeMap.get(STATE.selectedNodeId) : null;
+      const selectedRelated = new Set();
+      if (selectedNode) {
+        STATE.links.forEach((link) => {
+          if (link.source === selectedNode.id) selectedRelated.add(link.target);
+          if (link.target === selectedNode.id) selectedRelated.add(link.source);
+        });
+      }
+      const search = normalizeText(STATE.currentSearch);
+      let matchCount = 0;
+
+      graphState.nodeSel.each(function(d) {
+        const node = STATE.nodeMap.get(d.id);
+        const matchesCategory = STATE.currentCategory === 'all' || node.categoryId === STATE.currentCategory || node.id === 'cat-' + STATE.currentCategory;
+        const haystack = normalizeText(node.label + ' ' + node.plainText + ' ' + (node.keywords || []).join(' ') + ' ' + (node.evidence || []).join(' '));
+        const matchesSearch = !search || haystack.includes(search);
+        const matchesProof = !STATE.selectedProof || node.evidence.includes(STATE.selectedProof);
+        const visible = visibleIds.has(d.id) && matchesCategory && matchesSearch && matchesProof;
+        if (visible && (search || STATE.selectedProof)) matchCount += 1;
+        d3.select(this)
+          .classed('selected', !!selectedNode && selectedNode.id === d.id)
+          .classed('dimmed', !!selectedNode && selectedNode.id !== d.id && !selectedRelated.has(d.id))
+          .classed('hidden', !visible)
+          .classed('search-match', visible && (!!search || !!STATE.selectedProof));
+      });
+
+      graphState.labelSel.each(function(d) {
+        const node = STATE.nodeMap.get(d.id);
+        const matchesCategory = STATE.currentCategory === 'all' || node.categoryId === STATE.currentCategory || node.id === 'cat-' + STATE.currentCategory;
+        const haystack = normalizeText(node.label + ' ' + node.plainText + ' ' + (node.keywords || []).join(' ') + ' ' + (node.evidence || []).join(' '));
+        const matchesSearch = !search || haystack.includes(search);
+        const matchesProof = !STATE.selectedProof || node.evidence.includes(STATE.selectedProof);
+        const visible = visibleIds.has(d.id) && matchesCategory && matchesSearch && matchesProof;
+        d3.select(this).classed('hidden', !visible).style('opacity', visible ? 1 : 0.08);
+      });
+
+      graphState.linkSel.each(function(d) {
+        const sourceId = d.source.id || d.source;
+        const targetId = d.target.id || d.target;
+        const sourceNode = STATE.nodeMap.get(sourceId);
+        const targetNode = STATE.nodeMap.get(targetId);
+        const matchesCategory = STATE.currentCategory === 'all'
+          || sourceNode.categoryId === STATE.currentCategory
+          || targetNode.categoryId === STATE.currentCategory;
+        const matchesProof = !STATE.selectedProof || sourceNode.evidence.includes(STATE.selectedProof) || targetNode.evidence.includes(STATE.selectedProof);
+        const isVisible = visibleIds.has(sourceId) && visibleIds.has(targetId) && matchesCategory && matchesProof;
+        const isRelated = !!selectedNode && (sourceId === selectedNode.id || targetId === selectedNode.id);
+        d3.select(this)
+          .classed('hidden', !isVisible)
+          .classed('related', isRelated)
+          .style('opacity', isVisible ? (isRelated ? 0.96 : 0.3) : 0.04);
+      });
+
+      const filteredVisible = getFilteredVisibleNodes();
+      DOM.statNodes.textContent = String(STATE.nodes.length);
+      DOM.statLinks.textContent = String(STATE.links.length);
+      DOM.statVisibleNodes.textContent = String(filteredVisible.length);
+      DOM.statQuestions.textContent = String(STATE.questionIndex.length);
+      DOM.statSearch.textContent = String(matchCount);
+      DOM.searchCount.textContent = matchCount ? matchCount + ' found' : '';
+      buildSearchResults(filteredVisible, matchCount);
+    }
+
+    function buildSearchResults(filteredVisible, matchCount) {
+      const search = normalizeText(STATE.currentSearch);
+      if (!search) {
+        DOM.searchResults.classList.remove('visible');
+        DOM.searchResults.innerHTML = '';
+        return;
+      }
+      const results = filteredVisible
+        .filter((node) => normalizeText(node.label + ' ' + node.plainText + ' ' + (node.keywords || []).join(' ') + ' ' + (node.evidence || []).join(' ')).includes(search))
+        .slice(0, 16);
+      STATE.searchResults = results;
+      DOM.searchResults.classList.toggle('visible', !!results.length);
+      DOM.searchResults.innerHTML = '<h3>Search Results</h3>' + (results.length ? results.map((node) => '<button class="result-item" data-result-node="' + node.id + '"><strong>' + node.label + '</strong><span>' + escapeHtml(node.description || node.plainText.slice(0, 140)) + '</span></button>').join('') : '<p>No result found.</p>');
+      DOM.searchResults.querySelectorAll('[data-result-node]').forEach((button) => {
+        button.addEventListener('click', () => selectNode(button.getAttribute('data-result-node')));
+      });
+    }
+
+    function showTooltip(event, node) {
+      const fullLabel = escapeHtml(node.label);
+      const desc = escapeHtml(node.description || node.plainText.slice(0, 180));
+      DOM.tooltip.innerHTML = '<strong>' + fullLabel + '</strong>' + desc;
+      DOM.tooltip.classList.add('visible');
+      moveTooltip(event);
+    }
+
+    function moveTooltip(event) {
+      DOM.tooltip.style.left = Math.min(window.innerWidth - 340, event.clientX + 18) + 'px';
+      DOM.tooltip.style.top = Math.min(window.innerHeight - 140, event.clientY + 18) + 'px';
+    }
+
+    function hideTooltip() {
+      DOM.tooltip.classList.remove('visible');
+    }
+
+    function fitAll() {
+      if (!graphState) return;
+      fitVisibleNodes();
+    }
+
+    function fitVisibleNodes() {
+      if (!graphState) return;
+      const nodes = graphState.nodes.filter((node) => {
+        const element = graphState.nodeSel.filter((d) => d.id === node.id);
+        return !element.classed('hidden');
+      });
+      if (!nodes.length) return;
+      const minX = d3.min(nodes, (d) => d.x - d.r - 30);
+      const maxX = d3.max(nodes, (d) => d.x + d.r + 30);
+      const minY = d3.min(nodes, (d) => d.y - d.r - 30);
+      const maxY = d3.max(nodes, (d) => d.y + d.r + 30);
+      const width = DOM.graphShell.clientWidth;
+      const height = DOM.graphShell.clientHeight;
+      const dx = maxX - minX;
+      const dy = maxY - minY;
+      const scale = Math.min(2.2, 0.92 / Math.max(dx / width, dy / height, 0.18));
+      const midX = (minX + maxX) / 2;
+      const midY = (minY + maxY) / 2;
+      const transform = d3.zoomIdentity.translate(width / 2, height / 2).scale(scale).translate(-midX, -midY);
+      graphState.svg.transition().duration(500).call(graphState.zoomBehavior.transform, transform);
+    }
+
+    function centerOnNode(nodeId) {
+      if (!graphState) return;
+      const node = graphState.nodes.find((item) => item.id === nodeId);
+      if (!node) return;
+      const width = DOM.graphShell.clientWidth;
+      const height = DOM.graphShell.clientHeight;
+      const currentScale = graphState.transform.k || 1;
+      const transform = d3.zoomIdentity.translate(width / 2 - node.x * currentScale, height / 2 - node.y * currentScale).scale(currentScale);
+      graphState.svg.transition().duration(420).call(graphState.zoomBehavior.transform, transform);
+    }
+
+    function collapseAll() {
+      STATE.collapsed = new Set(STATE.nodes.filter((node) => node.kind === 'category' || (node.kind === 'section' && node.parentId && node.parentId.startsWith('cat-'))).map((node) => node.id));
+      persistCollapsed();
+      rerenderGraph();
+    }
+
+    function expandAll() {
+      STATE.collapsed.clear();
+      persistCollapsed();
+      rerenderGraph();
+    }
+
+    function toggleLock() {
+      STATE.locked = !STATE.locked;
+      localStorage.setItem(NODE_LOCK_STORAGE_KEY, String(STATE.locked));
+      document.getElementById('lockBtn').classList.toggle('active', STATE.locked);
+      document.getElementById('lockBtn').textContent = STATE.locked ? 'Unlock Nodes' : 'Lock Nodes';
+      if (graphState && graphState.nodes) {
+        graphState.nodes.forEach((node) => {
+          if (STATE.locked) {
+            node.fx = node.x;
+            node.fy = node.y;
+          } else {
+            node.fx = null;
+            node.fy = null;
+          }
+        });
+        if (graphState.simulation) graphState.simulation.alpha(0.2).restart();
+      }
+    }
+
+    function bindGlobalEvents() {
+      DOM.searchInput.addEventListener('input', () => {
+        STATE.currentSearch = DOM.searchInput.value;
+        applyGraphState();
+      });
+      document.getElementById('clearSearchBtn').addEventListener('click', () => {
+        DOM.searchInput.value = '';
+        STATE.currentSearch = '';
+        applyGraphState();
+      });
+      document.getElementById('resetZoomBtn').addEventListener('click', fitAll);
+      document.getElementById('fitBtn').addEventListener('click', fitVisibleNodes);
+      document.getElementById('expandBtn').addEventListener('click', expandAll);
+      document.getElementById('collapseBtn').addEventListener('click', collapseAll);
+      document.getElementById('lockBtn').addEventListener('click', toggleLock);
+      document.getElementById('returnRootBtn').addEventListener('click', () => selectNode('root'));
+      document.getElementById('toggleSidebarBtn').addEventListener('click', () => toggleSidebar());
+      document.getElementById('closeSidebarBtn').addEventListener('click', () => toggleSidebar(false));
+      document.getElementById('closeDrawerBtn').addEventListener('click', () => DOM.mobileDrawer.classList.remove('open'));
+      document.getElementById('readerCloseBtn').addEventListener('click', closeReader);
+      document.getElementById('readerPrintBtn').addEventListener('click', () => window.print());
+      document.getElementById('presentationBtn').addEventListener('click', () => {
+        const node = STATE.nodeMap.get(STATE.selectedNodeId || STATE.questionIndex[STATE.practiceIndex]?.id || 'root');
+        openPresentation(node);
+      });
+      document.getElementById('presentationCloseBtn').addEventListener('click', closePresentation);
+      document.getElementById('presentationPrevBtn').addEventListener('click', () => movePresentation(-1));
+      document.getElementById('presentationNextBtn').addEventListener('click', () => movePresentation(1));
+      document.querySelectorAll('[data-view]').forEach((button) => {
+        button.addEventListener('click', () => switchView(button.getAttribute('data-view')));
+      });
+      window.addEventListener('resize', () => rerenderGraph());
+      document.addEventListener('keydown', (event) => {
+        if (event.key === '/' && document.activeElement !== DOM.searchInput) {
+          event.preventDefault();
+          DOM.searchInput.focus();
+        }
+        if (event.key === 'Escape') {
+          if (DOM.readerOverlay.classList.contains('visible')) {
+            closeReader();
+            return;
+          }
+          if (DOM.presentationOverlay.classList.contains('visible')) {
+            closePresentation();
+            return;
+          }
+          if (DOM.mobileDrawer.classList.contains('open')) {
+            DOM.mobileDrawer.classList.remove('open');
+            return;
+          }
+          DOM.searchInput.value = '';
+          STATE.currentSearch = '';
+          applyGraphState();
+        }
+        if (DOM.presentationOverlay.classList.contains('visible')) {
+          if (event.key === 'ArrowRight') movePresentation(1);
+          if (event.key === 'ArrowLeft') movePresentation(-1);
+        }
+      });
+    }
+
+    function bootstrap() {
+      initDomRefs();
+      STATE.sections = parseMarkdown(SOURCE_MARKDOWN);
+      STATE.sectionMap = new Map(STATE.sections.map((section) => [section.id, section]));
+      const graphModel = buildGraphModel(STATE.sections);
+      STATE.nodes = graphModel.nodes;
+      STATE.links = graphModel.links;
+      STATE.questionIndex = graphModel.questionIndex;
+      STATE.nodeMap = new Map(STATE.nodes.map((node) => [node.id, node]));
+
+      buildProofBar();
+      buildCategoryTabs();
+      buildLegend();
+      bindGlobalEvents();
+      renderDetail(STATE.selectedNodeId ? STATE.nodeMap.get(STATE.selectedNodeId) : null);
+      initGraph();
+      buildDeckView();
+      buildAlignmentView();
+      buildPracticeView();
+      const report = buildValidationReport();
+      switchView(STATE.currentView);
+      if (localStorage.getItem(SIDEBAR_STORAGE_KEY) === 'collapsed') toggleSidebar(false);
+      if (STATE.locked) toggleLock();
+      if (STATE.selectedNodeId && STATE.nodeMap.has(STATE.selectedNodeId)) selectNode(STATE.selectedNodeId, { center: false });
+      else selectNode('root', { center: false });
+      if (STATE.selectedProof) activateProof(STATE.selectedProof);
+      console.info('Validation summary', report);
+    }
+
+    document.addEventListener('DOMContentLoaded', bootstrap);
+  </script>
+</body>
+</html>
